@@ -8,12 +8,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="NeverMiss — Every missed call is a job your competitor just booked." />
 <meta property="og:description" content="24/7 AI receptionist that answers every call, texts back missed callers in seconds, and books jobs straight onto your calendar. Built for home service shops in Long Beach." />
-<meta property="og:image" content="https://nevermiss.ai/og-image.png" />
-<meta property="og:url" content="https://nevermiss.ai" />
+<meta property="og:image" content="https://liamhawke2006-jpg.github.io/nevermiss/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://liamhawke2006-jpg.github.io/nevermiss/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="NeverMiss — Stop losing jobs to missed calls." />
 <meta name="twitter:description" content="24/7 AI receptionist for HVAC, plumbing, roofing &amp; electrical. Answers every call. Books the job. No missed calls, no lost revenue." />
-<meta name="twitter:image" content="https://nevermiss.ai/og-image.png" />
+<meta name="twitter:image" content="https://liamhawke2006-jpg.github.io/nevermiss/og-image.png" />
 <meta name="theme-color" content="#0E1513" />
 <link rel="canonical" href="https://nevermiss.ai" />
 <script type="application/ld+json">
@@ -348,6 +350,28 @@ footer{background:var(--ink);color:var(--muted-d);border-top:1px solid var(--lin
 /* ─── SCROLL PROGRESS ────────────────────────────────────────────── */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--pine),var(--sig));box-shadow:0 0 12px rgba(43,196,142,.5);transition:width .08s linear}
 
+/* ─── HEAR-IT (LIVE DEMO) ────────────────────────────────────────── */
+.hear-section{background:var(--ink);padding:96px 0;position:relative;overflow:hidden}
+.hear-section .grid-bg{position:absolute;inset:0;opacity:.5}
+.hear-inner{max-width:760px;margin:0 auto;padding:0 26px;text-align:center;position:relative;z-index:1}
+.hear-inner .sec-eyebrow{color:var(--sig);justify-content:center}
+.hear-inner .sec-eyebrow::before{background:var(--sig)}
+.hear-inner h2{color:#fff;max-width:none;margin:0 auto 14px}
+.hear-inner .sec-lede{color:var(--muted-d);margin:0 auto 38px;max-width:34em}
+.hear-inner .sec-lede b{color:#fff}
+.dial-btn{display:inline-flex;align-items:center;gap:14px;background:var(--sig);color:var(--ink);font-family:"Bricolage Grotesque";font-weight:800;font-size:30px;letter-spacing:-.01em;padding:20px 38px;border-radius:16px;text-decoration:none;box-shadow:0 18px 50px -16px rgba(43,196,142,.6);transition:transform .14s,box-shadow .14s}
+.dial-btn:hover{transform:translateY(-2px);box-shadow:0 26px 60px -16px rgba(43,196,142,.7)}
+.dial-btn .ph{flex:none;width:46px;height:46px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+@media(max-width:640px){.dial-btn{font-size:24px;padding:18px 26px;width:100%;justify-content:center}.dial-btn .ph{width:38px;height:38px}}
+.dial-pulse{position:relative;display:inline-flex}
+.dial-pulse::before{content:"";position:absolute;inset:-10px;border-radius:22px;border:2px solid var(--sig);opacity:0;animation:dialPulse 2.4s ease-out infinite}
+@keyframes dialPulse{0%{transform:scale(.96);opacity:.7}100%{transform:scale(1.08);opacity:0}}
+.hear-sub{margin-top:22px;font-family:"Space Mono";font-size:13px;letter-spacing:.04em;color:var(--muted-d)}
+.hear-sub .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sig);margin-right:7px;box-shadow:0 0 0 0 rgba(43,196,142,.7);animation:liveDot 2s infinite}
+@keyframes liveDot{0%{box-shadow:0 0 0 0 rgba(43,196,142,.6)}70%{box-shadow:0 0 0 9px rgba(43,196,142,0)}100%{box-shadow:0 0 0 0 rgba(43,196,142,0)}}
+.hear-script{margin-top:30px;display:inline-flex;align-items:center;gap:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:13px 18px;font-size:14.5px;color:#CBD3CE;max-width:90%}
+.hear-script b{color:var(--sig);font-family:"Space Mono";font-size:12px;letter-spacing:.05em}
+
 /* ─── NAV ACTIVE (SCROLLSPY) ─────────────────────────────────────── */
 .nav a.active{color:#fff}
 .nav a.active::after{content:"";display:block;height:2px;background:var(--sig);border-radius:2px;margin-top:3px;animation:navUnderline .25s ease both}
@@ -435,6 +459,7 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
     <nav class="nav" role="navigation" aria-label="Main">
       <a href="#leak">The leak</a>
       <a href="#how">How it works</a>
+      <a href="#hear" class="hl">▶ Hear it live</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="#book">Book a call</a>
@@ -450,6 +475,7 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
 <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile">
   <a href="#leak" class="mobile-link">The leak</a>
   <a href="#how" class="mobile-link">How it works</a>
+  <a href="#hear" class="mobile-link" style="color:var(--sig)">▶ Hear it live</a>
   <a href="#pricing" class="mobile-link">Pricing</a>
   <a href="#faq" class="mobile-link">FAQ</a>
   <a href="#book" class="mobile-link hl" style="color:var(--sig)">Book a call →</a>
@@ -468,7 +494,7 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
       <p class="lede">You're on a roof, under a truck, or asleep. The phone rings out. NeverMiss answers 24/7, texts back missed callers in seconds, and books the job before they dial the next guy.</p>
       <div class="hero-cta">
         <a href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener" class="btn big">Book a free 10-minute call</a>
-        <a href="#calc" class="btn ghost">Run my numbers ↓</a>
+        <a href="#hear" class="btn ghost">▶ Hear it live</a>
       </div>
       <div class="reassure">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none"><path d="M5 13l4 4L19 7" stroke="#2BC48E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -717,6 +743,28 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
           <p>True emergencies get flagged and routed directly to your cell — so you always stay in control of what matters.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HEAR IT (LIVE DEMO) ────────────────────────────────────────── -->
+<section class="hear-section" id="hear">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="hear-inner">
+    <div class="reveal">
+      <div class="sec-eyebrow">60-second test drive</div>
+      <h2 class="disp">Don't take my word for it. Call it right now.</h2>
+      <p class="sec-lede">This is the <b>actual AI</b> — not a recording. Give it a ring, tell it your water heater's leaking, and watch it book you an appointment like a real front-desk pro. Live 24/7.</p>
+    </div>
+    <div class="reveal delay-1">
+      <span class="dial-pulse">
+        <a href="tel:+15625735967" class="dial-btn" aria-label="Call the NeverMiss demo line at 562 573 5967">
+          <span class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.4 2L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2-.4 12.8 12.8 0 0 0 2.8.7A2 2 0 0 1 22 16.9z" fill="#2BC48E"/></svg></span>
+          (562) 573-5967
+        </a>
+      </span>
+      <div class="hear-sub"><span class="live-dot"></span>Live now · answers in your business's name · books straight to calendar</div>
+      <div class="hear-script"><b>TRY&nbsp;SAYING:</b><span>“Hi, my water heater is leaking — can someone come out today?”</span></div>
     </div>
   </div>
 </section>
