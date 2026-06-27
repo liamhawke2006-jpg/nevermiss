@@ -60,6 +60,7 @@
 /* ─── RESET & BASE ───────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+html,body{overflow-x:hidden;max-width:100%}
 body{font-family:"Public Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 img,svg{display:block}
@@ -114,6 +115,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(14,21,19,.94);backdrop-f
 .hero .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(75% 65% at 28% 22%,#000,transparent);-webkit-mask-image:radial-gradient(75% 65% at 28% 22%,#000,transparent)}
 .hero .glow-spot{position:absolute;right:-200px;top:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(43,196,142,.07) 0%,transparent 65%);pointer-events:none}
 .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero-grid>*{min-width:0}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:"Space Mono";font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sig);margin-bottom:24px}
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--sig)}
 h1.disp{font-size:clamp(38px,5vw,60px);margin-bottom:22px;max-width:14em}
@@ -150,6 +152,7 @@ h1 .hl{color:var(--sig)}
 @keyframes ringPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}
 
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:46px}}
+@media(max-width:560px){.eyebrow{flex-wrap:wrap;font-size:11px;letter-spacing:.1em}.hero{padding:60px 0 72px}.hero-cta .btn{flex:1 1 auto;justify-content:center}}
 
 /* ─── TRUST BAR ──────────────────────────────────────────────────── */
 .trust-bar{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:22px 0}
@@ -345,6 +348,7 @@ footer{background:var(--ink);color:var(--muted-d);border-top:1px solid var(--lin
 .scroll-indicator{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.5;animation:scrollBob 2s ease-in-out infinite}
 .scroll-indicator span{font-family:"Space Mono";font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--sig)}
 .scroll-indicator svg{color:var(--sig)}
+@media(max-width:900px){.scroll-indicator{display:none}}
 @keyframes scrollBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
 
 /* ─── SCROLL PROGRESS ────────────────────────────────────────────── */
@@ -436,6 +440,33 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
 
 /* ─── MOTION REDUCTION ───────────────────────────────────────────── */
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.reveal-l,.reveal-r{opacity:1;transform:none}.mobile-cta{transition:none}}
+
+/* ── Live call activity widget (refined) ── */
+.phone-mock{border-radius:18px;box-shadow:0 40px 90px -34px rgba(0,0,0,.85),0 0 0 1px rgba(43,196,142,.08)}
+.phone-mock .hdr{padding:15px 18px;text-transform:none;background:rgba(255,255,255,.015)}
+.phone-mock .hdr .title{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;color:#fff;letter-spacing:-.01em}
+.phone-mock .hdr .title b{color:var(--sig)}
+.phone-mock .hdr .title .tag{font-family:"Space Mono";font-weight:400;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-d);border:1px solid var(--line-d);border-radius:5px;padding:1px 5px;margin-left:7px;vertical-align:middle}
+.phone-mock .hdr .live{font-family:"Space Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.phone-mock .hdr .live .dot{box-shadow:0 0 0 0 rgba(43,196,142,.7);animation:liveRing 2s infinite}
+.call-log{padding:5px 0;min-height:296px}
+.call-row{gap:13px}
+.call-row.fresh{animation:rowIn .55s cubic-bezier(.2,.8,.2,1) both;background:rgba(43,196,142,.045)}
+.call-row .icon{width:38px;height:38px;border-radius:10px;font-size:0}
+.call-row .icon svg{width:18px;height:18px}
+.call-row .icon.book{background:rgba(43,196,142,.16);color:var(--sig)}
+.call-row .icon.answered{background:rgba(43,196,142,.12);color:var(--sig)}
+.call-row .icon.texted{background:rgba(91,163,208,.14);color:#7fc0e8}
+.call-row .sub{font-family:"Space Mono";font-size:11px;margin-top:2px}
+.call-row .right{text-align:right;flex:none}
+.call-row .right .badge{display:inline-block}
+.badge.book{background:rgba(43,196,142,.2);color:var(--sig);font-weight:700}
+.badge.answered{background:rgba(43,196,142,.13);color:var(--sig)}
+.badge.texted{background:rgba(91,163,208,.14);color:#7fc0e8}
+.call-row .right .meta{margin-top:5px;font-size:10.5px}
+.phone-mock .foot{transition:opacity .4s;letter-spacing:.05em}
+@keyframes liveRing{0%{box-shadow:0 0 0 0 rgba(43,196,142,.6)}70%{box-shadow:0 0 0 8px rgba(43,196,142,0)}100%{box-shadow:0 0 0 0 rgba(43,196,142,0)}}
+@keyframes rowIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -506,17 +537,15 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 15l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
 
-    <!-- Live call log widget -->
-    <div class="phone-widget" aria-label="Live call activity log">
+    <!-- Live call activity widget -->
+    <div class="phone-widget" aria-label="Sample NeverMiss call activity">
       <div class="phone-mock">
         <div class="hdr">
-          <span class="mono" style="font-size:11px;letter-spacing:.08em">NeverMiss · Call Log</span>
+          <span class="title">Never<b>Miss</b> · Call Log <span class="tag">live demo</span></span>
           <span class="live"><span class="dot"></span> Live</span>
         </div>
-        <div class="call-log" id="call-log">
-          <!-- JS fills these in -->
-        </div>
-        <div class="foot">✓ &nbsp;0 calls missed today</div>
+        <div class="call-log" id="call-log"></div>
+        <div class="foot" id="call-foot">&#10003; Every call answered &mdash; 0 missed today</div>
       </div>
     </div>
   </div>
@@ -1269,35 +1298,49 @@ document.querySelectorAll('.faq-btn').forEach(function(btn){
   });
 });
 
-// ── LIVE CALL LOG ──────────────────────────────────────────────────────
-var calls = [
-  {type:'answered', icon:'📞', name:'Tony M.', sub:'(562) 555-0182 · HVAC', badge:'answered', badgeTxt:'Answered 24/7', time:'11:42 PM'},
-  {type:'texted',   icon:'💬', name:'Missed call → text-back', sub:'(562) 555-9341 · Plumbing', badge:'txt', badgeTxt:'Text-back: 14s', time:'2:07 AM'},
-  {type:'answered', icon:'📅', name:'Carlos R.', sub:'(562) 555-7711 · Roofing', badge:'book', badgeTxt:'Job booked!', time:'Sat 8:51 PM'},
-  {type:'texted',   icon:'💬', name:'Missed call → text-back', sub:'(562) 555-4490 · Electrical', badge:'txt', badgeTxt:'Text-back: 9s', time:'Sun 11:12 PM'},
-  {type:'answered', icon:'📞', name:'Maria S.', sub:'(562) 555-2038 · Garage Door', badge:'answered', badgeTxt:'Answered 24/7', time:'6:15 AM'},
-];
+// ── LIVE CALL ACTIVITY (illustrative product feed) ──────────────────────
 var log = document.getElementById('call-log');
-var idx = 0;
-function addRow(){
-  if(!log) return;
-  var c = calls[idx % calls.length]; idx++;
-  var row = document.createElement('div');
-  row.className = 'call-row';
-  row.style.animationDelay = '0ms';
-  row.innerHTML = '<div class="icon '+c.type+'">'+c.icon+'</div>'
-    +'<div class="info"><div class="name">'+c.name+'</div><div class="sub">'+c.sub+'</div></div>'
-    +'<div style="text-align:right;flex:none">'
-    +'<div class="badge '+c.badge+'">'+c.badgeTxt+'</div>'
-    +'<div class="meta" style="margin-top:4px">'+c.time+'</div>'
-    +'</div>';
-  // keep max 4 rows
-  if(log.children.length >= 4) log.removeChild(log.children[0]);
-  log.appendChild(row);
+var foot = document.getElementById('call-foot');
+if(log){
+  var IC = {
+    phone:'<svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3h3l1.5 4.5-2 1.3a13 13 0 0 0 6.2 6.2l1.3-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 7.2 2 2 0 0 1 6.5 3z" fill="currentColor"/></svg>',
+    chat:'<svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" fill="currentColor"/></svg>',
+    cal:'<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9h17M8 3v3M16 3v3M9 14l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  };
+  var POOL = [
+    {ic:'cal',  cls:'book',     name:'Booked: water-heater install',     sub:'(562) \u2022\u2022\u2022-0182 \u00b7 HVAC',       badge:'Job booked',   time:'2:14 AM'},
+    {ic:'chat', cls:'texted',   name:'Missed call \u2192 texted back',   sub:'(310) \u2022\u2022\u2022-9341 \u00b7 Plumbing',   badge:'Replied 11s',  time:'12:48 AM'},
+    {ic:'phone',cls:'answered', name:'Answered: quote request',          sub:'(562) \u2022\u2022\u2022-7711 \u00b7 Roofing',    badge:'Answered',     time:'9:02 PM'},
+    {ic:'cal',  cls:'book',     name:'Booked: panel upgrade',            sub:'(714) \u2022\u2022\u2022-4490 \u00b7 Electrical', badge:'Job booked',   time:'8:31 PM'},
+    {ic:'phone',cls:'answered', name:'Answered: garage door off track',  sub:'(562) \u2022\u2022\u2022-2038 \u00b7 Garage',     badge:'Answered',     time:'7:15 PM'},
+    {ic:'chat', cls:'texted',   name:'Missed call \u2192 texted back',   sub:'(562) \u2022\u2022\u2022-6627 \u00b7 HVAC',       badge:'Replied 9s',   time:'6:48 PM'},
+    {ic:'cal',  cls:'book',     name:'Booked: drain cleaning',           sub:'(323) \u2022\u2022\u2022-1180 \u00b7 Plumbing',   badge:'Job booked',   time:'11:32 PM'},
+    {ic:'phone',cls:'answered', name:'After-hours emergency \u2192 routed', sub:'(562) \u2022\u2022\u2022-5519 \u00b7 Plumbing', badge:'Routed to you', time:'1:07 AM'},
+    {ic:'cal',  cls:'book',     name:'Booked: AC tune-up',               sub:'(562) \u2022\u2022\u2022-8843 \u00b7 HVAC',       badge:'Job booked',   time:'Sat 8:51 PM'},
+    {ic:'chat', cls:'texted',   name:'Missed call \u2192 texted back',   sub:'(949) \u2022\u2022\u2022-3372 \u00b7 Roofing',    badge:'Replied 13s',  time:'Sun 7:20 AM'},
+    {ic:'phone',cls:'answered', name:'Answered: reschedule',             sub:'(562) \u2022\u2022\u2022-0094 \u00b7 Electrical', badge:'Handled',      time:'5:02 AM'},
+    {ic:'cal',  cls:'book',     name:'Booked: roof inspection',          sub:'(562) \u2022\u2022\u2022-7768 \u00b7 Roofing',    badge:'Job booked',   time:'10:41 PM'}
+  ];
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  var q=shuffle(POOL.slice()), qi=0;
+  function next(){var c=q[qi%q.length];qi++;if(qi%q.length===0)shuffle(q);return c;}
+  function rowHTML(c,fresh){
+    return '<div class="call-row'+(fresh?' fresh':'')+'">'
+      +'<div class="icon '+c.cls+'">'+IC[c.ic]+'</div>'
+      +'<div class="info"><div class="name">'+c.name+'</div><div class="sub">'+c.sub+'</div></div>'
+      +'<div class="right"><span class="badge '+c.cls+'">'+c.badge+'</span><div class="meta">'+c.time+'</div></div>'
+      +'</div>';
+  }
+  for(var i=0;i<4;i++){ log.insertAdjacentHTML('beforeend', rowHTML(next(),false)); }
+  var FOOTS=['\u2713 Every call answered \u2014 0 missed today','\u26a1 Avg pickup: 2 rings','\u2709 Missed calls texted back in under 15s','\ud83d\udcc5 Jobs booked while you slept'];
+  var fi=0;
+  setInterval(function(){
+    var ex=log.querySelector('.call-row.fresh'); if(ex) ex.classList.remove('fresh');
+    log.insertAdjacentHTML('afterbegin', rowHTML(next(),true));
+    while(log.children.length>5) log.removeChild(log.lastChild);
+    if(foot){ fi=(fi+1)%FOOTS.length; foot.style.opacity=0; setTimeout(function(){foot.textContent=FOOTS[fi];foot.style.opacity=1;},380); }
+  }, 3800);
 }
-// seed 3 rows immediately, then animate
-for(var i=0;i<3;i++) addRow();
-setInterval(addRow, 3200);
 
 })();
 </script>
