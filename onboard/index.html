@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Get started — NeverMiss</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' rx='18' fill='%230E7A60'/%3E%3Ccircle cx='46.5' cy='18' r='6' fill='%232BC48E'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1513;--panel:#141d1a;--line:rgba(255,255,255,.09);--sig:#2BC48E;--pine:#13917A;--fg:#F4F7F5;--muted:#8C9A93}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Public Sans",system-ui,sans-serif;background:var(--ink);color:var(--fg);line-height:1.55;-webkit-font-smoothing:antialiased;background-image:radial-gradient(90% 55% at 25% 0%,rgba(43,196,142,.07),transparent 70%);min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:34px 22px 70px}
+.brand{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#13917A,#0A5746);display:grid;place-items:center;flex:none}
+.logo svg{width:21px;height:21px}
+.brand b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:17px}.brand b span{color:var(--sig)}
+h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.05;letter-spacing:-.01em;margin-bottom:12px}
+.sub{color:#CBD3CE;font-size:16px;margin-bottom:8px}
+.sub b{color:#fff}
+.ey{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sig);margin-bottom:12px}
+form{margin-top:26px;display:flex;flex-direction:column;gap:18px}
+.sec{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:20px}
+.sec h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:15px;margin-bottom:14px;color:#fff}
+.f{margin-bottom:14px}.f:last-child{margin-bottom:0}
+label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+label .req{color:var(--sig)}
+label .hint{font-weight:400;color:var(--muted);font-size:12.5px}
+input,select,textarea{width:100%;background:#0E1513;border:1px solid var(--line);border-radius:9px;padding:11px 13px;color:#fff;font-family:inherit;font-size:15px;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sig)}
+textarea{min-height:72px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:540px){.row{grid-template-columns:1fr}}
+.btn{background:var(--sig);color:#06140f;border:none;border-radius:11px;padding:16px;font-family:"Public Sans",sans-serif;font-weight:700;font-size:16px;cursor:pointer;transition:transform .12s,opacity .15s}
+.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.6;cursor:default;transform:none}
+.note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:4px}
+.msg{font-size:14px;margin-top:10px;padding:11px 14px;border-radius:9px;display:none}
+.msg.err{display:block;background:rgba(217,117,95,.12);border:1px solid rgba(217,117,95,.35);color:#E8B7A8}
+.ok-screen{display:none;text-align:center;padding:40px 10px}
+.ok-screen .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:30px;margin:14px 0 10px}
+.ok-screen p{color:#CBD3CE;font-size:16px;max-width:42ch;margin:0 auto 8px}
+.ok-screen .ring{width:64px;height:64px;border-radius:50%;background:rgba(43,196,142,.15);display:grid;place-items:center;margin:0 auto}
+.ok-screen .ring svg{width:34px;height:34px;color:var(--sig)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><div class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3h3l1.5 4.5-2 1.3a13 13 0 0 0 6.2 6.2l1.3-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 7.2 2 2 0 0 1 6.5 3z" fill="#fff"/></svg></div><b>Never<span>Miss</span></b></div>
+
+  <div id="formView">
+    <div class="ey">Get started</div>
+    <h1>Let's build your AI front desk.</h1>
+    <p class="sub">Tell us about your business and Liam will have your 24/7 receptionist live — answering, texting back, and booking jobs — usually within a few days. <b>Takes 2 minutes.</b></p>
+
+    <form id="f">
+      <div class="sec">
+        <h2>Your business</h2>
+        <div class="f"><label>Business name <span class="req">*</span></label><input name="name" required placeholder="e.g. Beach City Plumbing" /></div>
+        <div class="f"><label>What do you do? <span class="req">*</span></label>
+          <select name="vertical" required>
+            <option value="">Choose…</option>
+            <option value="home_service">Home services (plumbing, HVAC, roofing, electrical…)</option>
+            <option value="boat_rental">Boat / watercraft rental</option>
+            <option value="med_spa">Med spa / aesthetics</option>
+            <option value="auto">Auto repair</option>
+            <option value="salon">Salon / barbershop</option>
+            <option value="dental">Dental</option>
+            <option value="property">Property management</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="f"><label>Service area / location <span class="req">*</span></label><input name="serviceArea" required placeholder="e.g. Long Beach, CA" /></div>
+        <div class="f"><label>What you offer <span class="req">*</span> <span class="hint">— one per line</span></label><textarea name="services" required placeholder="Drain cleaning&#10;Water heater repair&#10;Emergency plumbing"></textarea></div>
+      </div>
+
+      <div class="sec">
+        <h2>Hours &amp; pricing</h2>
+        <div class="f"><label>Hours <span class="hint">— roughly</span></label>
+          <div class="row">
+            <input name="hoursWeekday" placeholder="Mon–Fri 8a–6p" />
+            <input name="hoursSat" placeholder="Sat 9a–2p" />
+            <input name="hoursSun" placeholder="Sun closed" />
+          </div>
+        </div>
+        <div class="f"><label>Average job value <span class="hint">— ballpark, for your ROI dashboard</span></label><input name="avgTicket" type="number" min="0" placeholder="400" /></div>
+        <div class="f"><label>Typical pricing the AI can mention <span class="hint">— it never quotes a firm total</span></label><input name="pricing" placeholder="e.g. $89 service call, waived if you book" /></div>
+      </div>
+
+      <div class="sec">
+        <h2>Where to reach you</h2>
+        <div class="f"><label>Owner cell <span class="req">*</span> <span class="hint">— for emergencies + win alerts</span></label><input name="ownerCell" required placeholder="(562) 555-0123" /></div>
+        <div class="f"><label>Email <span class="req">*</span></label><input name="email" type="email" required placeholder="you@yourbusiness.com" /></div>
+        <div class="f"><label>What should the receptionist be called? <span class="hint">— optional</span></label><input name="personaName" placeholder="e.g. Sam" /></div>
+      </div>
+
+      <button class="btn" type="submit" id="submit">Get my AI front desk →</button>
+      <div class="note">No payment now. Liam reviews every setup personally and reaches out to finish go-live.</div>
+      <div class="msg err" id="err"></div>
+    </form>
+  </div>
+
+  <div class="ok-screen" id="okView">
+    <div class="ring"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="big">You're in. 🌊</div>
+    <p id="okMsg">Got it — Liam will reach out shortly to finish setting up your AI front desk.</p>
+    <p>In the meantime, hear it live: <b>(562) 573-5967</b></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var f=document.getElementById("f");
+  f.addEventListener("submit", async function(e){
+    e.preventDefault();
+    var btn=document.getElementById("submit"), err=document.getElementById("err");
+    err.style.display="none";
+    var fd=new FormData(f), data={};
+    fd.forEach(function(v,k){ data[k]=String(v).trim(); });
+    if(!data.name||!data.serviceArea||!data.services||!data.ownerCell||!data.email||!data.vertical){
+      err.textContent="Please fill in the required fields (marked *).";err.style.display="block";return;
+    }
+    btn.disabled=true; btn.textContent="Setting you up…";
+    try{
+      var r=await fetch("https://nevermiss-agent-production.up.railway.app/onboard",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+      if(!r.ok) throw new Error("bad");
+      document.getElementById("formView").style.display="none";
+      document.getElementById("okView").style.display="block";
+      document.getElementById("okMsg").textContent="Got it, "+(data.name)+" — Liam will reach out shortly to finish setting up your AI front desk.";
+      window.scrollTo(0,0);
+    }catch(_){
+      err.textContent="That didn't go through — call or text (562) 573-5967 and we'll get you set up.";
+      err.style.display="block"; btn.disabled=false; btn.textContent="Get my AI front desk →";
+    }
+  });
+})();
+</script>
+</body>
+</html>
