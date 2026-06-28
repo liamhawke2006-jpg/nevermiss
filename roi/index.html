@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What missed calls cost you — NeverMiss ROI</title>
+<meta name="description" content="See exactly how much revenue your business loses to missed calls — and how fast a 24/7 AI receptionist pays for itself." />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0E1513;--pine:#0E7A60;--sig:#2BC48E;--paper:#FBF8F1;--brick:#BD4A3D;--muted:#59615C;--line:#E2DCCE}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--ink);background:
+    radial-gradient(900px 500px at 85% -10%,rgba(43,196,142,.16),transparent),var(--paper);
+    min-height:100vh;padding:24px;line-height:1.5}
+  .wrap{max-width:920px;margin:0 auto}
+  .brand{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;margin-bottom:18px}.brand b{color:var(--sig)}
+  h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(28px,5vw,44px);line-height:1.06;letter-spacing:-.02em;margin-bottom:8px}
+  .sub{font-size:clamp(15px,2vw,18px);color:#33392f;max-width:46ch;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+  .card h2{font-family:"Bricolage Grotesque";font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--pine);margin-bottom:16px}
+  .ctrl{margin-bottom:18px}
+  .ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:600;margin-bottom:7px}
+  .ctrl label .v{font-family:"Space Mono";font-size:15px;color:var(--brick);font-weight:700}
+  input[type=range]{width:100%;accent-color:var(--sig);height:6px}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:5px}
+  .result{background:var(--ink);color:#fff;border-radius:18px;padding:26px 26px;position:relative;overflow:hidden}
+  .result::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 240px at 110% -20%,rgba(229,100,90,.35),transparent)}
+  .result>*{position:relative}
+  .lostlbl{font-family:"Space Mono";font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#ffb3ab}
+  .lost{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(40px,8vw,68px);line-height:1;color:#fff;margin:4px 0 2px}
+  .lostsub{color:#cdd9d4;font-size:14px;margin-bottom:20px}
+  .split{display:flex;gap:14px;margin:18px 0;flex-wrap:wrap}
+  .stat{flex:1;min-width:120px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:13px 15px}
+  .stat .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px}
+  .stat .l{font-size:11.5px;color:#aebbb5;margin-top:3px}
+  .recovered .n{color:var(--sig)}
+  .verdict{background:linear-gradient(135deg,var(--pine),var(--sig));color:#06281f;border-radius:12px;padding:15px 17px;margin-top:6px}
+  .verdict .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;line-height:1.15}
+  .verdict .small{font-size:12.5px;margin-top:5px;color:#06352a}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center}
+  .demo{font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;color:var(--ink)}
+  .demo span{font-size:12px;color:var(--muted);font-weight:600;display:block;font-family:"Public Sans"}
+  .btn{background:var(--ink);color:#fff;text-decoration:none;border-radius:10px;padding:11px 18px;font-weight:700;font-size:14px}
+  .btn.sig{background:var(--sig);color:#06281f}
+  .planrow{display:flex;gap:8px;margin-top:8px}
+  .seg{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .seg button{background:none;border:none;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--muted);font-weight:600;font-family:inherit}
+  .seg button.on{background:var(--sig);color:#06281f}
+  .foot{text-align:center;color:var(--muted);font-size:11.5px;margin-top:22px}
+  .disc{font-size:11px;color:var(--muted);margin-top:14px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">Never<b>Miss</b></div>
+  <h1>How much are missed calls<br>costing your business?</h1>
+  <div class="sub">Move the sliders to match your shop. Most local owners are stunned by the number.</div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Your numbers</h2>
+      <div class="ctrl">
+        <label>Average job / booking value <span class="v" id="vTicket">$300</span></label>
+        <input type="range" id="ticket" min="50" max="2000" step="25" value="300">
+        <div class="hint">What one new customer is worth to you.</div>
+      </div>
+      <div class="ctrl">
+        <label>Calls per week <span class="v" id="vCalls">50</span></label>
+        <input type="range" id="calls" min="5" max="300" step="5" value="50">
+      </div>
+      <div class="ctrl">
+        <label>Calls you miss (voicemail / after-hours) <span class="v" id="vMiss">30%</span></label>
+        <input type="range" id="miss" min="5" max="70" step="5" value="30">
+        <div class="hint">Industry average is ~30%. Nights & weekends push it higher.</div>
+      </div>
+      <div class="ctrl">
+        <label>Of those, how many would've booked <span class="v" id="vClose">40%</span></label>
+        <input type="range" id="close" min="10" max="90" step="5" value="40">
+      </div>
+      <div class="ctrl" style="margin-bottom:0">
+        <label>NeverMiss plan</label>
+        <div class="seg" id="planSeg">
+          <button data-v="597" class="on">$597/mo</button>
+          <button data-v="1997">$1,997/mo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="lostlbl">Walking out the door</div>
+      <div class="lost" id="lostMo">$0</div>
+      <div class="lostsub" id="lostYr">— per year in lost revenue</div>
+      <div class="split">
+        <div class="stat"><div class="n" id="missedN">0</div><div class="l">missed calls / month</div></div>
+        <div class="stat"><div class="n" id="lostJobs">0</div><div class="l">lost bookings / month</div></div>
+        <div class="stat recovered"><div class="n" id="recovered">$0</div><div class="l">NeverMiss recovers / mo</div></div>
+      </div>
+      <div class="verdict">
+        <div class="big" id="verdictBig">—</div>
+        <div class="small" id="verdictSmall"></div>
+      </div>
+      <div class="cta">
+        <div class="demo">(562) 573-5967<span>hear it live — book a job yourself</span></div>
+        <a class="btn sig" href="/" target="_blank">See how it works →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="disc">Estimate based on your inputs. NeverMiss assumes it answers ~90% of otherwise-missed calls 24/7. Real results vary by business — but every call it answers is one you'd have lost.</div>
+  <div class="foot">NeverMiss · the 24/7 AI receptionist for local business · nevermissai.net</div>
+</div>
+
+<script>
+  const $=id=>document.getElementById(id);
+  const CATCH=0.9; // NeverMiss answers ~90% of missed calls
+  let plan=500;
+  function money(n){ return "$"+Math.round(n).toLocaleString(); }
+  function calc(){
+    const ticket=+$("ticket").value, calls=+$("calls").value, miss=+$("miss").value/100, close=+$("close").value/100;
+    $("vTicket").textContent=money(ticket); $("vCalls").textContent=calls;
+    $("vMiss").textContent=Math.round(miss*100)+"%"; $("vClose").textContent=Math.round(close*100)+"%";
+    const missedMo=calls*4.33*miss;
+    const lostJobs=missedMo*close;
+    const lostMo=lostJobs*ticket;
+    const recoveredJobs=lostJobs*CATCH;
+    const recoveredMo=recoveredJobs*ticket;
+    const net=recoveredMo-plan;
+    $("missedN").textContent=Math.round(missedMo);
+    $("lostJobs").textContent=Math.round(lostJobs);
+    $("lostMo").textContent=money(lostMo);
+    $("lostYr").textContent=money(lostMo*12)+" per year in lost revenue";
+    $("recovered").textContent=money(recoveredMo);
+    // verdict
+    if(recoveredMo<=0){ $("verdictBig").textContent="Add your numbers above"; $("verdictSmall").textContent=""; return; }
+    const payJobs=Math.max(1,Math.ceil(plan/ticket));
+    if(net>0){
+      $("verdictBig").textContent="NeverMiss nets you ~"+money(net)+"/mo";
+      $("verdictSmall").textContent="It pays for itself after just "+payJobs+" recovered booking"+(payJobs>1?"s":"")+" — the rest is profit. That's ~"+money(net*12)+"/year you're leaving on the table.";
+    } else {
+      $("verdictBig").textContent="It pays for itself with "+payJobs+" booking"+(payJobs>1?"s":"")+"/mo";
+      $("verdictSmall").textContent="Even at your numbers, recovering a couple of jobs covers it — and you stop losing customers to voicemail.";
+    }
+  }
+  document.querySelectorAll("input[type=range]").forEach(s=>s.oninput=calc);
+  $("planSeg").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    plan=+b.dataset.v; $("planSeg").querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); calc();
+  });
+  calc();
+</script>
+</body>
+</html>
