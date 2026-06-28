@@ -897,6 +897,76 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
   </div>
 </section>
 
+<!-- ─── LIVE RESULTS DASHBOARD ─────────────────────────────────────── -->
+<style>
+.rd-section{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.rd-section .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(70% 60% at 75% 25%,#000,transparent);-webkit-mask-image:radial-gradient(70% 60% at 75% 25%,#000,transparent)}
+.rd-grid{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+@media(max-width:900px){.rd-grid{grid-template-columns:1fr;gap:40px}}
+.rd-copy .sec-eyebrow{color:var(--sig)}.rd-copy .sec-eyebrow::before{background:var(--sig)}
+.rd-copy h2{color:#fff}
+.rd-copy .sec-lede{color:#CBD3CE}
+.rd-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+.rd-list li{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:#E7ECEA}
+.rd-list .ck{flex:none;width:22px;height:22px;border-radius:6px;background:rgba(43,196,142,.15);color:var(--sig);display:grid;place-items:center;margin-top:1px}
+.rd-list .ck svg{width:13px;height:13px}
+.rd-card{background:var(--slate,#16201c);border:1px solid var(--line-d,rgba(255,255,255,.08));border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(43,196,142,.08)}
+.rd-card .rh{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line-d,rgba(255,255,255,.08));font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d,#8C9A93)}
+.rd-card .rh b{color:#fff}
+.rd-card .rh .lv{display:flex;align-items:center;gap:6px;color:var(--sig)}
+.rd-card .rh .lv .d{width:7px;height:7px;border-radius:50%;background:var(--sig);animation:pulse 1.6s ease-in-out infinite}
+.rd-body{padding:22px 20px}
+.rd-ey{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sig);margin-bottom:6px}
+.rd-bigrow{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.rd-big{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:46px;line-height:1;color:#fff;letter-spacing:-.01em}
+.rd-delta{font-family:"Space Mono",monospace;font-size:12px;font-weight:700;color:var(--sig);background:rgba(43,196,142,.14);padding:3px 9px;border-radius:20px}
+.rd-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.rd-stat{background:rgba(255,255,255,.03);border:1px solid var(--line-d,rgba(255,255,255,.07));border-radius:11px;padding:12px 14px}
+.rd-stat .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;color:#fff}
+.rd-stat .v.sig{color:var(--sig)}
+.rd-stat .l{font-size:11.5px;color:var(--muted-d,#8C9A93);margin-top:2px}
+.rd-feed{margin-top:14px;border-top:1px solid var(--line-d,rgba(255,255,255,.07));padding-top:12px;display:flex;flex-direction:column;gap:9px}
+.rd-ev{display:flex;align-items:center;gap:10px;font-size:13px;color:#E7ECEA}
+.rd-ev .ei{flex:none;width:26px;height:26px;border-radius:7px;display:grid;place-items:center}
+.rd-ev .ei svg{width:13px;height:13px}
+.rd-ev .ei.g{background:rgba(43,196,142,.15);color:var(--sig)} .rd-ev .ei.y{background:rgba(232,184,75,.14);color:#E8B84B}
+.rd-ev .et{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-ev .tg{font-family:"Space Mono",monospace;font-size:9.5px;padding:2px 7px;border-radius:12px;flex:none}
+.rd-ev .tg.g{background:rgba(43,196,142,.15);color:var(--sig)} .rd-ev .tg.y{background:rgba(232,184,75,.13);color:#E8B84B}
+</style>
+<section class="block rd-section">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap rd-grid">
+    <div class="rd-copy reveal-l">
+      <div class="sec-eyebrow">Proof, not promises</div>
+      <h2 class="disp">Watch the money come back — in real time.</h2>
+      <p class="sec-lede">The calculator shows what you're losing. Once you're live, your own results dashboard shows it coming <b style="color:#fff">back</b> — every answered call, every missed call texted back, every job booked, and your exact return on what you pay. No reports to chase. Just open your private link.</p>
+      <ul class="rd-list">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A live recovered-revenue counter — see every dollar saved</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Your return-on-investment multiple, updated as jobs book</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A running log of every call we caught while you worked</li>
+      </ul>
+    </div>
+    <div class="rd-card reveal-r" aria-label="Sample results dashboard">
+      <div class="rh"><span>Your Business &middot; <b>Results</b></span><span class="lv"><span class="d"></span> Live</span></div>
+      <div class="rd-body">
+        <div class="rd-ey">Revenue recovered &mdash; this week</div>
+        <div class="rd-bigrow"><span class="rd-big">$3,960</span><span class="rd-delta">▲ 23%</span></div>
+        <div class="rd-stats">
+          <div class="rd-stat"><div class="v sig">12.4×</div><div class="l">Return on what you pay</div></div>
+          <div class="rd-stat"><div class="v">18</div><div class="l">Jobs booked this week</div></div>
+          <div class="rd-stat"><div class="v">34</div><div class="l">Calls answered 24/7</div></div>
+          <div class="rd-stat"><div class="v">11</div><div class="l">Missed calls saved</div></div>
+        </div>
+        <div class="rd-feed">
+          <div class="rd-ev"><span class="ei g"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9h17M9 14l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="et">Booked: job for Saturday 2 PM</span><span class="tg g">Job booked</span></div>
+          <div class="rd-ev"><span class="ei y"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" fill="currentColor"/></svg></span><span class="et">Missed call &rarr; texted back in 11s</span><span class="tg y">Recovered</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── COMPARISON ─────────────────────────────────────────────────── -->
 <section class="block compare-section" id="compare">
   <div class="wrap">
