@@ -1,70 +1,22 @@
-// Vertical landing-page generator. One proven template (mirrors /plumbers),
-// swapped copy per vertical → an SEO/ad page for each niche in seconds.
-//   node _gen/gen-verticals.js        # writes <slug>/index.html for each vertical
-// Add a vertical to VERTICALS and re-run — that's the whole "clone a vertical" job.
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-
-const VERTICALS = {
-  "water-damage": {
-    label: "water-damage & restoration", trade: "water damage restoration company",
-    hook: 'The 2 a.m. flood call you miss is the <span class="hl">$8,000 job</span> the next company just took.',
-    lede: "Water emergencies don't wait for business hours — and the homeowner calls the next name on Google in 60 seconds. NeverMiss answers every call 24/7 in your company's name, texts back missed callers instantly, and books the mitigation job before your competitor's phone even rings.",
-    stats: [["90s","that's how fast a panicked homeowner dials the next restoration company when you don't pick up."], ["24/7","floods, burst pipes, and sewage back-ups call at night and on weekends — exactly when no one's at a desk."], ["$3–8k","average water-mitigation job. Miss a couple a month and that's a five-figure leak in your revenue."]],
-    tryLine: "Hi, my basement is flooding and water's everywhere — can someone come out right now?",
-  },
-  "garage-door": {
-    label: "garage-door repair", trade: "garage door repair company",
-    hook: 'A stuck garage door is an <span class="hl">emergency</span> — and the caller books whoever answers first.',
-    lede: "Cars trapped inside, a door off its track, a spring that snapped at 7 a.m. — garage-door calls are urgent and they go to whoever picks up. NeverMiss answers 24/7 in your shop's name, texts back missed callers in seconds, and books the repair onto your calendar before they call the next guy.",
-    stats: [["85%","of people who hit voicemail never leave one — they just call the next garage-door shop."], ["Same-day","is what every caller wants. If you're on a job and miss the phone, that booking is gone."], ["$250+","average repair ticket. A handful of missed calls a week is real money off the table."]],
-    tryLine: "Hi, my garage door is stuck halfway and my car's trapped — can someone come today?",
-  },
-  "hvac": {
-    label: "HVAC & air conditioning", trade: "HVAC company",
-    hook: 'No A/C in a heat wave? They call the <span class="hl">first HVAC company</span> that answers.',
-    lede: "When the heat hits, the phones explode — and you're on a rooftop, not at a desk. NeverMiss answers every call 24/7 in your company's name, texts back the ones you miss in seconds, and books the service call before the homeowner moves to the next name on the list.",
-    stats: [["#1","cause of lost HVAC jobs: nobody answered. Peak-season demand + a busy crew = missed calls."], ["24/7","heat waves and cold snaps don't keep hours. The calls come nights and weekends."], ["$300+","average service call. In peak season a few missed calls a day adds up fast."]],
-    tryLine: "Hi, my A/C just went out and it's 100 degrees — how soon can someone come?",
-  },
-  "med-spas": {
-    label: "med spas & aesthetics", trade: "med spa",
-    hook: 'Every missed call is a <span class="hl">booked treatment</span> walking to the spa down the street.',
-    lede: "Your front desk is with a client, on lunch, or closed — and a ready-to-book lead just called about Botox or a facial. NeverMiss answers 24/7 in your spa's name, texts back missed callers in seconds, and books the appointment straight onto your calendar so no high-value client slips away.",
-    stats: [["After-hours","is when busy professionals call to book. If the desk is closed, the booking is lost."], ["$$$","high-value, repeat clients — one booked package is worth a year of NeverMiss."], ["Instant","text-back keeps the lead warm while your front desk is heads-down with a client."]],
-    tryLine: "Hi, do you have any openings this week for Botox? I'd love to book a consultation.",
-  },
-  "roofing": {
-    label: "roofing & roof repair", trade: "roofing company",
-    hook: 'The estimate call you miss after a storm is the <span class="hl">$12,000 roof</span> the next contractor just signed.',
-    lede: "When a storm rolls through, every roofer's phone lights up at once — and the homeowner books the first contractor who actually answers. NeverMiss answers every call 24/7 in your company's name, texts back missed callers in seconds, and books the inspection before your competitor calls them back.",
-    stats: [["First","to answer usually wins the roof — homeowners call several contractors and book whoever picks up and shows up."], ["$10k+","average re-roof. One missed estimate call is a five-figure job handed straight to the competition."], ["Storm surge","one hail or wind event floods every roofer's phone at once — exactly when you're up on a roof, not at a desk."]],
-    tryLine: "Hi, my roof started leaking after the storm — can someone come out to take a look this week?",
-  },
-};
-
-function page(slug, v) {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Receptionist for ${cap(v.label)} — Never Miss Another Call | NeverMiss</title>
-<meta name="description" content="NeverMiss answers every call 24/7 in your ${v.trade}'s name, texts back missed callers in seconds, and books the job — so you stop losing calls to the competition. Built for ${v.label}." />
-<link rel="canonical" href="https://nevermissai.net/${slug}/" />
-<meta property="og:title" content="AI Receptionist for ${cap(v.label)} — Never Miss Another Call" />
-<meta property="og:description" content="Every missed call is a job your competitor just booked. NeverMiss answers 24/7, texts back missed callers, and books the job — built for ${v.label}." />
+<title>AI Receptionist for Roofing & Roof Repair — Never Miss Another Call | NeverMiss</title>
+<meta name="description" content="NeverMiss answers every call 24/7 in your roofing company's name, texts back missed callers in seconds, and books the job — so you stop losing calls to the competition. Built for roofing & roof repair." />
+<link rel="canonical" href="https://nevermissai.net/roofing/" />
+<meta property="og:title" content="AI Receptionist for Roofing & Roof Repair — Never Miss Another Call" />
+<meta property="og:description" content="Every missed call is a job your competitor just booked. NeverMiss answers 24/7, texts back missed callers, and books the job — built for roofing & roof repair." />
 <meta property="og:image" content="https://nevermissai.net/og-image.png" />
-<meta property="og:url" content="https://nevermissai.net/${slug}/" />
+<meta property="og:url" content="https://nevermissai.net/roofing/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' rx='18' fill='%230E7A60'/%3E%3Ccircle cx='46.5' cy='18' r='6' fill='%232BC48E'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"AI Receptionist for ${cap(v.label)}","provider":{"@type":"LocalBusiness","name":"NeverMiss","url":"https://nevermissai.net"},"areaServed":"Long Beach, CA","description":"24/7 AI receptionist that answers every call, texts back missed callers, and books jobs for ${v.label}.","offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"Service","name":"AI Receptionist for Roofing & Roof Repair","provider":{"@type":"LocalBusiness","name":"NeverMiss","url":"https://nevermissai.net"},"areaServed":"Long Beach, CA","description":"24/7 AI receptionist that answers every call, texts back missed callers, and books jobs for roofing & roof repair.","offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
 </script>
 <style>
 :root{--ink:#0E1513;--paper:#FBF8F1;--sig:#2BC48E;--pine:#0E7A60;--brick:#BD4A3D;--muted:#59615C;--mutedD:#8C9A93;--line:#E2DCCE;--slate:#16201c}
@@ -103,9 +55,9 @@ footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;t
   <a class="cta" href="/onboard/">Get started</a>
 </div></header>
 <section class="hero"><div class="grid-bg" aria-hidden="true"></div><div class="wrap">
-  <div class="eyebrow">— For ${v.label}</div>
-  <h1 class="disp">${v.hook}</h1>
-  <p class="lede">${v.lede}</p>
+  <div class="eyebrow">— For roofing & roof repair</div>
+  <h1 class="disp">The estimate call you miss after a storm is the <span class="hl">$12,000 roof</span> the next contractor just signed.</h1>
+  <p class="lede">When a storm rolls through, every roofer's phone lights up at once — and the homeowner books the first contractor who actually answers. NeverMiss answers every call 24/7 in your company's name, texts back missed callers in seconds, and books the inspection before your competitor calls them back.</p>
   <div class="hero-cta">
     <a class="btn primary" href="/onboard/">Get started →</a>
     <a class="btn ghost" href="tel:+15625735967">▶ Hear it live · (562) 573-5967</a>
@@ -113,7 +65,9 @@ footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;t
   <div class="reassure">One recovered job pays for the whole month. <b>30-day works-or-we-fix-it · no contract.</b></div>
 </div></section>
 <div class="band"><div class="wrap stats">
-  ${v.stats.map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("\n  ")}
+  <div class="stat"><div class="n">First</div><div class="l">to answer usually wins the roof — homeowners call several contractors and book whoever picks up and shows up.</div></div>
+  <div class="stat"><div class="n">$10k+</div><div class="l">average re-roof. One missed estimate call is a five-figure job handed straight to the competition.</div></div>
+  <div class="stat"><div class="n">Storm surge</div><div class="l">one hail or wind event floods every roofer's phone at once — exactly when you're up on a roof, not at a desk.</div></div>
 </div></div>
 <section class="block"><div class="wrap">
   <div class="sec-eyebrow">How it works</div>
@@ -128,25 +82,13 @@ footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;t
   <h2 class="disp" style="max-width:16em">Don't take our word for it. Call it right now.</h2>
   <a class="dial" href="tel:+15625735967">(562) 573-5967</a>
   <div class="sub">This is the actual AI — not a recording. Live 24/7.</div>
-  <div class="script"><b>TRY SAYING:</b> "${v.tryLine}"</div>
+  <div class="script"><b>TRY SAYING:</b> "Hi, my roof started leaking after the storm — can someone come out to take a look this week?"</div>
 </div></section>
 <section class="final"><div class="wrap">
   <h2 class="disp" style="font-size:clamp(28px,4vw,40px)">Stop losing jobs to voicemail.</h2>
   <p>Get your 24/7 AI receptionist set up — usually live within a few days. One recovered call covers your first month.</p>
   <div class="row"><a class="btn primary" href="/onboard/">Get started →</a><a class="btn dark" href="/#pricing">See pricing</a></div>
 </div></section>
-<footer><div class="wrap">NeverMiss — the 24/7 AI front desk for ${v.label} · Long Beach, CA · <a href="/">nevermissai.net</a> · <a href="tel:+15625735967">(562) 573-5967</a></div></footer>
+<footer><div class="wrap">NeverMiss — the 24/7 AI front desk for roofing & roof repair · Long Beach, CA · <a href="/">nevermissai.net</a> · <a href="tel:+15625735967">(562) 573-5967</a></div></footer>
 </body>
-</html>`;
-}
-function cap(s) { return s.replace(/\b\w/g, (c) => c.toUpperCase()); }
-
-let n = 0;
-for (const [slug, v] of Object.entries(VERTICALS)) {
-  const dir = path.join(root, slug);
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "index.html"), page(slug, v));
-  console.log(`  ✓ /${slug}/`);
-  n++;
-}
-console.log(`\n  Generated ${n} vertical landing page(s).\n`);
+</html>
