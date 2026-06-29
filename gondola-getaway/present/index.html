@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Gondola Getaway × NeverMiss — Walkthrough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1513;--paper:#FBF8F1;--sig:#2BC48E;--pine:#13917A;--brick:#BD4A3D;--muted:#8C9A93;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+body{font-family:"Public Sans",system-ui,sans-serif;background:var(--ink);color:#fff;-webkit-font-smoothing:antialiased;overflow:hidden}
+.disp{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.015em;line-height:1.04}
+.deck{height:100vh;width:100vw;position:relative}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:7vh 9vw;opacity:0;visibility:hidden;transition:opacity .35s ease;overflow-y:auto}
+.slide.active{opacity:1;visibility:visible}
+.eyebrow{font-family:"Space Mono";font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--sig);margin-bottom:20px}
+.slide h1{font-size:clamp(32px,5.6vw,64px);max-width:15em;margin-bottom:20px}
+.slide h2{font-size:clamp(26px,4.3vw,50px);font-family:"Bricolage Grotesque";font-weight:800;letter-spacing:-.015em;line-height:1.06;max-width:16em;margin-bottom:18px}
+.hl{color:var(--sig)}
+.lede{font-size:clamp(17px,2vw,23px);color:#CBD3CE;max-width:31em;line-height:1.55}
+.big{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(60px,12vw,140px);color:var(--sig);line-height:1}
+.grid{display:grid;gap:16px;margin-top:18px}
+.g2{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,1fr)}
+@media(min-width:860px){.g2{grid-template-columns:repeat(2,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.card{background:#16201c;border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{font-family:"Bricolage Grotesque";font-weight:700;font-size:18px;margin-bottom:6px}
+.card p{color:#AEBBB5;font-size:14.5px;line-height:1.5}
+.card .num{font-family:"Bricolage Grotesque";font-weight:800;font-size:34px;color:var(--sig);line-height:1}
+.row{display:flex;align-items:flex-start;gap:13px;margin-top:14px;font-size:clamp(15px,1.8vw,20px);color:#E8EEEB;max-width:30em}
+.row .dot{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(43,196,142,.15);display:grid;place-items:center;color:var(--sig);font-weight:800;font-family:"Space Mono";font-size:13px}
+.lockup{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.lockup .mk{width:48px;height:48px}.lockup .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:23px}.lockup .wm b{color:var(--sig)}
+.dial{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(40px,9vw,84px);color:var(--sig);text-decoration:none;display:inline-block;margin:6px 0}
+.pulse{display:inline-flex;align-items:center;gap:10px;background:rgba(43,196,142,.12);border:1px solid var(--sig);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--sig);font-family:"Space Mono";margin-bottom:20px}
+.pulse .d{width:9px;height:9px;border-radius:50%;background:var(--sig);animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.3}}
+.price{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(36px,6vw,64px)}.price .per{font-size:.38em;color:var(--muted);font-weight:600}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13.5px;color:#CBD3CE;margin:5px 6px 0 0}.pill b{color:#fff}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--sig);color:#06140f;font-weight:700;font-size:clamp(16px,2vw,19px);padding:15px 26px;border-radius:13px;text-decoration:none;margin-top:6px}
+.fn{margin-top:26px;color:var(--muted);font-size:13.5px}.fn a{color:var(--sig);text-decoration:none}
+.nav{position:fixed;bottom:20px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:16px;z-index:20}
+.nav button{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;width:42px;height:42px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.nav button:hover{background:rgba(43,196,142,.2)}.nav button svg{width:19px;height:19px;stroke:#fff}
+.dots{display:flex;gap:7px}.dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .2s}.dots span.on{background:var(--sig);width:22px;border-radius:6px}
+.counter{position:fixed;top:22px;right:28px;font-family:"Space Mono";font-size:13px;color:var(--muted);z-index:20}
+.bm{position:fixed;top:20px;left:28px;font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;z-index:20;opacity:.85}.bm b{color:var(--sig)}
+@media(max-width:680px){.slide{padding:9vh 7vw}.bm,.counter{display:none}}
+</style>
+</head>
+<body>
+<div class="bm">Never<b>Miss</b> × Gondola Getaway</div>
+<div class="counter"><span id="cur">1</span> / <span id="tot">11</span></div>
+<div class="deck" id="deck">
+
+  <section class="slide active">
+    <div class="lockup"><svg class="mk" viewBox="0 0 64 64" fill="none"><rect x="3" y="3" width="58" height="58" rx="18" fill="#0E7A60"/><g transform="translate(14.5,14.5) scale(1.46)" fill="#fff"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></g><circle cx="46.5" cy="18" r="6" fill="#2BC48E"/></svg><span class="wm">Never<b>Miss</b></span></div>
+    <h1 class="disp">Gondola Getaway, meet your <span class="hl">24/7 front desk.</span></h1>
+    <p class="lede">How we make sure you never lose another booking to a missed call — and turn your phone into a growth engine.</p>
+    <div class="fn">Prepared for the owner · Gondola Getaway · Naples, Long Beach</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">The problem</div>
+    <h2 class="disp">Your gondoliers are on the water. The phone rings out.</h2>
+    <p class="lede">A ready-to-book caller — a sunset cruise, a proposal, a group for Saturday — calls while your gondoliers are out on the canals or you're closed. They don't leave a voicemail. They book another night, another company.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">What it's costing you</div>
+    <div class="big">~85%</div>
+    <p class="lede" style="margin-top:16px">of callers who hit voicemail never call back. Miss even <b style="color:#fff">2 bookable calls a week</b> at ~$140 a cruise and that's <b style="color:#fff">~$1,100/mo</b> walking out — before one missed <b style="color:#fff">group / Carolina cruise ($400–$700)</b> or a proposal booking.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">The fix</div>
+    <h2 class="disp">A 24/7 AI receptionist that answers as <span class="hl">Gondola Getaway.</span></h2>
+    <p class="lede">It picks up every call day or night, in your name, and books the reservation — so a busy night on the canals never costs you a booking again.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">What it does for you</div>
+    <h2 class="disp">Every call, handled.</h2>
+    <div class="grid g4">
+      <div class="card"><h3>Answers 24/7</h3><p>In Gondola Getaway's name — nights, weekends, mid-cruise.</p></div>
+      <div class="card"><h3>Texts back misses</h3><p>Catches the call you couldn't grab before they book elsewhere.</p></div>
+      <div class="card"><h3>Books the visit</h3><p>Cruises, proposals, parties — straight to your calendar.</p></div>
+      <div class="card"><h3>Routes the big ones</h3><p>Group/Carolina inquiries &amp; any on-water issue flagged to you.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="pulse"><span class="d"></span>See it work</div>
+    <h2 class="disp">See exactly how it <span class="hl">works.</span></h2>
+    <a class="dial" href="https://nevermissai.net">nevermissai.net</a>
+    <p class="lede" style="margin-top:8px">Watch a real missed call turn into a booked cruise on the site — then I'll set up a live demo answering as Gondola Getaway, just for you.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Your scoreboard</div>
+    <h2 class="disp">This is what you'd watch every week.</h2>
+    <div class="grid g4">
+      <div class="card"><div class="num">$4,200<span style="font-size:15px;color:var(--muted)">/mo</span></div><p style="margin-top:6px">revenue recovered (projected)</p></div>
+      <div class="card"><div class="num">24<span style="font-size:15px;color:var(--muted)">/mo</span></div><p style="margin-top:6px">bookings you'd have missed</p></div>
+      <div class="card"><div class="num">51<span style="font-size:15px;color:var(--muted)">/wk</span></div><p style="margin-top:6px">calls answered 24/7</p></div>
+      <div class="card"><div class="num">18<span style="font-size:15px;color:var(--muted)">/mo</span></div><p style="margin-top:6px">reviews requested</p></div>
+    </div>
+    <div class="fn">See the full live mock-up: <a href="https://nevermissai.net/gondola-getaway">nevermissai.net/gondola-getaway</a> · projection modeled on a company your size</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">How we grow your revenue</div>
+    <h2 class="disp">Three ways this makes you <span class="hl">more money.</span></h2>
+    <div class="row"><span class="dot">1</span><span><b>Catch what you're missing</b> — every after-hours, weekend, and mid-cruise call booked instead of lost.</span></div>
+    <div class="row"><span class="dot">2</span><span><b>Reactivate past guests</b> — auto-text past riders for their next occasion (anniversaries come every year!). Found money from people you already have.</span></div>
+    <div class="row"><span class="dot">3</span><span><b>Build your reputation</b> — every happy visit auto-asked for a Google review. More 5-stars = more new clients on autopilot.</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Why us</div>
+    <h2 class="disp">Done-for-you. Local. Flat rate.</h2>
+    <div class="row"><span class="dot">✓</span><span><b>We build &amp; run it</b> on your exact services, prices, and hours — you approve how it sounds first.</span></div>
+    <div class="row"><span class="dot">✓</span><span><b>Local &amp; accountable</b> — you text me, a real person in Long Beach, not a ticket queue.</span></div>
+    <div class="row"><span class="dot">✓</span><span><b>Flat monthly</b> — unlimited calls, no per-minute meter punishing a busy week.</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Simple pricing</div>
+    <div class="price">$597<span class="per">/mo</span> <span style="color:var(--muted);font-size:.4em">or</span> $997<span class="per">/mo</span></div>
+    <p class="lede" style="margin-top:12px"><b style="color:#fff">Core ($597)</b> covers 24/7 answering, text-back &amp; booking. <b style="color:#fff">Plus ($997)</b> adds guest reactivation + review automation — the growth engine above. One recovered cruise a week covers Core; one group booking covers months.</p>
+    <div style="margin-top:18px"><span class="pill"><b>30-day</b> works-or-we-fix-it</span><span class="pill"><b>Month-to-month</b></span><span class="pill">No contract</span><span class="pill">You approve it first</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Let's go</div>
+    <h2 class="disp">Live by the weekend.</h2>
+    <p class="lede" style="margin-bottom:22px">We build it on Gondola Getaway this week, you approve how it sounds, and you're catching after-hours bookings by Saturday. I've got setup slots Thursday or Friday.</p>
+    <a class="cta-btn" href="https://calendar.app.google/dpgVKfzTktA5Un3V7">Book my setup →</a>
+    <div class="fn">Liam · NeverMiss · Long Beach · <a href="https://nevermissai.net">nevermissai.net</a></div>
+  </section>
+
+</div>
+<div class="nav">
+  <button id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="dots" id="dots"></div>
+  <button id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')),i=0,n=s.length;
+  document.getElementById('tot').textContent=n;
+  var dz=document.getElementById('dots');
+  s.forEach(function(_,k){var e=document.createElement('span');if(!k)e.className='on';e.onclick=function(){go(k)};dz.appendChild(e)});
+  var d=[].slice.call(dz.children);
+  function go(k){i=(k+n)%n;s.forEach(function(x,j){x.classList.toggle('active',j===i)});d.forEach(function(x,j){x.classList.toggle('on',j===i)});document.getElementById('cur').textContent=i+1}
+  document.getElementById('next').onclick=function(){go(i+1)};
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+  document.getElementById('deck').addEventListener('click',function(e){if(e.target.closest('a,button,.dots'))return;go(e.clientX/window.innerWidth>0.5?i+1:i-1)});
+})();
+</script>
+</body>
+</html>
