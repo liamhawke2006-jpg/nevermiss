@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Stepp Commercial — the Deal Desk (speed-to-lead)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#101418;--card:rgba(255,255,255,.045);--cardb:rgba(120,180,240,.16);--azure:#4D9BE6;--azure2:#86C2F5;--win:#5FD0A0;--loss:#F0926B;--cream:#E8EDF2;--muted:#8896A4}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;padding:28px 16px 54px;line-height:1.5;background:radial-gradient(120% 75% at 50% -5%,#1c2c3e 0%,#131a22 45%,#0c1014 100%);overflow-x:hidden}
+  .wrap{max-width:760px;margin:0 auto}
+  .cap{text-align:center;margin-bottom:20px}
+  .cap .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:19px}.cap .wm b{color:var(--azure)}
+  .cap h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(22px,4.4vw,32px);margin-top:8px;letter-spacing:-.01em}
+  .cap p{color:var(--muted);font-size:13.5px;margin-top:6px}
+  .desk{background:var(--card);border:1px solid var(--cardb);border-radius:20px;overflow:hidden;backdrop-filter:blur(7px)}
+  .dhead{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--cardb);background:rgba(77,155,230,.06)}
+  .dhead .l{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px}
+  .dhead .live{width:8px;height:8px;border-radius:50%;background:var(--azure);animation:pulse 1.5s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(77,155,230,.6)}70%{box-shadow:0 0 0 9px rgba(77,155,230,0)}}
+  .timer{font-family:"Space Mono";font-size:14px;background:rgba(0,0,0,.3);border:1px solid var(--cardb);border-radius:30px;padding:5px 13px;font-variant-numeric:tabular-nums}
+  .timer b{color:var(--azure2)}
+  .body{display:grid;grid-template-columns:1.4fr 1fr;gap:0}
+  @media(max-width:620px){.body{grid-template-columns:1fr}}
+  .flow{padding:20px;border-right:1px solid var(--cardb)}
+  @media(max-width:620px){.flow{border-right:none;border-bottom:1px solid var(--cardb)}}
+  .roster{padding:20px}
+  .step{opacity:.25;transition:opacity .4s;margin-bottom:16px}
+  .step.on{opacity:1}
+  .slbl{font-family:"Space Mono";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .lead{background:rgba(77,155,230,.1);border:1px solid var(--azure);border-radius:14px;padding:15px}
+  .lead .src{font-size:11.5px;color:var(--azure2);font-weight:700;display:flex;align-items:center;gap:6px}
+  .lead .q{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;margin:6px 0 3px}
+  .lead .d{font-size:13px;color:#BCC8D4}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+  .tag{font-size:11.5px;background:rgba(255,255,255,.06);border:1px solid var(--cardb);border-radius:30px;padding:4px 11px;opacity:0;transform:translateY(6px);transition:.35s}
+  .tag.show{opacity:1;transform:none}
+  .tag.hot{background:rgba(240,146,107,.16);border-color:rgba(240,146,107,.5);color:#F7B79C}
+  .routing{font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:9px}
+  .dots3{display:inline-flex;gap:3px}.dots3 i{width:5px;height:5px;border-radius:50%;background:var(--azure);animation:bo 1s infinite}.dots3 i:nth-child(2){animation-delay:.15s}.dots3 i:nth-child(3){animation-delay:.3s}
+  @keyframes bo{50%{transform:translateY(-3px);opacity:.5}}
+  .assigned{background:linear-gradient(180deg,rgba(95,208,160,.14),rgba(95,208,160,.03));border:1px solid var(--win);border-radius:14px;padding:14px}
+  .assigned .at{font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;color:var(--win);display:flex;align-items:center;gap:7px}
+  .assigned .br{display:flex;justify-content:space-between;font-size:13px;margin-top:8px}.assigned .br span{color:var(--muted)}
+  .roster .rl{font-family:"Space Mono";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .bk{display:flex;align-items:center;gap:11px;padding:11px;border-radius:11px;border:1px solid transparent;margin-bottom:8px;transition:.3s}
+  .bk .av{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.07);display:grid;place-items:center;font-size:15px;flex-shrink:0}
+  .bk .nm{flex:1}.bk .nm b{font-size:13.5px;font-weight:700;display:block}.bk .nm span{font-size:11.5px;color:var(--muted)}
+  .bk .st{font-size:10.5px;color:var(--muted);font-family:"Space Mono"}
+  .bk.match{border-color:var(--win);background:rgba(95,208,160,.1)}
+  .bk.match .av{background:linear-gradient(135deg,var(--win),#3aa37a);color:#062a1d}
+  .bk.match .st{color:var(--win)}
+  .bk.dim{opacity:.4}
+  .stat{margin-top:18px;background:var(--card);border:1px solid var(--cardb);border-radius:16px;padding:16px 18px;text-align:center;opacity:0;transition:opacity .5s}
+  .stat.on{opacity:1}
+  .stat .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(22px,4vw,28px)}.stat .big b{color:var(--azure2)}
+  .stat .s{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .replay{display:block;margin:16px auto 0;background:rgba(77,155,230,.12);border:1px solid var(--azure);color:var(--azure2);font-weight:700;font-size:13px;padding:10px 22px;border-radius:11px;cursor:pointer;font-family:"Public Sans"}
+  .foot{text-align:center;color:var(--muted);font-size:11px;margin-top:18px;line-height:1.5}.foot b{color:#BCC8D4}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cap">
+    <div class="wm">Stepp Commercial <span style="color:var(--muted)">×</span> Never<b>Miss</b></div>
+    <h1>The Deal Desk — every lead, routed in seconds.</h1>
+    <p>First responder wins 78% of deals. Watch a new inquiry get qualified and routed to the right broker — automatically.</p>
+  </div>
+
+  <div class="desk">
+    <div class="dhead">
+      <div class="l"><span class="live"></span>Live deal desk</div>
+      <div class="timer">⏱ <b id="t">0.0s</b></div>
+    </div>
+    <div class="body">
+      <div class="flow">
+        <div class="step" id="s1">
+          <div class="slbl">① Inbound inquiry</div>
+          <div class="lead">
+            <div class="src">📞 New call · 9:14 PM · after hours</div>
+            <div class="q">Apartment owner</div>
+            <div class="d">"What's my building worth?"</div>
+          </div>
+        </div>
+        <div class="step" id="s2">
+          <div class="slbl">② NeverMiss qualifies</div>
+          <div class="tags" id="tags">
+            <span class="tag">🏢 Seller</span>
+            <span class="tag">24 units</span>
+            <span class="tag">📍 Long Beach</span>
+            <span class="tag">Exploring · ~12 mo</span>
+            <span class="tag hot">⏳ warm</span>
+          </div>
+        </div>
+        <div class="step" id="s3">
+          <div class="slbl">③ Routing</div>
+          <div class="routing" id="route"><span>Matching to the right broker</span><span class="dots3"><i></i><i></i><i></i></span></div>
+        </div>
+        <div class="step" id="s4">
+          <div class="slbl">④ Assigned &amp; booked</div>
+          <div class="assigned">
+            <div class="at">✅ Routed to the Long Beach team</div>
+            <div class="br"><span>Notified</span><b id="notif">in 9s</b></div>
+            <div class="br"><span>Valuation call</span><b>Tomorrow · 11:00 AM</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="roster">
+        <div class="rl">Broker roster · live status</div>
+        <div class="bk" id="b1"><div class="av">🏙️</div><div class="nm"><b>Long Beach team</b><span>Multifamily · LB / South Bay</span></div><div class="st">available</div></div>
+        <div class="bk" id="b2"><div class="av">🌴</div><div class="nm"><b>Santa Monica team</b><span>Westside multifamily</span></div><div class="st">available</div></div>
+        <div class="bk" id="b3"><div class="av">⏳</div><div class="nm"><b>1031 specialist</b><span>Exchange deadlines</span></div><div class="st">available</div></div>
+        <div class="bk" id="b4"><div class="av">📈</div><div class="nm"><b>Acquisitions</b><span>Buy-side / investors</span></div><div class="st">available</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat" id="stat">
+    <div class="big">Responded in <b id="bigt">9 seconds.</b></div>
+    <div class="s">First responder wins <b>78%</b> of deals · after 5 minutes, lead quality drops <b>80%</b>. Your competitor's voicemail can't do this.</div>
+  </div>
+  <button class="replay" id="replay">↺ Replay</button>
+  <div class="foot">Illustrative — the AI <b>captures, qualifies &amp; routes only</b>; it never quotes a valuation or gives advice. <b>NeverMiss</b> · Long Beach</div>
+</div>
+
+<script>
+  const $=id=>document.getElementById(id);
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  let timerRun=false, t0=0, raf;
+  function runTimer(){timerRun=true;t0=performance.now();(function tick(now){if(!timerRun)return;$('t').textContent=((now-t0)/1000).toFixed(1)+'s';raf=requestAnimationFrame(tick);})(performance.now());}
+  function stopTimer(v){timerRun=false;cancelAnimationFrame(raf);$('t').textContent=v;}
+  function reset(){
+    ['s1','s2','s3','s4','stat'].forEach(id=>$(id).classList.remove('on'));
+    document.querySelectorAll('.tag').forEach(t=>t.classList.remove('show'));
+    ['b1','b2','b3','b4'].forEach(id=>{$(id).classList.remove('match','dim');$(id).querySelector('.st').textContent='available';});
+    $('t').textContent='0.0s';
+  }
+  async function run(){
+    reset(); await wait(300); runTimer();
+    $('s1').classList.add('on'); await wait(1100);
+    $('s2').classList.add('on');
+    const tags=document.querySelectorAll('.tag');
+    for(const tg of tags){tg.classList.add('show');await wait(280);}
+    await wait(500);
+    $('s3').classList.add('on');
+    // roster scan
+    ['b1','b2','b3','b4'].forEach(id=>$(id).querySelector('.st').textContent='scanning…');
+    await wait(900);
+    ['b2','b3','b4'].forEach(id=>$(id).classList.add('dim'));
+    $('b1').classList.add('match'); $('b1').querySelector('.st').textContent='✓ matched';
+    $('route').innerHTML='<span style="color:var(--win)">✓ Best fit: Long Beach team (multifamily, their submarket)</span>';
+    await wait(700);
+    stopTimer('9.0s');
+    $('s4').classList.add('on'); $('b1').querySelector('.st').textContent='notified';
+    await wait(700);
+    $('stat').classList.add('on');
+  }
+  $('replay').addEventListener('click',run);
+  setTimeout(run,500);
+</script>
+</body>
+</html>
