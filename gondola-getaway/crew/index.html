@@ -5,84 +5,283 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Gondola Getaway — Gondolier view</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#0E1513;--slate:#16201c;--card:#1b2723;--sig:#2BC48E;--amber:#EF9F27;--brick:#BD4A3D;--muted:#8C9A93;--line:rgba(255,255,255,.1)}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Public Sans",system-ui,sans-serif;background:#0a0f0d;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:30px 16px 50px}
-  .cap{text-align:center;margin-bottom:20px}
-  .cap .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px}.cap .wm b{color:var(--sig)}
-  .cap p{color:var(--muted);font-size:14px;margin-top:6px}
-  .phone{width:100%;max-width:392px;background:var(--ink);border:9px solid #000;border-radius:42px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
-  .notch{height:30px;display:flex;justify-content:center;align-items:flex-start}
-  .notch span{width:120px;height:22px;background:#000;border-radius:0 0 16px 16px}
-  .scr{padding:8px 16px 24px}
-  .top{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 16px}
-  .top .b{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px}.top .b b{color:var(--sig)}
-  .me{display:flex;align-items:center;gap:8px;font-size:13px}
-  .me .av{width:30px;height:30px;border-radius:50%;background:var(--sig);color:#06140f;display:grid;place-items:center;font-weight:800;font-size:13px}
-  .offer{background:linear-gradient(180deg,rgba(43,196,142,.16),rgba(43,196,142,.05));border:1px solid var(--sig);border-radius:18px;padding:18px;margin-bottom:16px}
-  .offer .tag{font-family:"Space Mono";font-size:11px;letter-spacing:.1em;color:var(--sig);display:flex;align-items:center;gap:7px}
-  .offer .dot{width:8px;height:8px;border-radius:50%;background:var(--sig);animation:bl 1.3s infinite}@keyframes bl{50%{opacity:.3}}
-  .offer h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:21px;margin:9px 0 3px}
-  .offer .d{font-size:14px;color:#CBD3CE}
-  .offer .pay{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;color:#fff;margin-top:8px}
-  .grab{width:100%;background:var(--sig);color:#06140f;font-weight:800;font-size:18px;border:none;border-radius:13px;padding:14px;margin-top:13px;font-family:"Bricolage Grotesque"}
-  .grab .s{display:block;font-family:"Public Sans";font-weight:600;font-size:11px;color:#0a3b30;margin-top:2px}
-  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px}
-  .tile{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px;text-align:center}
-  .tile .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:23px}
-  .tile .n.g{color:var(--sig)}.tile .n.a{color:var(--amber)}
-  .tile .l{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-family:"Space Mono";margin-top:3px}
-  .sec{font-family:"Space Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:4px 2px 9px}
-  .lb{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px}
-  .lb .r{display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--line);font-size:14px}
+  :root{
+    --canal:#0A2630;--deep:#061820;--card:rgba(255,255,255,.05);--cardb:rgba(243,234,214,.12);
+    --gold:#E0A64B;--gold2:#F4C572;--goldd:#3a230a;--terra:#C56A45;--cream:#F4ECDB;--muted:#8FA6AA;--win:#7FD1A6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:30px 16px 56px;background:#05151b;overflow-x:hidden}
+  .bgwrap{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(130% 80% at 50% -5%,#143a47 0%,#08222b 45%,#05141a 100%)}
+  .bgwrap::before,.bgwrap::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);mix-blend-mode:screen}
+  .bgwrap::before{width:520px;height:520px;left:-120px;top:-80px;background:radial-gradient(circle,#E0A64B,transparent 70%);opacity:.22;animation:drift1 14s ease-in-out infinite}
+  .bgwrap::after{width:460px;height:460px;right:-140px;top:160px;background:radial-gradient(circle,#2f7d86,transparent 70%);opacity:.4;animation:drift2 17s ease-in-out infinite}
+  @keyframes drift1{50%{transform:translate(60px,40px) scale(1.1)}}
+  @keyframes drift2{50%{transform:translate(-50px,-30px) scale(1.12)}}
+  .cap{text-align:center;margin-bottom:18px}
+  .cap .wm{font-family:"Cormorant Garamond";font-weight:700;font-size:24px}.cap .wm b{color:var(--gold);font-style:italic;font-weight:600}
+  .cap p{color:var(--muted);font-size:12.5px;margin-top:3px;letter-spacing:.03em}
+
+  .phone{position:relative;width:100%;max-width:394px;background:linear-gradient(180deg,#0B2A34,#081F27);border:9px solid #031015;border-radius:46px;overflow:hidden;
+    box-shadow:0 50px 110px -30px rgba(0,0,0,.9),0 0 0 1px rgba(224,166,75,.18),inset 0 1px 0 rgba(255,255,255,.05)}
+  .notch{height:34px;display:flex;justify-content:center;align-items:flex-start}
+  .notch span{width:122px;height:24px;background:#031015;border-radius:0 0 18px 18px}
+  .scr{padding:6px 15px 22px;position:relative}
+  .anim{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  .top{display:flex;align-items:center;justify-content:space-between;padding:8px 3px 4px}
+  .top .b{font-family:"Cormorant Garamond";font-weight:700;font-size:22px}.top .b b{color:var(--gold);font-style:italic;font-weight:600}
+  .me{display:flex;align-items:center;gap:9px}
+  .me .nm{text-align:right;line-height:1.1}.me .nm b{font-size:13px}.me .nm span{display:block;font-size:10px;color:var(--gold);letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+  .av{position:relative;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#F4C572,#D9952F);color:var(--goldd);display:grid;place-items:center;font-weight:800;font-size:16px;box-shadow:0 0 0 2px rgba(244,197,114,.35),0 0 22px rgba(224,166,75,.5)}
+  .av .crown{position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-size:15px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+
+  .streak{display:inline-flex;align-items:center;gap:6px;margin:13px 0 0;background:rgba(197,106,69,.16);border:1px solid rgba(224,166,75,.35);border-radius:30px;padding:5px 12px;font-size:11.5px;font-weight:700;color:var(--gold2)}
+  .streak .f{animation:flick 1.4s ease-in-out infinite}@keyframes flick{50%{transform:scale(1.18) rotate(-4deg)}}
+
+  .champ{margin:11px 0 4px;background:linear-gradient(100deg,rgba(224,166,75,.2),rgba(224,166,75,.05));border:1px solid rgba(224,166,75,.45);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
+  .champ::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 4.2s ease-in-out infinite}
+  @keyframes sheen{0%,55%{transform:translateX(-120%)}80%,100%{transform:translateX(120%)}}
+  .champ .em{font-size:24px}
+  .champ .t b{font-family:"Cormorant Garamond";font-size:21px;font-weight:700;display:block;line-height:1}
+  .champ .t span{font-size:12px;color:var(--muted)}
+
+  .sec{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:20px 3px 10px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .sec .live{display:inline-flex;align-items:center;gap:5px;color:var(--gold)}
+  .sec .live i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,166,75,.55)}70%{box-shadow:0 0 0 9px rgba(224,166,75,0)}100%{box-shadow:0 0 0 0 rgba(224,166,75,0)}}
+
+  .offer{background:linear-gradient(180deg,rgba(224,166,75,.16),rgba(224,166,75,.03));border:1px solid var(--gold);border-radius:20px;padding:18px;position:relative;overflow:hidden;box-shadow:0 16px 40px -16px rgba(224,166,75,.45)}
+  .offer .ribbon{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .offer .tag{font-size:10.5px;letter-spacing:.14em;color:var(--gold);font-weight:800;text-transform:uppercase}
+  .timer{display:flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;font-weight:800;font-size:14px;background:rgba(0,0,0,.28);border:1px solid var(--cardb);border-radius:30px;padding:4px 11px}
+  .timer .lab{font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  .timer.urgent{color:#F2A36B;border-color:rgba(242,163,107,.6)}
+  .offer h2{font-family:"Cormorant Garamond";font-weight:700;font-size:30px;line-height:1;margin:4px 0 4px}
+  .offer .d{font-size:13.5px;color:#E6DCC6}.offer .d b{color:var(--cream)}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+  .chip{font-size:11px;background:rgba(255,255,255,.06);border:1px solid var(--cardb);border-radius:30px;padding:4px 10px;color:#E6DCC6}
+  .viewing{display:flex;align-items:center;gap:7px;margin-top:11px;font-size:11.5px;color:#F2A36B}
+  .viewing .eye{display:flex;gap:-6px}.viewing b{color:var(--cream)}
+  .dots3{display:inline-flex;gap:3px}.dots3 i{width:5px;height:5px;border-radius:50%;background:#F2A36B;animation:bo 1s infinite}.dots3 i:nth-child(2){animation-delay:.15s}.dots3 i:nth-child(3){animation-delay:.3s}
+  @keyframes bo{50%{transform:translateY(-3px);opacity:.5}}
+  .pay{display:flex;align-items:baseline;gap:8px;margin-top:12px}
+  .pay .v{font-family:"Cormorant Garamond";font-weight:700;font-size:27px;color:var(--gold2)}.pay .s{font-size:12px;color:var(--muted)}
+  .grab{width:100%;margin-top:13px;border:none;border-radius:14px;padding:15px;font-weight:800;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--goldd);cursor:pointer;position:relative;overflow:hidden;background:linear-gradient(180deg,#F6CC7A,#E0A64B);box-shadow:0 10px 26px -8px rgba(224,166,75,.7)}
+  .grab span{position:relative;z-index:2;display:block}
+  .grab small{display:block;font-weight:600;font-size:10.5px;color:#6e4a18;letter-spacing:.02em;text-transform:none;margin-top:3px}
+  .grab::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:sheen2 2.8s ease-in-out infinite}
+  @keyframes sheen2{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+  .grab.grabbed{background:linear-gradient(180deg,#8FD9B0,#5FB888);color:#073322;box-shadow:0 10px 26px -10px rgba(127,209,166,.6)}
+  .grab.grabbed::after{display:none}
+
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+  .tile{background:var(--card);border:1px solid var(--cardb);border-radius:15px;padding:14px 8px;text-align:center;backdrop-filter:blur(6px)}
+  .tile .n{font-family:"Cormorant Garamond";font-weight:700;font-size:29px;line-height:1}.tile .n.gold{color:var(--gold)}
+  .tile .l{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;margin-top:7px;font-weight:700}
+
+  .prog{margin-top:14px;background:var(--card);border:1px solid var(--cardb);border-radius:16px;padding:15px 16px;backdrop-filter:blur(6px)}
+  .prog .ph{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;margin-bottom:10px}
+  .prog .ph b{color:var(--cream)}.prog .ph .amt{color:var(--gold);font-weight:800}
+  .bar{height:9px;border-radius:6px;background:rgba(0,0,0,.3);overflow:hidden}
+  .bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#E0A64B,#F4C572);box-shadow:0 0 12px rgba(224,166,75,.6);transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+  .prog .note{font-size:11.5px;color:var(--muted);margin-top:9px;line-height:1.45}.prog .note b{color:var(--win)}
+
+  /* next pickup route map */
+  .route{margin-top:14px;background:var(--card);border:1px solid var(--cardb);border-radius:16px;overflow:hidden;backdrop-filter:blur(6px)}
+  .route .rh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 6px;font-size:13px}
+  .route .rh b{font-weight:700}.route .rh .tm{color:var(--gold);font-weight:800;font-size:12px}
+  .route svg{display:block;width:100%;height:96px}
+  .route .rf{display:flex;justify-content:space-between;padding:4px 16px 14px;font-size:11px;color:var(--muted)}
+  .route .rf b{color:var(--cream)}
+
+  .lb{background:var(--card);border:1px solid var(--cardb);border-radius:16px;overflow:hidden;backdrop-filter:blur(6px)}
+  .lb .r{display:flex;align-items:center;gap:11px;padding:12px 15px;border-bottom:1px solid rgba(243,234,214,.07);font-size:14px}
   .lb .r:last-child{border-bottom:none}
-  .lb .r.you{background:rgba(43,196,142,.08)}
-  .lb .r .rk{font-family:"Bricolage Grotesque";font-weight:800;width:22px;color:var(--muted)}
-  .lb .r.you .rk{color:var(--sig)}
+  .lb .r.you{background:linear-gradient(90deg,rgba(224,166,75,.16),rgba(224,166,75,.03))}
+  .lb .r .rk{font-family:"Cormorant Garamond";font-weight:700;font-size:18px;width:24px;text-align:center;color:var(--muted)}
+  .lb .r.you .rk{color:var(--gold)}
+  .lb .r .ava{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;background:rgba(255,255,255,.08)}
+  .lb .r.you .ava{background:linear-gradient(135deg,#F4C572,#D9952F);color:var(--goldd)}
   .lb .r .nm{flex:1;font-weight:600}.lb .r .nm small{color:var(--muted);font-weight:400}
-  .lb .r .tr{font-family:"Space Mono";font-size:13px;color:#CBD3CE}
-  .bonus{background:rgba(239,159,39,.12);border:1px solid rgba(239,159,39,.4);border-radius:13px;padding:13px 15px;font-size:13.5px;color:#fff;line-height:1.4}
-  .bonus b{color:var(--amber)}
+  .lb .r .tr{font-size:13px;color:#E6DCC6;font-variant-numeric:tabular-nums}.lb .r .tr b{color:var(--cream)}
+
+  .earn{background:var(--card);border:1px solid var(--cardb);border-radius:16px;padding:16px;backdrop-filter:blur(6px)}
+  .spark{margin:2px 0 12px}.spark svg{width:100%;height:54px;display:block}
+  .erow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;font-size:13.5px;border-bottom:1px solid rgba(243,234,214,.07)}
+  .erow .lft{display:flex;align-items:center;gap:9px;color:#E6DCC6}.erow .lft .ic{font-size:15px}
+  .erow .val{font-weight:700;font-variant-numeric:tabular-nums}
+  .erow.pend .val{color:var(--gold)}.erow.pend{color:var(--muted)}
+  .erow.tot{border-bottom:none;padding-top:13px;border-top:2px solid var(--cardb);margin-top:3px}
+  .erow.tot .lft{font-family:"Cormorant Garamond";font-size:18px;font-weight:700;color:var(--cream)}
+  .erow.tot .val{font-family:"Cormorant Garamond";font-size:22px;color:var(--gold2)}
+
+  /* tab bar */
+  .tabs{display:flex;justify-content:space-around;align-items:center;margin:18px -15px -22px;padding:12px 8px 16px;background:rgba(6,22,28,.7);border-top:1px solid var(--cardb);backdrop-filter:blur(12px)}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:var(--muted);font-weight:600}
+  .tab .ti{font-size:18px;opacity:.55}
+  .tab.on{color:var(--gold)}.tab.on .ti{opacity:1}
+
+  /* confetti */
+  .confetti{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:9}
+  .cf{position:absolute;width:8px;height:13px;opacity:0;border-radius:2px}
+  .foot{text-align:center;color:var(--muted);font-size:11px;margin-top:14px;letter-spacing:.04em}.foot b{color:var(--cream);font-weight:600}
 </style>
 </head>
 <body>
+  <div class="bgwrap"></div>
   <div class="cap">
-    <div class="wm">Never<b>Miss</b> · Gondolier view</div>
+    <div class="wm">Gondola <b>Getaway</b> · Crew</div>
     <p>What every gondolier sees on their phone — sample</p>
   </div>
+
   <div class="phone">
+    <div class="confetti" id="confetti"></div>
     <div class="notch"><span></span></div>
     <div class="scr">
-      <div class="top">
+
+      <div class="top anim" style="animation-delay:.05s">
         <div class="b">Gondola <b>Getaway</b></div>
-        <div class="me"><span>Marco</span><span class="av">M</span></div>
+        <div class="me">
+          <div class="nm"><b>Omer</b><span>👑 #1 this week</span></div>
+          <div class="av"><span class="crown">👑</span>O</div>
+        </div>
+      </div>
+      <div class="streak anim" style="animation-delay:.1s"><span class="f">🔥</span> 5-day grab streak · fastest hands on the canal</div>
+
+      <div class="champ anim" style="animation-delay:.14s">
+        <div class="em">🏆</div>
+        <div class="t"><b>You're #1, Omer.</b><span>2 trips clear of the pack — hold it through Sunday.</span></div>
       </div>
 
-      <div class="offer">
-        <div class="tag"><span class="dot"></span>NEW RIDE · FIRST TO GRAB WINS</div>
+      <div class="sec anim" style="animation-delay:.18s">New ride <span class="live"><i></i>live</span></div>
+      <div class="offer anim" style="animation-delay:.22s">
+        <div class="ribbon">
+          <div class="tag">First to grab wins</div>
+          <div class="timer" id="timer"><span class="lab">closes</span><span id="tval">0:58</span></div>
+        </div>
         <h2>Sat · 6:30 PM</h2>
-        <div class="d">Carolina (14 guests) · +Champagne, +Photos</div>
-        <div class="pay">~$240 + tip</div>
-        <button class="grab">GRAB IT<span class="s">2 other gondoliers were notified</span></button>
+        <div class="d"><b>Carolina</b> · 14 guests · Naples dock</div>
+        <div class="chips"><span class="chip">🥂 Champagne</span><span class="chip">📸 Photos</span><span class="chip">2 gondoliers</span></div>
+        <div class="viewing">👀 <span id="vtxt"><b>Sofia</b> is looking at this ride</span><span class="dots3"><i></i><i></i><i></i></span></div>
+        <div class="pay"><span class="v">~$240</span><span class="s">+ tip · est. 50 min</span></div>
+        <button class="grab" id="grab"><span>Grab it<small>2 other gondoliers were notified</small></span></button>
       </div>
 
-      <div class="tiles">
-        <div class="tile"><div class="n g">#2</div><div class="l">This week</div></div>
-        <div class="tile"><div class="n">14</div><div class="l">Trips</div></div>
-        <div class="tile"><div class="n a">$1,180</div><div class="l">Earned</div></div>
+      <div class="tiles anim" style="animation-delay:.3s">
+        <div class="tile"><div class="n gold">#1</div><div class="l">This week</div></div>
+        <div class="tile"><div class="n" data-count="19">0</div><div class="l">Trips</div></div>
+        <div class="tile"><div class="n gold" data-count="1405" data-prefix="$">$0</div><div class="l">Earned</div></div>
       </div>
 
-      <div class="sec">This week's board</div>
-      <div class="lb">
-        <div class="r"><span class="rk">1</span><span class="nm">Sofia</span><span class="tr">17 trips</span></div>
-        <div class="r you"><span class="rk">2</span><span class="nm">Marco <small>(you)</small></span><span class="tr">14 trips</span></div>
-        <div class="r"><span class="rk">3</span><span class="nm">Luca</span><span class="tr">11 trips</span></div>
+      <div class="prog anim" style="animation-delay:.36s">
+        <div class="ph"><b>🏆 Top-gondolier bonus</b><span class="amt">$150</span></div>
+        <div class="bar"><i id="bar" data-w="78"></i></div>
+        <div class="note">You're <b>holding #1</b> — stay ahead of Sofia through Sunday and the <b>$150 bonus is yours</b>.</div>
       </div>
 
-      <div class="bonus">🏆 <b>2 more trips</b> to catch #1 and win this week's <b>$150 top-gondolier bonus</b> — plus $20 already earned in add-on spiffs.</div>
+      <div class="sec anim" style="animation-delay:.4s">Up next · already yours</div>
+      <div class="route anim" style="animation-delay:.44s">
+        <div class="rh"><b>Traditional · 6 guests</b><span class="tm">Today · 4:00 PM</span></div>
+        <svg viewBox="0 0 360 96" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E0A64B"/><stop offset="1" stop-color="#F4C572"/></linearGradient>
+          </defs>
+          <path id="cpath" d="M24,70 C90,30 150,92 210,52 C250,26 300,40 336,30" fill="none" stroke="rgba(243,234,214,.18)" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+          <path id="cpath2" d="M24,70 C90,30 150,92 210,52 C250,26 300,40 336,30" fill="none" stroke="url(#rg)" stroke-width="3" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="2.4s" begin="0.7s" fill="freeze"/></path>
+          <circle cx="24" cy="70" r="6" fill="#0A2630" stroke="#E0A64B" stroke-width="2.5"/>
+          <circle cx="336" cy="30" r="6" fill="#E0A64B"/>
+          <text x="336" y="18" fill="#8FA6AA" font-size="11" text-anchor="end" font-family="Public Sans">📍 Naples dock</text>
+          <g><text font-size="17">🚣
+            <animateMotion dur="3.2s" begin="0.7s" repeatCount="indefinite" rotate="auto"><mpath href="#cpath"/></animateMotion>
+          </text></g>
+        </svg>
+        <div class="rf"><span>You · <b>The Boathouse</b></span><span>4 mi · ~12 min row</span></div>
+      </div>
+
+      <div class="sec anim" style="animation-delay:.5s">This week's board</div>
+      <div class="lb anim" style="animation-delay:.54s">
+        <div class="r you"><span class="rk">1</span><span class="ava">O</span><span class="nm">Omer <small>(you)</small></span><span class="tr"><b>19</b> trips</span></div>
+        <div class="r"><span class="rk">2</span><span class="ava">S</span><span class="nm">Sofia</span><span class="tr">17 trips</span></div>
+        <div class="r"><span class="rk">3</span><span class="ava">L</span><span class="nm">Luca</span><span class="tr">14 trips</span></div>
+        <div class="r"><span class="rk">4</span><span class="ava">M</span><span class="nm">Marco</span><span class="tr">11 trips</span></div>
+        <div class="r"><span class="rk">5</span><span class="ava">E</span><span class="nm">Elena</span><span class="tr">9 trips</span></div>
+      </div>
+
+      <div class="sec anim" style="animation-delay:.58s">This week's earnings</div>
+      <div class="earn anim" style="animation-delay:.62s">
+        <div class="spark">
+          <svg viewBox="0 0 320 54" preserveAspectRatio="none">
+            <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(224,166,75,.5)"/><stop offset="1" stop-color="rgba(224,166,75,0)"/></linearGradient></defs>
+            <path id="sfill" d="M0,40 L40,34 L80,38 L120,24 L160,28 L200,16 L240,20 L280,8 L320,12 L320,54 L0,54 Z" fill="url(#sg)" opacity="0"/>
+            <path id="sline" d="M0,40 L40,34 L80,38 L120,24 L160,28 L200,16 L240,20 L280,8 L320,12" fill="none" stroke="#F4C572" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+            <circle cx="280" cy="8" r="3.5" fill="#F4C572"/>
+          </svg>
+        </div>
+        <div class="erow"><span class="lft"><span class="ic">🚣</span>19 trips rowed + tips</span><span class="val">$1,140</span></div>
+        <div class="erow"><span class="lft"><span class="ic">✨</span>8 add-on spiffs</span><span class="val">$80</span></div>
+        <div class="erow"><span class="lft"><span class="ic">⚡</span>Speed bonus ×5</span><span class="val">$125</span></div>
+        <div class="erow"><span class="lft"><span class="ic">⭐</span>5-star bonus ×3</span><span class="val">$60</span></div>
+        <div class="erow pend"><span class="lft"><span class="ic">🏆</span>Top-performer bonus (pending)</span><span class="val">+$150</span></div>
+        <div class="erow tot"><span class="lft">On track</span><span class="val">$1,555</span></div>
+      </div>
+
+      <div class="foot anim" style="animation-delay:.66s">Powered by <b>NeverMiss</b></div>
+
+      <div class="tabs anim" style="animation-delay:.7s">
+        <div class="tab on"><span class="ti">🚣</span>Rides</div>
+        <div class="tab"><span class="ti">🏆</span>Board</div>
+        <div class="tab"><span class="ti">💰</span>Earnings</div>
+        <div class="tab"><span class="ti">⚙️</span>You</div>
+      </div>
     </div>
   </div>
+
+<script>
+  function countUp(el){
+    const end=+el.dataset.count, pre=el.dataset.prefix||"", dur=1100, t0=performance.now();
+    (function step(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=pre+Math.round(end*e).toLocaleString();if(p<1)requestAnimationFrame(step);})(t0);
+  }
+  setTimeout(()=>document.querySelectorAll('[data-count]').forEach(countUp),450);
+  setTimeout(()=>{document.getElementById('bar').style.width=document.getElementById('bar').dataset.w+'%';},650);
+
+  // earnings sparkline draw
+  setTimeout(()=>{
+    const ln=document.getElementById('sline'); ln.style.transition='stroke-dashoffset 1.6s ease-out'; ln.style.strokeDashoffset='0';
+    const fl=document.getElementById('sfill'); fl.style.transition='opacity 1.2s ease .6s'; fl.style.opacity='1';
+  },700);
+
+  // viewing ticker — rotate who's looking + count
+  const viewers=[['Sofia',2],['Luca',3],['Marco',2],['Elena',1],['Sofia',4]]; let vi=0;
+  const vtxt=document.getElementById('vtxt');
+  setInterval(()=>{vi=(vi+1)%viewers.length;const[n,c]=viewers[vi];vtxt.innerHTML=`<b>${n}</b> +${c} others are looking`;vtxt.style.opacity=0;requestAnimationFrame(()=>{vtxt.style.transition='opacity .4s';vtxt.style.opacity=1;});},2600);
+
+  // countdown
+  let s=58; const tv=document.getElementById('tval'), tm=document.getElementById('timer');
+  const tick=setInterval(()=>{s--;if(s<0){clearInterval(tick);return;}const m=Math.floor(s/60),ss=String(s%60).padStart(2,'0');tv.textContent=m+':'+ss;if(s<=15)tm.classList.add('urgent');},1000);
+
+  // confetti burst
+  function burst(){
+    const wrap=document.getElementById('confetti'),cols=['#E0A64B','#F4C572','#F4ECDB','#C56A45','#7FD1A6'];
+    for(let i=0;i<46;i++){
+      const c=document.createElement('div');c.className='cf';
+      c.style.left=Math.random()*100+'%';c.style.background=cols[i%cols.length];
+      const dx=(Math.random()*2-1)*120,dur=1100+Math.random()*900,rot=Math.random()*720;
+      c.animate([{transform:'translate(0,-10px) rotate(0)',opacity:1},{transform:`translate(${dx}px,${260+Math.random()*220}px) rotate(${rot}deg)`,opacity:0}],{duration:dur,easing:'cubic-bezier(.2,.6,.4,1)',fill:'forwards'});
+      wrap.appendChild(c);setTimeout(()=>c.remove(),dur);
+    }
+  }
+
+  document.getElementById('grab').addEventListener('click',function(){
+    clearInterval(tick);
+    this.classList.add('grabbed');
+    this.querySelector('span').innerHTML="✓ It's yours, Omer<small>Customer notified · see you at 6:30</small>";
+    tm.innerHTML='<span class="lab" style="color:#7FD1A6">claimed</span>';
+    document.querySelector('.viewing').style.display='none';
+    burst();
+  });
+</script>
 </body>
 </html>

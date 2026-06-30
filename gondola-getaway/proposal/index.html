@@ -6,49 +6,49 @@
 <meta name="robots" content="noindex, nofollow" />
 <title>Gondola Getaway × NeverMiss — Full Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0E1513;--paper:#FBF8F1;--sig:#2BC48E;--pine:#13917A;--brick:#BD4A3D;--amber:#EF9F27;--muted:#8C9A93;--line:rgba(255,255,255,.12)}
+:root{--ink:#081F27;--paper:#F4ECDB;--sig:#E0A64B;--pine:#C9923B;--brick:#C56A45;--amber:#C56A45;--muted:#8FA6AA;--line:rgba(243,234,214,.13)}
 *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
-body{font-family:"Public Sans",system-ui,sans-serif;background:var(--ink);color:#fff;-webkit-font-smoothing:antialiased;overflow:hidden}
-.disp{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.015em;line-height:1.04}
+body{font-family:"Public Sans",system-ui,sans-serif;background:radial-gradient(130% 80% at 50% -5%,#143a47 0%,#08222b 45%,#05141a 100%);color:var(--paper);-webkit-font-smoothing:antialiased;overflow:hidden}
+.disp{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:0;line-height:1.03}
 .deck{height:100vh;width:100vw;position:relative}
 .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:7vh 8vw;opacity:0;visibility:hidden;transition:opacity .35s ease;overflow-y:auto}
 .slide.active{opacity:1;visibility:visible}
 .eyebrow{font-family:"Space Mono";font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--sig);margin-bottom:18px}
 .eyebrow.amber{color:var(--amber)}
 .slide h1{font-size:clamp(30px,5.4vw,60px);max-width:15em;margin-bottom:18px}
-.slide h2{font-size:clamp(25px,4.2vw,48px);font-family:"Bricolage Grotesque";font-weight:800;letter-spacing:-.015em;line-height:1.07;max-width:16em;margin-bottom:16px}
+.slide h2{font-size:clamp(25px,4.2vw,48px);font-family:"Cormorant Garamond";font-weight:700;letter-spacing:-.015em;line-height:1.07;max-width:16em;margin-bottom:16px}
 .hl{color:var(--sig)}.amberhl{color:var(--amber)}
-.lede{font-size:clamp(16px,1.9vw,22px);color:#CBD3CE;max-width:31em;line-height:1.55}
+.lede{font-size:clamp(16px,1.9vw,22px);color:#D8D0C0;max-width:31em;line-height:1.55}
 .stat-row{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px}
-.stat-row .s{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(30px,5vw,48px);color:var(--sig);line-height:1}
+.stat-row .s{font-family:"Cormorant Garamond";font-weight:700;font-size:clamp(30px,5vw,48px);color:var(--sig);line-height:1}
 .stat-row .s small{display:block;font-family:"Public Sans";font-weight:500;font-size:13px;color:var(--muted);margin-top:5px;max-width:13em}
-.row{display:flex;align-items:flex-start;gap:12px;margin-top:13px;font-size:clamp(15px,1.7vw,19px);color:#E8EEEB;max-width:32em}
-.row .dot{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(43,196,142,.15);display:grid;place-items:center;color:var(--sig);font-weight:800;font-family:"Space Mono";font-size:13px}
-.row.a .dot{background:rgba(239,159,39,.16);color:var(--amber)}
-.sms{background:#16201c;border:1px solid var(--line);border-radius:16px;padding:18px 20px;max-width:30em;margin-top:18px;font-size:15px;line-height:1.5}
+.row{display:flex;align-items:flex-start;gap:12px;margin-top:13px;font-size:clamp(15px,1.7vw,19px);color:#ECE3D2;max-width:32em}
+.row .dot{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(224,166,75,.16);display:grid;place-items:center;color:var(--sig);font-weight:800;font-family:"Space Mono";font-size:13px}
+.row.a .dot{background:rgba(197,106,69,.18);color:var(--amber)}
+.sms{background:#0F2E38;border:1px solid var(--line);border-radius:16px;padding:18px 20px;max-width:30em;margin-top:18px;font-size:15px;line-height:1.5}
 .sms .h{font-family:"Space Mono";color:var(--amber);font-size:13px;margin-bottom:6px}
 .sms b{color:#fff}
-.grab{display:inline-block;background:var(--sig);color:#06140f;font-weight:800;padding:4px 12px;border-radius:7px;margin-top:8px}
+.grab{display:inline-block;background:var(--sig);color:#3a230a;font-weight:800;padding:4px 12px;border-radius:7px;margin-top:8px}
 .flow{display:flex;flex-direction:column;gap:8px;margin-top:18px;max-width:34em}
-.flow .f{display:flex;align-items:center;gap:12px;background:#16201c;border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:15px}
-.flow .f .n{font-family:"Bricolage Grotesque";font-weight:800;color:var(--sig)}
+.flow .f{display:flex;align-items:center;gap:12px;background:#0F2E38;border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:15px}
+.flow .f .n{font-family:"Cormorant Garamond";font-weight:700;color:var(--sig)}
 .lockup{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-.lockup .mk{width:48px;height:48px}.lockup .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px}.lockup .wm b{color:var(--sig)}
-.plan{background:#16201c;border:2px solid var(--sig);border-radius:18px;padding:26px;max-width:34em;margin-top:6px}
+.lockup .mk{width:48px;height:48px}.lockup .wm{font-family:"Cormorant Garamond";font-weight:700;font-size:22px}.lockup .wm b{color:var(--sig)}
+.plan{background:#0F2E38;border:2px solid var(--sig);border-radius:18px;padding:26px;max-width:34em;margin-top:6px}
 .plan .pn{font-family:"Space Mono";color:var(--sig);font-size:13px;letter-spacing:.1em}
-.plan .pp{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(32px,5vw,52px);margin:6px 0 4px}.plan .pp span{font-size:.4em;color:var(--muted);font-weight:600}
+.plan .pp{font-family:"Cormorant Garamond";font-weight:700;font-size:clamp(32px,5vw,52px);margin:6px 0 4px}.plan .pp span{font-size:.4em;color:var(--muted);font-weight:600}
 .plan ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:7px}
-.plan li{font-size:14.5px;color:#E8EEEB;display:flex;gap:8px}.plan li .c{color:var(--sig);font-weight:800}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--sig);color:#06140f;font-weight:700;font-size:clamp(16px,2vw,19px);padding:15px 26px;border-radius:13px;text-decoration:none;margin-top:8px}
+.plan li{font-size:14.5px;color:#ECE3D2;display:flex;gap:8px}.plan li .c{color:var(--sig);font-weight:800}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--sig);color:#3a230a;font-weight:700;font-size:clamp(16px,2vw,19px);padding:15px 26px;border-radius:13px;text-decoration:none;margin-top:8px}
 .fn{margin-top:24px;color:var(--muted);font-size:13.5px}.fn a{color:var(--sig);text-decoration:none}
 .nav{position:fixed;bottom:20px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:16px;z-index:20}
 .nav button{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;width:42px;height:42px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
-.nav button:hover{background:rgba(43,196,142,.2)}.nav button svg{width:19px;height:19px;stroke:#fff}
+.nav button:hover{background:rgba(224,166,75,.2)}.nav button svg{width:19px;height:19px;stroke:#fff}
 .dots{display:flex;gap:7px}.dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .2s}.dots span.on{background:var(--sig);width:22px;border-radius:6px}
 .counter{position:fixed;top:22px;right:28px;font-family:"Space Mono";font-size:13px;color:var(--muted);z-index:20}
-.bm{position:fixed;top:20px;left:28px;font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;z-index:20;opacity:.85}.bm b{color:var(--sig)}
+.bm{position:fixed;top:20px;left:28px;font-family:"Cormorant Garamond";font-weight:700;font-size:15px;z-index:20;opacity:.85}.bm b{color:var(--sig)}
 @media(max-width:680px){.slide{padding:8vh 7vw}.bm,.counter{display:none}.stat-row{gap:18px}}
 </style>
 </head>
@@ -59,7 +59,7 @@ body{font-family:"Public Sans",system-ui,sans-serif;background:var(--ink);color:
 
   <section class="slide active" style="padding:0">
     <img src="../collab.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" />
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,21,19,.5) 0%,rgba(14,21,19,.12) 42%,rgba(14,21,19,.92) 100%);z-index:1"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,26,.5) 0%,rgba(6,20,26,.12) 42%,rgba(6,20,26,.92) 100%);z-index:1"></div>
     <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:7vh 8vw">
     <div class="lockup"><svg class="mk" viewBox="0 0 64 64" fill="none"><rect x="3" y="3" width="58" height="58" rx="18" fill="#0E7A60"/><g transform="translate(14.5,14.5) scale(1.46)" fill="#fff"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></g><circle cx="46.5" cy="18" r="6" fill="#2BC48E"/></svg><span class="wm">Never<b>Miss</b></span></div>
     <h1 class="disp">Your bookings <span class="hl">and</span> your crew — one system.</h1>

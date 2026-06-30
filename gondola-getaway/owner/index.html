@@ -4,124 +4,207 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Gondola Getaway — Owner controls</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<title>Gondola Getaway — Owner dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#0E1513;--card:#16201c;--card2:#1b2723;--sig:#2BC48E;--amber:#EF9F27;--brick:#BD4A3D;--muted:#8C9A93;--line:rgba(255,255,255,.1)}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Public Sans",system-ui,sans-serif;background:#0a0f0d;color:#fff;min-height:100vh;padding:28px 16px 60px}
-  .wrap{max-width:880px;margin:0 auto}
-  .head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px}
-  .head h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:25px}.head h1 b{color:var(--sig)}
-  .head .who{font-family:"Space Mono";font-size:12px;color:var(--muted)}
-  .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
-  .saved{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--sig);font-family:"Space Mono"}
-  .saved .d{width:7px;height:7px;border-radius:50%;background:var(--sig)}
-  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
-  .strip .s{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px}
-  .strip .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px}
-  .strip .n.g{color:var(--sig)}.strip .n.a{color:var(--amber)}
-  .strip .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-family:"Space Mono";margin-top:3px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
-  .card > .ct{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;margin-bottom:4px}
-  .card > .cs{font-size:13px;color:var(--muted);margin-bottom:18px}
-  .rw{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+  :root{--canal:#0A2630;--card:rgba(255,255,255,.045);--card2:rgba(255,255,255,.07);--cardb:rgba(243,234,214,.12);
+    --gold:#E0A64B;--gold2:#F4C572;--goldd:#3a230a;--terra:#C56A45;--cream:#F4ECDB;--muted:#8FA6AA;--win:#7FD1A6;--bad:#E08A6B}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;padding:26px 16px 64px;background:#05151b;overflow-x:hidden}
+  .bgwrap{position:fixed;inset:0;z-index:-1;background:radial-gradient(130% 70% at 50% -5%,#143a47 0%,#08222b 45%,#05141a 100%)}
+  .bgwrap::after{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-60px;border-radius:50%;filter:blur(80px);background:radial-gradient(circle,#E0A64B,transparent 70%);opacity:.16;animation:drift 16s ease-in-out infinite}
+  @keyframes drift{50%{transform:translate(-60px,50px) scale(1.1)}}
+  .wrap{max-width:960px;margin:0 auto}
+  .anim{opacity:0;transform:translateY(14px);animation:rise .55s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  .head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:4px}
+  .head h1{font-family:"Cormorant Garamond";font-weight:700;font-size:34px;line-height:1}.head h1 b{color:var(--gold);font-style:italic;font-weight:600}
+  .head .who{font-size:12px;color:var(--muted);text-align:right}
+  .head .who .saved{display:inline-flex;align-items:center;gap:6px;color:var(--gold)}.head .who .saved i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pul 1.8s infinite}
+  @keyframes pul{0%{box-shadow:0 0 0 0 rgba(224,166,75,.5)}70%{box-shadow:0 0 0 7px rgba(224,166,75,0)}}
+  .sub{color:var(--muted);font-size:14px;margin:6px 0 22px;max-width:640px;line-height:1.5}
+
+  /* KPI */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+  .kpi{background:var(--card);border:1px solid var(--cardb);border-radius:16px;padding:15px;backdrop-filter:blur(6px);position:relative;overflow:hidden}
+  .kpi .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+  .kpi .n{font-family:"Cormorant Garamond";font-weight:700;font-size:31px;line-height:1;margin:7px 0 4px}
+  .kpi .t{font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:3px}.kpi .t.up{color:var(--win)}.kpi .t.dn{color:var(--bad)}
+  .kpi svg{position:absolute;right:10px;bottom:10px;width:62px;height:26px;opacity:.85}
+
+  .grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:14px}
+  .card{background:var(--card);border:1px solid var(--cardb);border-radius:18px;padding:20px;backdrop-filter:blur(6px)}
+  .card .ct{font-family:"Cormorant Garamond";font-weight:700;font-size:21px;margin-bottom:2px}
+  .card .cs{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+
+  /* bar chart */
+  .bars{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;height:150px;padding-top:10px}
+  .bcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+  .bcol .bk{width:100%;max-width:30px;border-radius:7px 7px 3px 3px;height:0;background:linear-gradient(180deg,#F4C572,#D9952F);transition:height 1s cubic-bezier(.2,.7,.2,1);position:relative}
+  .bcol.tod .bk{background:linear-gradient(180deg,#F4C572,#E0A64B);box-shadow:0 0 16px rgba(224,166,75,.6)}
+  .bcol .bv{font-size:10px;color:var(--muted);font-weight:700}
+  .bcol .bd{font-size:10px;color:var(--muted)}.bcol.tod .bd{color:var(--gold)}
+
+  /* donut */
+  .donut{display:flex;align-items:center;gap:16px}
+  .donut svg{width:118px;height:118px;flex-shrink:0}
+  .dleg{font-size:12px;display:flex;flex-direction:column;gap:9px}
+  .dleg .li{display:flex;align-items:center;gap:8px}.dleg .sw{width:11px;height:11px;border-radius:3px}
+  .dleg b{font-weight:700}.dleg span{color:var(--muted)}
+
+  /* live feed */
+  .feed{max-height:230px;overflow:hidden}
+  .fitem{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid rgba(243,234,214,.07);font-size:13px}
+  .fitem .fi{width:30px;height:30px;border-radius:9px;background:var(--card2);display:grid;place-items:center;font-size:15px;flex-shrink:0}
+  .fitem .ft{flex:1;line-height:1.3}.fitem .ft b{font-weight:700}.fitem .ft span{color:var(--muted);font-size:11.5px}
+  .fitem .fg{font-size:11px;color:var(--muted);white-space:nowrap}
+  .fitem.new{animation:flash .6s ease}@keyframes flash{from{background:rgba(224,166,75,.16)}}
+
+  /* crew roster */
+  .crew .cr{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid rgba(243,234,214,.07);font-size:13.5px}
+  .crew .cr:first-child{border-top:none}
+  .crew .ava{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:rgba(255,255,255,.08);position:relative}
+  .crew .ava .st{position:absolute;bottom:-1px;right:-1px;width:11px;height:11px;border-radius:50%;border:2px solid #0d2a33}
+  .st.row{background:var(--gold)}.st.av{background:var(--win)}.st.off{background:#5b6e72}
+  .crew .nm{flex:1}.crew .nm b{font-weight:700}.crew .nm span{display:block;font-size:11px;color:var(--muted)}
+  .crew .mini{width:74px;height:7px;border-radius:5px;background:rgba(0,0,0,.3);overflow:hidden}
+  .crew .mini i{display:block;height:100%;background:linear-gradient(90deg,#E0A64B,#F4C572);width:0;transition:width 1s ease}
+  .crew .tc{font-size:12px;color:#E6DCC6;width:30px;text-align:right;font-variant-numeric:tabular-nums}
+
+  /* rewards engine */
+  .rw{display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--cardb)}
   .rw:first-of-type{border-top:none}
   .rw .ic{font-size:20px;width:26px;text-align:center}
-  .rw .tx{flex:1}.rw .tx b{font-weight:700;font-size:15px}.rw .tx span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
-  .amt{display:flex;align-items:center;gap:4px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-family:"Space Mono";font-size:14px;color:#fff;white-space:nowrap}
-  .amt .c{color:var(--sig)}
-  .rw.off .amt{opacity:.35}
-  .rw.off .ic,.rw.off .tx b{opacity:.45}
-  .tog{width:46px;height:27px;border-radius:20px;background:#36433d;position:relative;cursor:pointer;flex-shrink:0;transition:background .15s}
-  .tog .k{position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:left .15s}
-  .tog.on{background:var(--sig)}.tog.on .k{left:22px}
+  .rw .tx{flex:1;min-width:0}.rw .tx b{font-weight:700;font-size:14.5px}.rw .tx span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .stp{display:flex;align-items:center;gap:0;background:rgba(0,0,0,.25);border:1px solid var(--cardb);border-radius:10px;overflow:hidden}
+  .stp button{background:none;border:none;color:var(--gold);font-size:17px;font-weight:800;width:30px;height:34px;cursor:pointer}
+  .stp button:active{background:rgba(224,166,75,.2)}
+  .stp .vv{min-width:62px;text-align:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .rw.off{opacity:.42}.rw.off .stp{pointer-events:none}
+  .tog{width:46px;height:27px;border-radius:20px;background:#2c4a52;position:relative;cursor:pointer;flex-shrink:0;transition:background .15s}
+  .tog .k{position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:var(--cream);transition:left .15s}
+  .tog.on{background:var(--gold)}.tog.on .k{left:22px;background:#3a230a}
+  .poolbar{display:flex;align-items:center;justify-content:space-between;margin-top:16px;background:linear-gradient(100deg,rgba(224,166,75,.14),rgba(224,166,75,.03));border:1px solid rgba(224,166,75,.4);border-radius:13px;padding:13px 16px}
+  .poolbar .pl{font-size:12.5px;color:var(--muted)}.poolbar .pl b{color:var(--cream)}
+  .poolbar .pv{font-family:"Cormorant Garamond";font-weight:700;font-size:26px;color:var(--gold2)}
+
+  /* payout */
   table{width:100%;border-collapse:collapse}
-  th{text-align:left;font-family:"Space Mono";font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:0 0 10px;font-weight:700}
+  th{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 0 12px;font-weight:700}
   th.r,td.r{text-align:right}
-  td{padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
-  td .nm{font-weight:700}td .sm{color:var(--muted);font-size:12.5px}
-  td .pay{font-family:"Space Mono";font-weight:700;color:var(--sig)}
-  .totrow td{border-top:2px solid var(--line);font-weight:800;font-family:"Bricolage Grotesque"}
-  .totrow .pay{font-size:18px}
+  td{padding:12px 0;border-top:1px solid rgba(243,234,214,.08);font-size:14px}
+  td .nm{font-weight:700}td .sm{color:var(--muted);font-size:12px}
+  td .pay{font-weight:700;color:var(--gold)}
+  .totrow td{border-top:2px solid var(--cardb);font-family:"Cormorant Garamond";font-size:18px;font-weight:700}
+  .totrow .pay{font-size:22px;color:var(--gold2)}
   .approve{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:18px}
-  .approve .note{font-size:12.5px;color:var(--muted);max-width:330px}
-  .btn{background:var(--sig);color:#06140f;font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;border:none;border-radius:11px;padding:13px 22px;cursor:pointer}
-  .foot{text-align:center;color:var(--muted);font-size:12.5px;margin-top:24px}
-  .foot b{color:#fff}
-  @media(max-width:560px){.strip{grid-template-columns:1fr;gap:10px}.strip .s{display:flex;align-items:baseline;gap:10px}.strip .l{margin-top:0}}
+  .approve .note{font-size:12px;color:var(--muted);max-width:340px;line-height:1.5}
+  .btn{background:linear-gradient(180deg,#F6CC7A,#E0A64B);color:#3a230a;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:13px 24px;cursor:pointer;position:relative;overflow:hidden}
+  .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 3s ease-in-out infinite}@keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+  .foot{text-align:center;color:var(--muted);margin-top:22px;font-family:"Cormorant Garamond";font-size:18px}.foot b{color:var(--cream)}
+  .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:99}.cf{position:absolute;width:9px;height:14px;border-radius:2px}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="bgwrap"></div>
+<div class="confetti" id="confetti"></div>
 <div class="wrap">
-  <div class="head">
-    <h1>Gondola <b>Getaway</b> · Crew controls</h1>
-    <div class="who">Mike · owner · <span class="saved"><span class="d"></span>all changes saved</span></div>
+  <div class="head anim">
+    <h1>Gondola <b>Getaway</b> · Crew HQ</h1>
+    <div class="who">Mike · owner<br><span class="saved"><i></i>live · all changes saved</span></div>
   </div>
-  <div class="sub">NeverMiss tracks every ride, grab, and add-on automatically. You just decide the rewards — and approve the payout.</div>
+  <div class="sub">NeverMiss tracks every ride, grab, and add-on in real time. You set the rewards and approve the payout — the canal runs itself.</div>
 
-  <div class="strip">
-    <div class="s"><div class="n g">42</div><div class="l">Rides staffed this week</div></div>
-    <div class="s"><div class="n">38s</div><div class="l">Avg time to grab</div></div>
-    <div class="s"><div class="n a">$620</div><div class="l">Bonuses queued</div></div>
+  <div class="kpis">
+    <div class="kpi anim" style="animation-delay:.05s"><div class="l">Rides this week</div><div class="n" data-count="42">0</div><div class="t up">▲ 18% vs last wk</div>
+      <svg viewBox="0 0 62 26"><polyline points="0,22 10,18 20,20 31,12 41,14 51,6 62,4" fill="none" stroke="#7FD1A6" stroke-width="2"/></svg></div>
+    <div class="kpi anim" style="animation-delay:.1s"><div class="l">Avg time to grab</div><div class="n">38<span style="font-size:16px">s</span></div><div class="t up">▲ 41% faster</div>
+      <svg viewBox="0 0 62 26"><polyline points="0,6 10,10 20,8 31,14 41,12 51,18 62,20" fill="none" stroke="#7FD1A6" stroke-width="2"/></svg></div>
+    <div class="kpi anim" style="animation-delay:.15s"><div class="l">Add-on attach</div><div class="n" data-count="61" data-suffix="%">0%</div><div class="t up">▲ 12 pts</div>
+      <svg viewBox="0 0 62 26"><polyline points="0,20 10,18 20,14 31,15 41,10 51,8 62,5" fill="none" stroke="#E0A64B" stroke-width="2"/></svg></div>
+    <div class="kpi anim" style="animation-delay:.2s"><div class="l">Bonuses queued</div><div class="n" data-count="425" data-prefix="$">$0</div><div class="t up">▲ this week</div>
+      <svg viewBox="0 0 62 26"><polyline points="0,22 10,20 20,16 31,17 41,11 51,9 62,6" fill="none" stroke="#E0A64B" stroke-width="2"/></svg></div>
   </div>
 
-  <div class="card">
+  <div class="grid2">
+    <div class="card anim" style="animation-delay:.24s">
+      <div class="ct">Rides per day</div>
+      <div class="cs">Staffed automatically — today is pacing ahead.</div>
+      <div class="bars" id="bars">
+        <div class="bcol"><div class="bk" data-h="42"></div><div class="bv">5</div><div class="bd">Mon</div></div>
+        <div class="bcol"><div class="bk" data-h="33"></div><div class="bv">4</div><div class="bd">Tue</div></div>
+        <div class="bcol"><div class="bk" data-h="50"></div><div class="bv">6</div><div class="bd">Wed</div></div>
+        <div class="bcol"><div class="bk" data-h="58"></div><div class="bv">7</div><div class="bd">Thu</div></div>
+        <div class="bcol"><div class="bk" data-h="75"></div><div class="bv">9</div><div class="bd">Fri</div></div>
+        <div class="bcol tod"><div class="bk" data-h="92"></div><div class="bv">11</div><div class="bd">Sat</div></div>
+        <div class="bcol"><div class="bk" data-h="33"></div><div class="bv">4</div><div class="bd">Sun</div></div>
+      </div>
+    </div>
+    <div class="card anim" style="animation-delay:.28s">
+      <div class="ct">Where bonus $ goes</div>
+      <div class="cs">This week's pool, by reward.</div>
+      <div class="donut">
+        <svg viewBox="0 0 42 42">
+          <circle cx="21" cy="21" r="15.915" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="6"/>
+          <circle class="seg" cx="21" cy="21" r="15.915" fill="none" stroke="#E0A64B" stroke-width="6" stroke-dasharray="0 100" data-d="48" transform="rotate(-90 21 21)"/>
+          <circle class="seg" cx="21" cy="21" r="15.915" fill="none" stroke="#F4C572" stroke-width="6" stroke-dasharray="0 100" data-d="30" data-o="48" transform="rotate(-90 21 21)"/>
+          <circle class="seg" cx="21" cy="21" r="15.915" fill="none" stroke="#C56A45" stroke-width="6" stroke-dasharray="0 100" data-d="22" data-o="78" transform="rotate(-90 21 21)"/>
+          <text x="21" y="20" text-anchor="middle" fill="#F4ECDB" font-size="7" font-family="Cormorant Garamond" font-weight="700">$425</text>
+          <text x="21" y="26" text-anchor="middle" fill="#8FA6AA" font-size="3">this week</text>
+        </svg>
+        <div class="dleg">
+          <div class="li"><span class="sw" style="background:#E0A64B"></span><div><b>Top performer</b> <span>· $230</span></div></div>
+          <div class="li"><span class="sw" style="background:#F4C572"></span><div><b>Speed + spiffs</b> <span>· $135</span></div></div>
+          <div class="li"><span class="sw" style="background:#C56A45"></span><div><b>5-star bonus</b> <span>· $60</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card anim" style="animation-delay:.32s">
+      <div class="ct">Live activity</div>
+      <div class="cs">Every grab, add-on and review as it happens.</div>
+      <div class="feed" id="feed"></div>
+    </div>
+    <div class="card crew anim" style="animation-delay:.36s">
+      <div class="ct">Crew right now</div>
+      <div class="cs">Status updates live from the canal.</div>
+      <div class="cr"><div class="ava">O<span class="st row"></span></div><div class="nm"><b>Omer</b> 👑<span>Rowing · Carolina</span></div><div class="mini"><i data-w="100"></i></div><div class="tc">19</div></div>
+      <div class="cr"><div class="ava">S<span class="st av"></span></div><div class="nm"><b>Sofia</b><span>Available · Naples dock</span></div><div class="mini"><i data-w="89"></i></div><div class="tc">17</div></div>
+      <div class="cr"><div class="ava">L<span class="st row"></span></div><div class="nm"><b>Luca</b><span>Rowing · Traditional</span></div><div class="mini"><i data-w="74"></i></div><div class="tc">14</div></div>
+      <div class="cr"><div class="ava">M<span class="st av"></span></div><div class="nm"><b>Marco</b><span>Available · The Boathouse</span></div><div class="mini"><i data-w="58"></i></div><div class="tc">11</div></div>
+      <div class="cr"><div class="ava">E<span class="st off"></span></div><div class="nm"><b>Elena</b><span>Off today</span></div><div class="mini"><i data-w="47"></i></div><div class="tc">9</div></div>
+    </div>
+  </div>
+
+  <div class="card anim" style="animation-delay:.4s">
     <div class="ct">Rewards engine</div>
-    <div class="cs">Flip a reward on or off, set the amount. Changes apply to the next ride instantly.</div>
-
-    <div class="rw on" data-r>
-      <div class="ic">🏆</div>
-      <div class="tx"><b>Top-performer bonus</b><span>Weekly cash to your #1 by trips taken</span></div>
-      <div class="amt"><span class="c">$</span>150 / wk</div>
-      <div class="tog on" data-tog></div>
-    </div>
-
-    <div class="rw on" data-r>
-      <div class="ic">⚡</div>
-      <div class="tx"><b>Speed bonus</b><span>Fastest gondolier to GRAB each ride</span></div>
-      <div class="amt"><span class="c">$</span>25</div>
-      <div class="tog on" data-tog></div>
-    </div>
-
-    <div class="rw on" data-r>
-      <div class="ic">✨</div>
-      <div class="tx"><b>Upsell spiff</b><span>Per add-on sold — champagne, photos, music</span></div>
-      <div class="amt"><span class="c">$</span>10 / add-on</div>
-      <div class="tog on" data-tog></div>
-    </div>
-
-    <div class="rw on" data-r>
-      <div class="ic">⭐</div>
-      <div class="tx"><b>5-star bonus</b><span>Each review that names the gondolier</span></div>
-      <div class="amt"><span class="c">$</span>20</div>
-      <div class="tog on" data-tog></div>
-    </div>
-
-    <div class="rw off" data-r>
-      <div class="ic">🔥</div>
-      <div class="tx"><b>Volume / streak bonus</b><span>Hit 20 trips in a week</span></div>
-      <div class="amt"><span class="c">$</span>100</div>
-      <div class="tog" data-tog></div>
-    </div>
-
-    <div class="rw on" data-r>
-      <div class="ic">🎖️</div>
-      <div class="tx"><b>Gondolier of the Month</b><span>Prime weekend slots + recognition</span></div>
-      <div class="amt">Perk</div>
-      <div class="tog on" data-tog></div>
-    </div>
+    <div class="cs">Flip a reward on or off, tap − / + to set the amount. Changes apply to the next ride instantly.</div>
+    <div class="rw on" data-r data-base="150"><div class="ic">🏆</div><div class="tx"><b>Top-performer bonus</b><span>Weekly cash to your #1 by trips</span></div>
+      <div class="stp"><button data-d="-25">−</button><div class="vv">$150 <small style="color:var(--muted)">/wk</small></div><button data-d="25">+</button></div><div class="tog on" data-tog></div></div>
+    <div class="rw on" data-r data-base="25"><div class="ic">⚡</div><div class="tx"><b>Speed bonus</b><span>Fastest gondolier to grab each ride</span></div>
+      <div class="stp"><button data-d="-5">−</button><div class="vv">$25</div><button data-d="5">+</button></div><div class="tog on" data-tog></div></div>
+    <div class="rw on" data-r data-base="10"><div class="ic">✨</div><div class="tx"><b>Upsell spiff</b><span>Per add-on sold — champagne, photos</span></div>
+      <div class="stp"><button data-d="-5">−</button><div class="vv">$10</div><button data-d="5">+</button></div><div class="tog on" data-tog></div></div>
+    <div class="rw on" data-r data-base="20"><div class="ic">⭐</div><div class="tx"><b>5-star bonus</b><span>Each review that names the gondolier</span></div>
+      <div class="stp"><button data-d="-5">−</button><div class="vv">$20</div><button data-d="5">+</button></div><div class="tog on" data-tog></div></div>
+    <div class="rw off" data-r data-base="100"><div class="ic">🔥</div><div class="tx"><b>Volume / streak bonus</b><span>Hit 20 trips in a week</span></div>
+      <div class="stp"><button data-d="-25">−</button><div class="vv">$100</div><button data-d="25">+</button></div><div class="tog" data-tog></div></div>
+    <div class="poolbar"><div class="pl">Projected weekly bonus pool <b>· auto-calculated</b></div><div class="pv" id="pool">$620</div></div>
   </div>
 
-  <div class="card">
+  <div class="card anim" style="animation-delay:.44s">
     <div class="ct">This week's payout sheet</div>
     <div class="cs">Auto-tallied from the board. Review, then approve — NeverMiss never moves money without you.</div>
     <table>
       <thead><tr><th>Gondolier</th><th>Earned from</th><th class="r">Payout</th></tr></thead>
       <tbody>
-        <tr><td><div class="nm">Sofia</div></td><td><div class="sm">Top performer · 4 add-ons · 2 five-stars</div></td><td class="r"><span class="pay">$230</span></td></tr>
-        <tr><td><div class="nm">Marco</div></td><td><div class="sm">Speed bonus ×3 · 5 add-ons · 1 five-star</div></td><td class="r"><span class="pay">$145</span></td></tr>
-        <tr><td><div class="nm">Luca</div></td><td><div class="sm">3 add-ons · 1 five-star</div></td><td class="r"><span class="pay">$50</span></td></tr>
+        <tr><td><div class="nm">Omer 👑</div></td><td><div class="sm">Top performer · 8 add-ons · 3 five-stars</div></td><td class="r"><span class="pay">$215</span></td></tr>
+        <tr><td><div class="nm">Sofia</div></td><td><div class="sm">Speed ×2 · 4 add-ons · 2 five-stars</div></td><td class="r"><span class="pay">$130</span></td></tr>
+        <tr><td><div class="nm">Luca</div></td><td><div class="sm">Speed ×1 · 3 add-ons · 1 five-star</div></td><td class="r"><span class="pay">$80</span></td></tr>
         <tr class="totrow"><td>Total</td><td></td><td class="r"><span class="pay">$425</span></td></tr>
       </tbody>
     </table>
@@ -131,20 +214,55 @@
     </div>
   </div>
 
-  <div class="foot">Set it once, approve weekly. <b>Two taps a week</b> and your crew runs itself.</div>
+  <div class="foot anim" style="animation-delay:.48s">Set it once, approve weekly. <b>Two taps a week</b> and your crew runs itself.</div>
 </div>
+
 <script>
-  document.querySelectorAll('[data-tog]').forEach(t=>{
-    t.addEventListener('click',()=>{
-      t.classList.toggle('on');
-      t.closest('[data-r]').classList.toggle('off',!t.classList.contains('on'));
-      t.closest('[data-r]').classList.toggle('on',t.classList.contains('on'));
-    });
-  });
-  document.getElementById('ap').addEventListener('click',function(){
-    this.textContent='✓ Approved — crew notified';
-    this.style.background='#1b2723';this.style.color='#2BC48E';this.style.border='1px solid #2BC48E';
-  });
+  function countUp(el){const end=+el.dataset.count,pre=el.dataset.prefix||"",suf=el.dataset.suffix||"",t0=performance.now();
+    (function s(t){const p=Math.min(1,(t-t0)/1000),e=1-Math.pow(1-p,3);el.textContent=pre+Math.round(end*e).toLocaleString()+suf;if(p<1)requestAnimationFrame(s);})(t0);}
+  setTimeout(()=>document.querySelectorAll('[data-count]').forEach(countUp),400);
+  setTimeout(()=>{document.querySelectorAll('#bars .bk').forEach(b=>b.style.height=b.dataset.h+'%');document.querySelectorAll('.crew .mini i').forEach(i=>i.style.width=i.dataset.w+'%');},500);
+  setTimeout(()=>{document.querySelectorAll('.donut .seg').forEach(s=>{s.style.transition='stroke-dasharray 1.2s ease';s.style.strokeDasharray=s.dataset.d+' '+(100-s.dataset.d);if(s.dataset.o)s.style.strokeDashoffset=(100-s.dataset.o);});},600);
+
+  // live activity feed
+  const acts=[
+    ['⚡','<b>Omer</b> grabbed Sat 6:30 · Carolina','12s','now'],
+    ['🥂','<b>Sofia</b> sold a champagne add-on','+$10 spiff','1m'],
+    ['⭐','<b>Luca</b> earned a 5-star — "best part of our trip"','+$20','4m'],
+    ['🚣','<b>Marco</b> completed the 3:00 Traditional','on time','9m'],
+    ['📸','<b>Omer</b> sold photos + music','+$20 spiff','12m'],
+    ['⚡','<b>Sofia</b> grabbed Fri 7:15 · Carolina','9s','15m'],
+    ['🏆','<b>Omer</b> took the #1 spot on the board','+2 trips','22m'],
+    ['🥂','<b>Luca</b> sold a champagne add-on','+$10 spiff','28m']
+  ];
+  const feed=document.getElementById('feed');let ai=0;
+  function pushAct(it,isNew){const d=document.createElement('div');d.className='fitem'+(isNew?' new':'');
+    d.innerHTML=`<div class="fi">${it[0]}</div><div class="ft">${it[1]}<span>${it[3]==='now'?'just now':it[3]+' ago'} · ${it[2]}</span></div>`;
+    feed.prepend(d);while(feed.children.length>5)feed.lastChild.remove();}
+  acts.slice(0,5).forEach(a=>pushAct(a,false));
+  const stream=['⚡','🥂','⭐','📸','🚣'],names=['Omer','Sofia','Luca','Marco','Elena'],
+    lines=[['⚡','grabbed a new ride','8s'],['🥂','sold a champagne add-on','+$10 spiff'],['⭐','earned a 5-star review','+$20'],['📸','sold photos','+$10 spiff'],['🚣','completed a ride','on time']];
+  setInterval(()=>{const l=lines[Math.floor(Math.random()*lines.length)],n=names[Math.floor(Math.random()*names.length)];
+    pushAct([l[0],`<b>${n}</b> ${l[1]}`,l[2],'now'],true);},3800);
+
+  // rewards steppers + pool
+  function recompute(){let pool=0;document.querySelectorAll('[data-r]').forEach(r=>{if(!r.classList.contains('off')){const base=+r.dataset.base,ic=r.querySelector('.ic').textContent;
+    // rough weekly projection per reward
+    const mult={'🏆':1,'⚡':6,'✨':14,'⭐':5,'🔥':2}[ic]||1;pool+=base*mult;}});
+    const el=document.getElementById('pool');el.textContent='$'+pool.toLocaleString();el.style.transition='transform .2s';el.style.transform='scale(1.08)';setTimeout(()=>el.style.transform='scale(1)',180);}
+  document.querySelectorAll('.stp button').forEach(b=>b.addEventListener('click',function(){
+    const rw=this.closest('[data-r]'),vv=rw.querySelector('.vv'),d=+this.dataset.d;let base=+rw.dataset.base+d;if(base<0)base=0;rw.dataset.base=base;
+    const suffix=vv.querySelector('small')?' <small style="color:var(--muted)">/wk</small>':'';vv.innerHTML='$'+base+suffix;recompute();}));
+  document.querySelectorAll('[data-tog]').forEach(t=>t.addEventListener('click',function(){this.classList.toggle('on');const on=this.classList.contains('on');this.closest('[data-r]').classList.toggle('off',!on);recompute();}));
+  setTimeout(recompute,700);
+
+  // confetti on approve
+  function burst(){const w=document.getElementById('confetti'),c=['#E0A64B','#F4C572','#F4ECDB','#C56A45','#7FD1A6'];
+    for(let i=0;i<70;i++){const e=document.createElement('div');e.className='cf';e.style.left=Math.random()*100+'%';e.style.top='-20px';e.style.background=c[i%c.length];
+      const dx=(Math.random()*2-1)*160,dur=1400+Math.random()*1100,rot=Math.random()*900;
+      e.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${dx}px,${window.innerHeight+60}px) rotate(${rot}deg)`,opacity:.9}],{duration:dur,easing:'cubic-bezier(.2,.6,.4,1)',fill:'forwards'});
+      w.appendChild(e);setTimeout(()=>e.remove(),dur);}}
+  document.getElementById('ap').addEventListener('click',function(){this.textContent='✓ Approved — crew notified';this.style.background='rgba(127,209,166,.15)';this.style.color='#7FD1A6';this.style.border='1px solid #7FD1A6';burst();});
 </script>
 </body>
 </html>
