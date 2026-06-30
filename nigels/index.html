@@ -5,88 +5,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Nigel's — Projected NeverMiss Results</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#1b0712;--slate:#360f25;--pink:#FF5FA2;--pink2:#FF8AC0;--gold:#F4D58D;--loss:#FF7A7A;--cream:#FBEAF1;--muted:#B98AA0;--line:rgba(255,200,225,.16)}
+  :root{--bg:#1b0712;--slate:rgba(255,255,255,.055);--pink:#FF5FA2;--pink2:#FF99C8;--gold:#F4D58D;--cream:#FBEAF1;--muted:#B98AA0;--line:rgba(255,153,200,.22)}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Public Sans",system-ui,sans-serif;background:radial-gradient(120% 70% at 50% -5%,#5e1844 0%,#330e24 45%,#170610 100%);background-attachment:fixed;color:var(--cream);-webkit-font-smoothing:antialiased;padding:22px 16px 40px;max-width:920px;margin:0 auto;overflow-x:hidden}
-  .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-  .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:19px}.wm b{color:var(--pink)}
-  .proj{font-family:"Public Sans";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1b0712;background:var(--pink);padding:4px 10px;border-radius:7px;font-weight:800}
-  h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(24px,5vw,38px);letter-spacing:-.01em;margin:16px 0 4px}
-  .sub{color:#E7CDD9;font-size:15px;margin-bottom:22px}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px}
-  @media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}}
-  .card{background:var(--slate);border:1px solid var(--line);border-radius:15px;padding:18px}
-  .card.feat{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink)}
-  .card .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-  .card .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.05;margin-top:8px}
-  .card .n.g{color:var(--pink2)}
-  .card .d{font-size:12.5px;color:#CBA8BA;margin-top:5px}
-  .twocol{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-  @media(min-width:720px){.twocol{grid-template-columns:1.1fr 1fr}}
-  .panel{background:var(--slate);border:1px solid var(--line);border-radius:15px;padding:20px}
-  .panel h2{font-family:"Bricolage Grotesque";font-weight:700;font-size:16px;margin-bottom:16px}
-  .bars{display:flex;align-items:flex-end;gap:10px;height:150px}
-  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;justify-content:flex-end;height:100%}
-  .bar .fill{width:100%;background:linear-gradient(180deg,var(--pink2),#c23c7a);border-radius:7px 7px 0 0;transition:height 1s cubic-bezier(.2,.7,.2,1)}
-  .bar .v{font-size:12px;font-weight:700}.bar .k{font-size:11px;color:var(--muted)}
-  .feed{display:flex;flex-direction:column;gap:11px}
-  .ev{display:flex;gap:11px;align-items:flex-start}
-  .ev .dot{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:14px}
-  .ev .dot.b{background:rgba(255,95,162,.16)}.ev .dot.r{background:rgba(244,213,141,.18)}.ev .dot.a{background:rgba(255,255,255,.07)}
-  .ev .t1{font-size:14px;font-weight:600}.ev .t2{font-size:12.5px;color:var(--muted)}
-  .ev .tm{margin-left:auto;font-size:11.5px;color:var(--muted);white-space:nowrap}
-  .foot{margin-top:20px;font-size:12.5px;color:var(--muted);background:var(--slate);border:1px dashed var(--line);border-radius:12px;padding:14px 16px}
-  .foot b{color:#E7CDD9}
-  .cta{margin-top:16px;text-align:center}.cta a{color:var(--pink2);font-weight:700;text-decoration:none}
+  body{font-family:"Public Sans",system-ui,sans-serif;background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .hero{position:relative;min-height:48vh;display:flex;flex-direction:column;justify-content:space-between;padding:22px clamp(16px,5vw,40px) 30px;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;background:url("hero.png") center/cover;transform:scale(1.04);animation:sz 26s ease-in-out infinite alternate}@keyframes sz{to{transform:scale(1.12)}}
+  .hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,7,18,.45) 0%,rgba(27,7,18,.24) 34%,rgba(27,7,18,.74) 74%,var(--bg) 100%)}
+  .hero .ov2{position:absolute;inset:0;background:radial-gradient(70% 60% at 84% 14%,rgba(255,95,162,.26),transparent 60%)}
+  .hero>*{position:relative;z-index:2}
+  .htop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;text-shadow:0 2px 18px rgba(0,0,0,.5)}.wm b{color:var(--pink2)}
+  .proj{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink2);background:rgba(27,7,18,.5);border:1px solid var(--line);backdrop-filter:blur(8px);padding:6px 12px;border-radius:30px;font-weight:600}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--pink2);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}.eyebrow::before{content:"";width:30px;height:1px;background:var(--pink)}
+  .hero h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(30px,6vw,50px);line-height:1.04;letter-spacing:-.02em;max-width:15ch;text-shadow:0 3px 30px rgba(0,0,0,.45)}
+  .hero .sub{color:#F0D5E2;font-size:clamp(14px,1.8vw,16.5px);margin-top:14px;max-width:60ch;line-height:1.6;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+  .content{max-width:980px;margin:-18px auto 0;padding:0 clamp(16px,4vw,28px) 48px;position:relative}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px}@media(min-width:740px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--slate);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;backdrop-filter:blur(16px);box-shadow:0 24px 60px -34px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
+  .card.feat{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink),0 26px 60px -28px rgba(255,95,162,.45),inset 0 1px 0 rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,95,162,.12),rgba(255,255,255,.03))}
+  .card .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+  .card .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(27px,5.5vw,38px);line-height:1.05;margin-top:10px}.card .n.g{color:var(--pink2)}
+  .card .d{font-size:12px;color:#CBA8BA;margin-top:7px}
+  .twocol{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}@media(min-width:740px){.twocol{grid-template-columns:1.1fr 1fr}}
+  .panel{background:var(--slate);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px;backdrop-filter:blur(16px);box-shadow:0 24px 60px -34px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
+  .panel h2{font-family:"Bricolage Grotesque";font-weight:700;font-size:17px;margin-bottom:18px}
+  .bars{display:flex;align-items:flex-end;gap:11px;height:152px}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;justify-content:flex-end;height:100%}
+  .bar .fill{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--pink2),#c23c7a);box-shadow:0 0 18px -4px rgba(255,95,162,.5);transition:height 1.1s cubic-bezier(.2,.7,.2,1)}
+  .bar .v{font-size:11px;font-weight:700;color:var(--cream)}.bar .k{font-size:10.5px;color:var(--muted)}
+  .feed{display:flex;flex-direction:column;gap:13px}
+  .ev{display:flex;gap:12px;align-items:flex-start}
+  .ev .dot{flex:none;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:14px;border:1px solid rgba(255,255,255,.08)}
+  .ev .dot.b{background:rgba(255,95,162,.16)}.ev .dot.r{background:rgba(244,213,141,.18)}.ev .dot.a{background:rgba(255,255,255,.05)}
+  .ev .t1{font-size:13.5px;font-weight:600}.ev .t2{font-size:12px;color:var(--muted);margin-top:1px}
+  .ev .tm{margin-left:auto;font-size:11px;color:var(--muted);white-space:nowrap}
+  .cta{margin-top:18px;text-align:center;font-size:14px}.cta a{color:var(--pink2);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,95,162,.35);padding-bottom:1px}
+  .foot{margin-top:22px;font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:15px 18px;line-height:1.6}.foot b{color:#F0D5E2}
 </style>
 </head>
 <body>
-  <div class="top">
-    <div class="wm">Never<b>Miss</b> · Nigel's 💗</div>
-    <span class="proj">Projection · modeled, not live yet</span>
-  </div>
-  <h1>The scoreboard you'd watch every week.</h1>
-  <div class="sub">Modeled for a packed waterfront hotspot your size — floating booths, pink cabanas, brunch-to-dinner. Your real numbers fill in the moment you're live.</div>
-
-  <div class="grid">
-    <div class="card feat"><div class="l">Revenue recovered</div><div class="n g">$9,800<span style="font-size:16px;color:var(--muted)">/mo</span></div><div class="d">est. — tables & parties you'd have missed</div></div>
-    <div class="card"><div class="l">Reservations recovered</div><div class="n">68<span style="font-size:16px;color:var(--muted)">/mo</span></div><div class="d">tables, brunches, date nights</div></div>
-    <div class="card"><div class="l">Calls answered 24/7</div><div class="n">95<span style="font-size:16px;color:var(--muted)">/wk</span></div><div class="d">in Nigel's name</div></div>
-    <div class="card"><div class="l">Caught during the rush</div><div class="n">31<span style="font-size:16px;color:var(--muted)">/wk</span></div><div class="d">when the floor's slammed & the bar's deep</div></div>
-  </div>
-  <div class="grid" style="grid-template-columns:repeat(2,1fr)">
-    <div class="card"><div class="l">Cabana / event inquiries caught</div><div class="n">14<span style="font-size:16px;color:var(--muted)">/mo</span></div><div class="d">big-spend parties routed to your team</div></div>
-    <div class="card"><div class="l">Reviews requested</div><div class="n">42<span style="font-size:16px;color:var(--muted)">/mo</span></div><div class="d">auto-asked after each visit</div></div>
-  </div>
-
-  <div class="twocol">
-    <div class="panel">
-      <h2>Reservations recovered — last 6 weeks (projected)</h2>
-      <div class="bars" id="bars">
-        <div class="bar"><div class="v">12</div><div class="fill" data-h="46%"></div><div class="k">W1</div></div>
-        <div class="bar"><div class="v">14</div><div class="fill" data-h="56%"></div><div class="k">W2</div></div>
-        <div class="bar"><div class="v">15</div><div class="fill" data-h="62%"></div><div class="k">W3</div></div>
-        <div class="bar"><div class="v">17</div><div class="fill" data-h="76%"></div><div class="k">W4</div></div>
-        <div class="bar"><div class="v">19</div><div class="fill" data-h="88%"></div><div class="k">W5</div></div>
-        <div class="bar"><div class="v">21</div><div class="fill" data-h="98%"></div><div class="k">W6</div></div>
+  <section class="hero">
+    <div class="bg"></div><div class="ov"></div><div class="ov2"></div>
+    <div class="htop"><div class="wm">Never<b>Miss</b> · Nigel's 💗</div><span class="proj">Projection · modeled, not live yet</span></div>
+    <div>
+      <div class="eyebrow">The Pink Palace on the water · Alamitos Bay</div>
+      <h1>The scoreboard you'd watch every week.</h1>
+      <p class="sub">Every reservation answered and every cabana party captured — even when the floor's slammed and the bar's three-deep — so a big table never books somewhere else.</p>
+    </div>
+  </section>
+  <div class="content">
+    <div class="grid">
+      <div class="card feat"><div class="l">Revenue recovered</div><div class="n g">$9,800<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">est. — tables & parties you'd have missed</div></div>
+      <div class="card"><div class="l">Reservations recovered</div><div class="n">68<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">tables, brunches, date nights</div></div>
+      <div class="card"><div class="l">Calls answered 24/7</div><div class="n">95<span style="font-size:15px;color:var(--muted)">/wk</span></div><div class="d">in Nigel's name</div></div>
+      <div class="card"><div class="l">Caught during the rush</div><div class="n">31<span style="font-size:15px;color:var(--muted)">/wk</span></div><div class="d">when the floor's slammed & the bar's deep</div></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="card"><div class="l">Cabana / event inquiries caught</div><div class="n">14<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">big-spend parties routed to your team</div></div>
+      <div class="card"><div class="l">Reviews requested</div><div class="n">42<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">auto-asked after each visit</div></div>
+    </div>
+    <div class="twocol">
+      <div class="panel">
+        <h2>Reservations recovered — last 6 weeks (projected)</h2>
+        <div class="bars" id="bars">
+          <div class="bar"><div class="v">12</div><div class="fill" data-h="46%"></div><div class="k">W1</div></div>
+          <div class="bar"><div class="v">14</div><div class="fill" data-h="56%"></div><div class="k">W2</div></div>
+          <div class="bar"><div class="v">15</div><div class="fill" data-h="62%"></div><div class="k">W3</div></div>
+          <div class="bar"><div class="v">17</div><div class="fill" data-h="76%"></div><div class="k">W4</div></div>
+          <div class="bar"><div class="v">19</div><div class="fill" data-h="88%"></div><div class="k">W5</div></div>
+          <div class="bar"><div class="v">21</div><div class="fill" data-h="98%"></div><div class="k">W6</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Live activity (sample)</h2>
+        <div class="feed">
+          <div class="ev"><div class="dot b">💗</div><div><div class="t1">Booked — pink cabana for 8</div><div class="t2">Sat 7:30 PM · birthday · min spend flagged</div></div><div class="tm">10:14 PM</div></div>
+          <div class="ev"><div class="dot r">↩</div><div><div class="t1">Recovered missed call → party of 12 🎉</div><div class="t2">Fri rush, line out the door · texted back in 9s</div></div><div class="tm">Fri</div></div>
+          <div class="ev"><div class="dot b">💗</div><div><div class="t1">Private event inquiry routed 🔔</div><div class="t2">Bachelorette, ~30 guests · flagged to your team</div></div><div class="tm">6:40 PM</div></div>
+          <div class="ev"><div class="dot a">💬</div><div><div class="t1">"Can we dock up by Duffy?" answered</div><div class="t2">Answered instantly during dinner service</div></div><div class="tm">8:02 PM</div></div>
+          <div class="ev"><div class="dot b">💗</div><div><div class="t1">Booked — Sunday brunch for 4</div><div class="t2">Floating booth · 11:00 AM</div></div><div class="tm">9:21 AM</div></div>
+        </div>
       </div>
     </div>
-    <div class="panel">
-      <h2>Live activity (sample)</h2>
-      <div class="feed">
-        <div class="ev"><div class="dot b">💗</div><div><div class="t1">Booked — pink cabana for 8</div><div class="t2">Sat 7:30 PM · birthday · min spend flagged</div></div><div class="tm">10:14 PM</div></div>
-        <div class="ev"><div class="dot r">↩</div><div><div class="t1">Recovered missed call → party of 12 🎉</div><div class="t2">Fri rush, line out the door · texted back in 9s</div></div><div class="tm">Fri</div></div>
-        <div class="ev"><div class="dot b">💗</div><div><div class="t1">Private event inquiry routed 🔔</div><div class="t2">Bachelorette, ~30 guests · flagged to your team</div></div><div class="tm">6:40 PM</div></div>
-        <div class="ev"><div class="dot a">💬</div><div><div class="t1">"Can we dock up by Duffy?" answered</div><div class="t2">Answered instantly during dinner service</div></div><div class="tm">8:02 PM</div></div>
-        <div class="ev"><div class="dot b">💗</div><div><div class="t1">Booked — Sunday brunch for 4</div><div class="t2">Floating booth · 11:00 AM</div></div><div class="tm">9:21 AM</div></div>
-      </div>
-    </div>
+    <div class="cta"><a href="/nigels/leak/">What you're leaking →</a> &nbsp;&nbsp; <a href="/nigels/save/">The rush-hour save →</a></div>
+    <div class="foot">💗 <b>This is a projection</b>, modeled on a high-traffic waterfront restaurant of Nigel's size — not live data. Once you're set up, this fills with <b>your real calls, reservations, and recovered revenue</b>, updated in real time. NeverMiss · Long Beach · nevermissai.net</div>
   </div>
-
-  <div class="cta"><a href="/nigels/leak/">→ What you're leaking</a> &nbsp;·&nbsp; <a href="/nigels/save/">→ The rush-hour save</a></div>
-  <div class="foot">💗 <b>This is a projection</b>, modeled on a high-traffic waterfront restaurant of Nigel's size — not live data. Once you're set up, this exact dashboard fills with <b>your real calls, reservations, and recovered revenue</b>, updated in real time. NeverMiss · Long Beach · nevermissai.net</div>
-<script>setTimeout(()=>document.querySelectorAll('#bars .fill').forEach(f=>f.style.height=f.dataset.h),250);</script>
+<script>setTimeout(()=>document.querySelectorAll('#bars .fill').forEach(f=>f.style.height=f.dataset.h),300);</script>
 </body>
 </html>
