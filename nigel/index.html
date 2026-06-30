@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Nigel — one NeverMiss for both businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#07151d;--card:rgba(255,255,255,.045);--cardb:rgba(220,235,240,.13);--aqua:#34C7C0;--aqua2:#5FE3DC;--pink:#FF5FA2;--pink2:#FF8AC0;--gold:#F0B95A;--coral:#FF8A6B;--cream:#EAF3F6;--muted:#8AA0AB}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;padding:34px 16px 60px;line-height:1.5;overflow-x:hidden;
+    background:radial-gradient(70% 50% at 12% -5%,rgba(52,199,192,.16),transparent),radial-gradient(70% 50% at 88% -5%,rgba(255,95,162,.16),transparent),#050f15}
+  .wrap{max-width:880px;margin:0 auto}
+  .anim{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}@keyframes rise{to{opacity:1;transform:none}}
+  .eyebrow{text-align:center;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px}
+  .eyebrow b{background:linear-gradient(90deg,var(--aqua),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(28px,5.6vw,46px);line-height:1.04;text-align:center;letter-spacing:-.02em;margin-bottom:14px}
+  h1 .a{color:var(--aqua2)}h1 .p{color:var(--pink2)}
+  .lede{text-align:center;color:#C2D2D8;font-size:clamp(15px,2vw,18px);max-width:42ch;margin:0 auto 14px}
+  .wm{text-align:center;color:var(--muted);font-size:13px;margin-bottom:30px}.wm b{color:var(--cream)}.wm .nm{color:var(--gold);font-weight:700}
+
+  .combo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+  @media(max-width:640px){.combo{grid-template-columns:1fr}}
+  .biz{border-radius:20px;padding:24px;border:1px solid var(--cardb);background:var(--card);backdrop-filter:blur(6px);position:relative;overflow:hidden}
+  .biz.aq{box-shadow:inset 0 0 0 1px rgba(52,199,192,.3),0 18px 44px -22px rgba(52,199,192,.5)}
+  .biz.pk{box-shadow:inset 0 0 0 1px rgba(255,95,162,.3),0 18px 44px -22px rgba(255,95,162,.5)}
+  .biz .ic{font-size:30px}
+  .biz h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;margin:8px 0 2px}
+  .biz .tag{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+  .biz .leaklbl{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);font-weight:700}
+  .biz .leak{font-family:"Bricolage Grotesque";font-weight:800;font-size:40px;line-height:1;color:var(--coral);margin:4px 0 2px}
+  .biz .leaksub{font-size:12px;color:var(--muted);margin-bottom:16px}
+  .biz .links{display:flex;flex-wrap:wrap;gap:8px}
+  .biz .links a{font-size:12.5px;font-weight:700;text-decoration:none;padding:7px 12px;border-radius:9px;border:1px solid var(--cardb)}
+  .biz.aq .links a{color:var(--aqua2)}.biz.pk .links a{color:var(--pink2)}
+  .biz .links a:hover{background:rgba(255,255,255,.05)}
+
+  .plus{text-align:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:26px;color:var(--muted);margin:2px 0}
+  .total{background:linear-gradient(100deg,rgba(52,199,192,.14),rgba(255,95,162,.14));border:1px solid var(--cardb);border-radius:20px;padding:26px;text-align:center;margin-bottom:20px}
+  .total .l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .total .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(44px,10vw,64px);line-height:1;margin:6px 0 4px;background:linear-gradient(90deg,var(--aqua2),var(--pink2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .total .s{color:#C2D2D8;font-size:14px;max-width:40ch;margin:0 auto}
+
+  .how{background:var(--card);border:1px solid var(--cardb);border-radius:18px;padding:24px;margin-bottom:20px;backdrop-filter:blur(6px)}
+  .how h3{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;margin-bottom:4px}
+  .how .hs{font-size:12.5px;color:var(--muted);margin-bottom:18px}
+  .row{display:flex;align-items:flex-start;gap:12px;margin-top:13px;font-size:14.5px;color:#DCE7EB}
+  .row .d{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:14px;background:rgba(255,255,255,.06)}
+  .row b{color:var(--cream)}
+
+  .cta{text-align:center;background:var(--card);border:1px solid var(--cardb);border-radius:18px;padding:24px;backdrop-filter:blur(6px)}
+  .cta .demo{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px;color:var(--cream);text-decoration:none;display:inline-block}
+  .cta .demo span{display:block;font-family:"Public Sans";font-size:12.5px;color:var(--muted);font-weight:600;margin-top:3px}
+  .cta .btn{display:inline-block;margin-top:16px;background:linear-gradient(90deg,var(--aqua),var(--pink));color:#06141a;font-weight:800;font-size:15px;padding:13px 26px;border-radius:12px;text-decoration:none}
+  .foot{text-align:center;color:var(--muted);font-size:11.5px;margin-top:22px}.foot b{color:var(--cream)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow anim">For <b>Nigel Ohrberg</b></div>
+  <h1 class="anim" style="animation-delay:.05s">Two businesses on the water.<br>One system that <span class="a">never</span> <span class="p">misses</span> a call.</h1>
+  <p class="lede anim" style="animation-delay:.1s">You built Anchors Away, then opened Nigel's so the fun didn't have to end at the dock. Same harbor, same problem: a phone that rings while you're slammed.</p>
+  <div class="wm anim" style="animation-delay:.13s"><span class="nm">Anchors Away</span> + <span class="nm">Nigel's</span>, answered 24/7 by <b>Never</b>Miss — each in its own voice.</div>
+
+  <div class="combo">
+    <div class="biz aq anim" style="animation-delay:.16s">
+      <div class="ic">⚓</div>
+      <h2>Anchors Away</h2>
+      <div class="tag">Duffy rentals · 330+ reviews · on the bay</div>
+      <div class="leaklbl">Projected leak</div>
+      <div class="leak">$8,450<span style="font-size:16px;color:var(--muted)">/mo</span></div>
+      <div class="leaksub">missed cruise & event bookings</div>
+      <div class="links"><a href="/anchors-away/">Dashboard</a><a href="/anchors-away/leak/">Leak</a><a href="/anchors-away/save/">9pm save</a></div>
+    </div>
+    <div class="biz pk anim" style="animation-delay:.2s">
+      <div class="ic">💗</div>
+      <h2>Nigel's</h2>
+      <div class="tag">The Pink Palace · 12,500 guests month one</div>
+      <div class="leaklbl">Projected leak</div>
+      <div class="leak">$8,500<span style="font-size:16px;color:var(--muted)">/mo</span></div>
+      <div class="leaksub">missed reservations & cabana parties</div>
+      <div class="links"><a href="/nigels/">Dashboard</a><a href="/nigels/leak/">Leak</a><a href="/nigels/save/">Rush save</a></div>
+    </div>
+  </div>
+
+  <div class="plus anim" style="animation-delay:.24s">＋</div>
+
+  <div class="total anim" style="animation-delay:.27s">
+    <div class="l">Together you're leaking, every month</div>
+    <div class="big">~$17,000</div>
+    <div class="s">across both businesses — bookings that call, hit voicemail, and go to whoever answered. One NeverMiss catches them for both.</div>
+  </div>
+
+  <div class="how anim" style="animation-delay:.3s">
+    <h3>How one system runs both</h3>
+    <div class="hs">Two front desks that never sleep — each sounds like its own business.</div>
+    <div class="row"><span class="d">⚓</span><span><b>Anchors Away</b> answers as the harbor host — books Duffys, captures event cruises, gives the rate.</span></div>
+    <div class="row"><span class="d">💗</span><span><b>Nigel's</b> answers as the Pink Palace — takes reservations, flags cabana & large-party bookings to your team.</span></div>
+    <div class="row"><span class="d">🔁</span><span><b>They feed each other</b> — a cruise booking can tee up a dock-up dinner; a dinner can book the morning cruise.</span></div>
+    <div class="row"><span class="d">📊</span><span><b>One owner view</b> — both businesses' calls, bookings and recovered revenue on a single dashboard.</span></div>
+  </div>
+
+  <div class="cta anim" style="animation-delay:.34s">
+    <a class="demo" href="tel:+15625735967">Hear it live: (562) 573-5967<span>call it and act like a customer — for either business</span></a><br>
+    <a class="btn" href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener">Let's set up both →</a>
+  </div>
+
+  <div class="foot anim" style="animation-delay:.38s">Projected figures, modeled on your businesses' size — confirmed with your real numbers at go-live. <b>NeverMiss</b> · Long Beach</div>
+</div>
+</body>
+</html>
