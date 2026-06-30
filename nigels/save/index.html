@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Nigel's — the rush-hour save</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1b0712;--pink:#FF5FA2;--pink2:#FF8AC0;--gold:#F4D58D;--loss:#FF7A7A;--cream:#FBEAF1;--muted:#B98AA0;--cardb:rgba(255,200,225,.16)}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:30px 16px 56px;background:radial-gradient(120% 80% at 50% -5%,#5e1844 0%,#330e24 45%,#170610 100%);overflow-x:hidden}
+  .cap{text-align:center;margin-bottom:18px}
+  .cap .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:19px}.cap .wm b{color:var(--pink)}
+  .cap p{color:var(--muted);font-size:13px;margin-top:4px}
+  .phone{width:100%;max-width:390px;background:#160510;border:9px solid #0a0309;border-radius:46px;overflow:hidden;box-shadow:0 50px 110px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,95,162,.2)}
+  .notch{height:32px;display:flex;justify-content:center;align-items:flex-start;background:#160510}
+  .notch span{width:120px;height:23px;background:#0a0309;border-radius:0 0 17px 17px}
+  .callbar{background:linear-gradient(180deg,rgba(255,122,122,.18),rgba(255,122,122,.04));border-bottom:1px solid rgba(255,122,122,.3);padding:13px 18px;display:flex;align-items:center;gap:12px}
+  .callbar .ic{width:38px;height:38px;border-radius:50%;background:rgba(255,122,122,.2);display:grid;place-items:center;font-size:18px}
+  .callbar .t b{font-size:14px}.callbar .t span{display:block;font-size:11.5px;color:var(--muted)}
+  .callbar .tm{margin-left:auto;font-size:11px;color:var(--muted);text-align:right}
+  .hdr{display:flex;align-items:center;gap:11px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.07);background:#1b0712}
+  .hdr .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pink2),var(--pink));color:#1b0712;display:grid;place-items:center;font-weight:800;font-size:15px}
+  .hdr .nm b{font-size:14.5px;font-weight:700}.hdr .nm span{display:block;font-size:11px;color:var(--pink)}
+  .hdr .lock{margin-left:auto;font-size:10px;color:var(--muted)}
+  .chat{padding:18px 14px 8px;display:flex;flex-direction:column;gap:9px;min-height:430px;background:linear-gradient(180deg,#1b0712,#13050d)}
+  .tstamp{text-align:center;font-size:10.5px;color:var(--muted);margin:2px 0 6px}
+  .b{max-width:80%;padding:11px 14px;border-radius:18px;font-size:14px;line-height:1.4;opacity:0;transform:translateY(8px) scale(.97);animation:pop .4s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes pop{to{opacity:1;transform:none}}
+  .ai{align-self:flex-start;background:#3a1428;border:1px solid var(--cardb);border-bottom-left-radius:6px}
+  .cust{align-self:flex-end;background:linear-gradient(135deg,var(--pink),#d83f80);color:#2a0518;border-bottom-right-radius:6px;font-weight:600}
+  .typing{align-self:flex-start;background:#3a1428;border:1px solid var(--cardb);border-radius:18px;border-bottom-left-radius:6px;padding:13px 16px;display:flex;gap:4px;opacity:0;animation:pop .3s forwards}
+  .typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bo 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes bo{50%{transform:translateY(-4px);opacity:.4}}
+  .booked{align-self:stretch;margin:6px 2px 2px;background:linear-gradient(180deg,rgba(255,95,162,.16),rgba(255,95,162,.04));border:1px solid var(--pink);border-radius:16px;padding:15px 16px;opacity:0;transform:translateY(8px);animation:pop .5s forwards}
+  .booked .bt{display:flex;align-items:center;gap:8px;font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;color:var(--pink2)}
+  .booked .br{display:flex;justify-content:space-between;font-size:13px;margin-top:9px;color:var(--cream)}.booked .br span{color:var(--muted)}
+  .booked .note{font-size:11.5px;color:var(--muted);margin-top:10px;border-top:1px solid var(--cardb);padding-top:9px}
+  .cta{text-align:center;margin-top:18px;max-width:390px}
+  .cta b{font-family:"Bricolage Grotesque";font-weight:800;font-size:17px;color:var(--cream)}
+  .cta p{color:var(--muted);font-size:13px;margin-top:5px;line-height:1.5}
+  .replay{margin-top:14px;background:rgba(255,95,162,.12);border:1px solid var(--pink);color:var(--pink2);font-weight:700;font-size:13px;padding:10px 20px;border-radius:11px;cursor:pointer;font-family:"Public Sans"}
+</style>
+</head>
+<body>
+  <div class="cap"><div class="wm">Nigel's <span style="color:var(--muted)">×</span> Never<b>Miss</b> 💗</div><p>The call you'd have lost — Friday, 8:41 PM rush</p></div>
+  <div class="phone">
+    <div class="notch"><span></span></div>
+    <div class="callbar">
+      <div class="ic">📞</div>
+      <div class="t"><b>Missed call</b><span>Friday rush · floor slammed, bar three-deep</span></div>
+      <div class="tm">Fri<br>8:41 PM</div>
+    </div>
+    <div class="hdr">
+      <div class="av">N</div>
+      <div class="nm"><b>Nigel's</b><span>● answering for you</span></div>
+      <div class="lock">🔒 auto</div>
+    </div>
+    <div class="chat" id="chat"><div class="tstamp">Fri · 8:41 PM · 11 seconds after the missed call</div></div>
+  </div>
+  <div class="cta">
+    <b>That birthday party rang in mid-rush — and didn't hit voicemail.</b>
+    <p>Every table full, nobody free to grab the phone. NeverMiss answered as Nigel's and booked a ~$1,200 cabana party — and flagged your events team.</p>
+    <button class="replay" id="replay">↺ Replay</button>
+  </div>
+<script>
+  const chat=document.getElementById('chat');
+  const script=[
+    {t:'ai',m:"Hi! This is Nigel's 💗 Sorry we missed you — we're slammed tonight, but I can still help! What are you looking for?"},
+    {t:'cust',m:"do you have a cabana saturday night? it's my best friend's birthday, 8 of us 🎉"},
+    {t:'ai',m:"Ooh yes 💗 Our pink cabanas are made for a birthday — right on the water, seat up to 8. Saturday I've got 7:30 PM open. Want me to hold it?"},
+    {t:'cust',m:"yes please!!"},
+    {t:'ai',m:"Holding it now 🍾 Cabanas have a group food & drink minimum — I'll note your party and our events team will text you to lock in the details. Want a bottle of champagne ready when you arrive?"},
+    {t:'cust',m:"omg yes she'll love that"},
+    {t:'ai',m:"Perfect — Saturday 7:30 PM, pink cabana for 8, champagne on arrival. Our team will reach out to finalize. Can't wait to celebrate with you! 💗"},
+    {t:'booked'}
+  ];
+  function bubble(item){
+    if(item.t==='booked'){const d=document.createElement('div');d.className='booked';
+      d.innerHTML=`<div class="bt">💗 Reservation booked + event flagged</div>
+        <div class="br"><span>Table</span>Pink cabana for 8 + champagne</div>
+        <div class="br"><span>When</span>Saturday · 7:30 PM</div>
+        <div class="br"><span>Est. party value</span><b style="color:var(--pink2)">~$1,200</b></div>
+        <div class="note">💗 Captured 8:41 PM mid-rush · events team auto-notified to confirm the minimum</div>`;
+      chat.appendChild(d);return;}
+    const d=document.createElement('div');d.className='b '+item.t;d.textContent=item.m;chat.appendChild(d);
+  }
+  function typing(){const d=document.createElement('div');d.className='typing';d.innerHTML='<i></i><i></i><i></i>';chat.appendChild(d);return d;}
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  async function run(){
+    const base=chat.querySelector('.tstamp');chat.innerHTML='';chat.appendChild(base);
+    for(const item of script){
+      if(item.t==='ai'){const tp=typing();await wait(900);tp.remove();}else await wait(550);
+      bubble(item);chat.scrollTop=chat.scrollHeight;
+      await wait(item.t==='cust'?700:item.t==='booked'?400:1000);
+    }
+  }
+  document.getElementById('replay').addEventListener('click',run);
+  setTimeout(run,500);
+</script>
+</body>
+</html>
