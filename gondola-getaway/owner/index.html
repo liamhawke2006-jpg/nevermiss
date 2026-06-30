@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Gondola Getaway — Owner controls</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0E1513;--card:#16201c;--card2:#1b2723;--sig:#2BC48E;--amber:#EF9F27;--brick:#BD4A3D;--muted:#8C9A93;--line:rgba(255,255,255,.1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Public Sans",system-ui,sans-serif;background:#0a0f0d;color:#fff;min-height:100vh;padding:28px 16px 60px}
+  .wrap{max-width:880px;margin:0 auto}
+  .head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+  .head h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:25px}.head h1 b{color:var(--sig)}
+  .head .who{font-family:"Space Mono";font-size:12px;color:var(--muted)}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .saved{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--sig);font-family:"Space Mono"}
+  .saved .d{width:7px;height:7px;border-radius:50%;background:var(--sig)}
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+  .strip .s{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px}
+  .strip .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px}
+  .strip .n.g{color:var(--sig)}.strip .n.a{color:var(--amber)}
+  .strip .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-family:"Space Mono";margin-top:3px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px}
+  .card > .ct{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;margin-bottom:4px}
+  .card > .cs{font-size:13px;color:var(--muted);margin-bottom:18px}
+  .rw{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+  .rw:first-of-type{border-top:none}
+  .rw .ic{font-size:20px;width:26px;text-align:center}
+  .rw .tx{flex:1}.rw .tx b{font-weight:700;font-size:15px}.rw .tx span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .amt{display:flex;align-items:center;gap:4px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-family:"Space Mono";font-size:14px;color:#fff;white-space:nowrap}
+  .amt .c{color:var(--sig)}
+  .rw.off .amt{opacity:.35}
+  .rw.off .ic,.rw.off .tx b{opacity:.45}
+  .tog{width:46px;height:27px;border-radius:20px;background:#36433d;position:relative;cursor:pointer;flex-shrink:0;transition:background .15s}
+  .tog .k{position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:left .15s}
+  .tog.on{background:var(--sig)}.tog.on .k{left:22px}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;font-family:"Space Mono";font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:0 0 10px;font-weight:700}
+  th.r,td.r{text-align:right}
+  td{padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
+  td .nm{font-weight:700}td .sm{color:var(--muted);font-size:12.5px}
+  td .pay{font-family:"Space Mono";font-weight:700;color:var(--sig)}
+  .totrow td{border-top:2px solid var(--line);font-weight:800;font-family:"Bricolage Grotesque"}
+  .totrow .pay{font-size:18px}
+  .approve{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:18px}
+  .approve .note{font-size:12.5px;color:var(--muted);max-width:330px}
+  .btn{background:var(--sig);color:#06140f;font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;border:none;border-radius:11px;padding:13px 22px;cursor:pointer}
+  .foot{text-align:center;color:var(--muted);font-size:12.5px;margin-top:24px}
+  .foot b{color:#fff}
+  @media(max-width:560px){.strip{grid-template-columns:1fr;gap:10px}.strip .s{display:flex;align-items:baseline;gap:10px}.strip .l{margin-top:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>Gondola <b>Getaway</b> · Crew controls</h1>
+    <div class="who">Mike · owner · <span class="saved"><span class="d"></span>all changes saved</span></div>
+  </div>
+  <div class="sub">NeverMiss tracks every ride, grab, and add-on automatically. You just decide the rewards — and approve the payout.</div>
+
+  <div class="strip">
+    <div class="s"><div class="n g">42</div><div class="l">Rides staffed this week</div></div>
+    <div class="s"><div class="n">38s</div><div class="l">Avg time to grab</div></div>
+    <div class="s"><div class="n a">$620</div><div class="l">Bonuses queued</div></div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Rewards engine</div>
+    <div class="cs">Flip a reward on or off, set the amount. Changes apply to the next ride instantly.</div>
+
+    <div class="rw on" data-r>
+      <div class="ic">🏆</div>
+      <div class="tx"><b>Top-performer bonus</b><span>Weekly cash to your #1 by trips taken</span></div>
+      <div class="amt"><span class="c">$</span>150 / wk</div>
+      <div class="tog on" data-tog></div>
+    </div>
+
+    <div class="rw on" data-r>
+      <div class="ic">⚡</div>
+      <div class="tx"><b>Speed bonus</b><span>Fastest gondolier to GRAB each ride</span></div>
+      <div class="amt"><span class="c">$</span>25</div>
+      <div class="tog on" data-tog></div>
+    </div>
+
+    <div class="rw on" data-r>
+      <div class="ic">✨</div>
+      <div class="tx"><b>Upsell spiff</b><span>Per add-on sold — champagne, photos, music</span></div>
+      <div class="amt"><span class="c">$</span>10 / add-on</div>
+      <div class="tog on" data-tog></div>
+    </div>
+
+    <div class="rw on" data-r>
+      <div class="ic">⭐</div>
+      <div class="tx"><b>5-star bonus</b><span>Each review that names the gondolier</span></div>
+      <div class="amt"><span class="c">$</span>20</div>
+      <div class="tog on" data-tog></div>
+    </div>
+
+    <div class="rw off" data-r>
+      <div class="ic">🔥</div>
+      <div class="tx"><b>Volume / streak bonus</b><span>Hit 20 trips in a week</span></div>
+      <div class="amt"><span class="c">$</span>100</div>
+      <div class="tog" data-tog></div>
+    </div>
+
+    <div class="rw on" data-r>
+      <div class="ic">🎖️</div>
+      <div class="tx"><b>Gondolier of the Month</b><span>Prime weekend slots + recognition</span></div>
+      <div class="amt">Perk</div>
+      <div class="tog on" data-tog></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">This week's payout sheet</div>
+    <div class="cs">Auto-tallied from the board. Review, then approve — NeverMiss never moves money without you.</div>
+    <table>
+      <thead><tr><th>Gondolier</th><th>Earned from</th><th class="r">Payout</th></tr></thead>
+      <tbody>
+        <tr><td><div class="nm">Sofia</div></td><td><div class="sm">Top performer · 4 add-ons · 2 five-stars</div></td><td class="r"><span class="pay">$230</span></td></tr>
+        <tr><td><div class="nm">Marco</div></td><td><div class="sm">Speed bonus ×3 · 5 add-ons · 1 five-star</div></td><td class="r"><span class="pay">$145</span></td></tr>
+        <tr><td><div class="nm">Luca</div></td><td><div class="sm">3 add-ons · 1 five-star</div></td><td class="r"><span class="pay">$50</span></td></tr>
+        <tr class="totrow"><td>Total</td><td></td><td class="r"><span class="pay">$425</span></td></tr>
+      </tbody>
+    </table>
+    <div class="approve">
+      <div class="note">You'll get a one-tap summary like this every Sunday. Approve and each gondolier gets a "🏆 you earned $X" text.</div>
+      <button class="btn" id="ap">Approve &amp; notify crew →</button>
+    </div>
+  </div>
+
+  <div class="foot">Set it once, approve weekly. <b>Two taps a week</b> and your crew runs itself.</div>
+</div>
+<script>
+  document.querySelectorAll('[data-tog]').forEach(t=>{
+    t.addEventListener('click',()=>{
+      t.classList.toggle('on');
+      t.closest('[data-r]').classList.toggle('off',!t.classList.contains('on'));
+      t.closest('[data-r]').classList.toggle('on',t.classList.contains('on'));
+    });
+  });
+  document.getElementById('ap').addEventListener('click',function(){
+    this.textContent='✓ Approved — crew notified';
+    this.style.background='#1b2723';this.style.color='#2BC48E';this.style.border='1px solid #2BC48E';
+  });
+</script>
+</body>
+</html>
