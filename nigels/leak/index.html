@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Nigel's — what you're leaking</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1b0712;--card:rgba(255,255,255,.055);--cardb:rgba(255,200,225,.16);--pink:#FF5FA2;--pink2:#FF8AC0;--gold:#F4D58D;--loss:#FF7A7A;--loss2:#FFAEAE;--cream:#FBEAF1;--muted:#B98AA0}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;padding:30px 16px 60px;line-height:1.5;background:radial-gradient(120% 80% at 50% -5%,#5e1844 0%,#330e24 45%,#170610 100%);overflow-x:hidden}
+  .wrap{max-width:680px;margin:0 auto}
+  .anim{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}@keyframes rise{to{opacity:1;transform:none}}
+  .cap{text-align:center;margin-bottom:22px}
+  .cap .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:20px}.cap .wm b{color:var(--pink)}
+  .cap p{color:var(--muted);font-size:13px;margin-top:5px}
+  h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(26px,5vw,38px);line-height:1.05;text-align:center;margin-bottom:8px}
+  h1 .hl{color:var(--loss)}
+  .lede{text-align:center;color:var(--muted);font-size:15px;margin-bottom:26px}
+  .leak{background:linear-gradient(180deg,rgba(255,122,122,.13),rgba(255,122,122,.02));border:1px solid rgba(255,122,122,.4);border-radius:22px;padding:26px 22px;text-align:center;margin-bottom:18px}
+  .leak .l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--loss2);font-weight:700}
+  .leak .big{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(50px,13vw,82px);line-height:1;color:var(--loss);margin:6px 0 2px}
+  .leak .per{font-size:14px;color:var(--muted)}
+  .leak .sub{margin-top:14px;display:flex;justify-content:center;gap:26px;flex-wrap:wrap}
+  .leak .sub .x .v{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;color:var(--cream)}
+  .leak .sub .x .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:2px;font-weight:600}
+  .card{background:var(--card);border:1px solid var(--cardb);border-radius:18px;padding:22px;backdrop-filter:blur(6px);margin-bottom:18px}
+  .card .ct{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px;margin-bottom:3px}
+  .card .cs{font-size:12.5px;color:var(--muted);margin-bottom:20px}
+  .sld{margin-bottom:22px}.sld:last-child{margin-bottom:4px}
+  .sld .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px}
+  .sld .row .lab{font-size:14px;font-weight:600}
+  .sld .row .val{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;color:var(--pink2)}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:7px;border-radius:6px;background:linear-gradient(90deg,var(--pink) 0%,var(--pink) var(--p,50%),rgba(255,255,255,.1) var(--p,50%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--pink2);border:3px solid #1b0712;box-shadow:0 0 0 1px var(--pink),0 4px 14px rgba(255,95,162,.5);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--pink2);border:3px solid #1b0712;cursor:pointer}
+  .scale{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:7px}
+  .verdict{background:linear-gradient(180deg,rgba(255,95,162,.16),rgba(255,95,162,.03));border:1px solid rgba(255,95,162,.45);border-radius:18px;padding:22px;text-align:center}
+  .verdict .vt{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(19px,3.4vw,24px);line-height:1.25}
+  .verdict .vt b{color:var(--pink2)}.verdict .vt .c{color:var(--loss)}
+  .verdict .row2{display:flex;justify-content:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+  .pill{background:rgba(255,255,255,.05);border:1px solid var(--cardb);border-radius:13px;padding:13px 18px;min-width:135px}
+  .pill .v{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px}.pill.a .v{color:var(--pink2)}.pill.c .v{color:var(--loss)}
+  .pill .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:3px;font-weight:600}
+  .verdict .net{margin-top:18px;font-size:14px;color:var(--cream)}.verdict .net b{color:var(--pink2);font-size:17px;font-family:"Bricolage Grotesque";font-weight:800}
+  .foot{text-align:center;color:var(--muted);font-size:11.5px;margin-top:22px}.foot b{color:var(--cream)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cap anim"><div class="wm">Nigel's <span style="color:var(--muted)">×</span> Never<b>Miss</b> 💗</div><p>The Pink Palace on the water · built for Nigel</p></div>
+  <h1 class="anim" style="animation-delay:.06s">Every missed call is a table that <span class="hl">never sat.</span></h1>
+  <p class="lede anim" style="animation-delay:.1s">12,500 guests month one. Slide your real numbers — see what rings out when the floor's slammed.</p>
+
+  <div class="leak anim" style="animation-delay:.14s">
+    <div class="l">Leaking every month</div>
+    <div class="big" id="big">$0</div>
+    <div class="per">in reservations & cabana parties that call, hit voicemail during the rush, and book somewhere else</div>
+    <div class="sub">
+      <div class="x"><div class="v" id="annual">$0</div><div class="k">per year</div></div>
+      <div class="x"><div class="v" id="lostbk">0</div><div class="k">tables / mo lost</div></div>
+    </div>
+  </div>
+
+  <div class="card anim" style="animation-delay:.18s">
+    <div class="ct">Your numbers</div>
+    <div class="cs">When every booth is full and the bar's three-deep, the phone wins last. A waterfront hotspot misses a lot of calls — be conservative.</div>
+    <div class="sld">
+      <div class="row"><span class="lab">Reservation calls you miss / week</span><span class="val" id="vCalls">8</span></div>
+      <input type="range" id="calls" min="2" max="30" value="8">
+      <div class="scale"><span>2</span><span>peak nights & brunch rush</span><span>30</span></div>
+    </div>
+    <div class="sld">
+      <div class="row"><span class="lab">Average value of a booked table</span><span class="val" id="vTicket">$160</span></div>
+      <input type="range" id="ticket" min="60" max="400" step="10" value="160">
+      <div class="scale"><span>$60 couple</span><span>a party of 4</span><span>$400 big table</span></div>
+    </div>
+    <div class="sld">
+      <div class="row"><span class="lab">Cabana / large-party / events missed / mo</span><span class="val" id="vEvents">2</span></div>
+      <input type="range" id="events" min="0" max="12" value="2">
+      <div class="scale"><span>0</span><span>cabanas · birthdays · events ($1,500 ea)</span><span>12</span></div>
+    </div>
+  </div>
+
+  <div class="verdict anim" style="animation-delay:.22s">
+    <div class="vt" id="verdict">NeverMiss pays for itself the moment it saves <b>4 tables a month.</b></div>
+    <div class="row2">
+      <div class="pill c"><div class="v" id="pLeak">$0</div><div class="k">Leaking / mo</div></div>
+      <div class="pill a"><div class="v">$597</div><div class="k">NeverMiss / mo</div></div>
+    </div>
+    <div class="net">Net back in your pocket: <b id="net">$0 / mo</b></div>
+  </div>
+
+  <div class="foot anim" style="animation-delay:.26s">Conservative model · your real numbers, your call. <b>NeverMiss</b> · Long Beach</div>
+</div>
+<script>
+  const calls=document.getElementById('calls'),ticket=document.getElementById('ticket'),events=document.getElementById('events');
+  const WEEKS=4.3, EVENT_VAL=1500, COST=597;
+  const fmt=n=>'$'+Math.round(n).toLocaleString();
+  function setFill(el){const p=((el.value-el.min)/(el.max-el.min))*100;el.style.setProperty('--p',p+'%');}
+  let cur=0;
+  function animTo(el,target){const from=cur,t0=performance.now(),dur=500;(function s(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent='$'+Math.round(from+(target-from)*e).toLocaleString();if(p<1)requestAnimationFrame(s);else cur=target;})(t0);}
+  function calc(){
+    const c=+calls.value,tk=+ticket.value,ev=+events.value;
+    document.getElementById('vCalls').textContent=c;document.getElementById('vTicket').textContent='$'+tk;document.getElementById('vEvents').textContent=ev;
+    [calls,ticket,events].forEach(setFill);
+    const monthly=c*tk*WEEKS+ev*EVENT_VAL, annual=monthly*12, bk=Math.round(c*WEEKS)+ev, payoff=Math.max(1,Math.ceil(COST/tk)), net=monthly-COST;
+    animTo(document.getElementById('big'),monthly);
+    document.getElementById('annual').textContent=fmt(annual);
+    document.getElementById('lostbk').textContent=bk;
+    document.getElementById('pLeak').textContent=fmt(monthly);
+    document.getElementById('net').textContent=(net>=0?'+':'')+fmt(net)+' / mo';
+    const vd=document.getElementById('verdict');
+    if(monthly>COST)vd.innerHTML=`NeverMiss pays for itself at <b>${payoff} table${payoff>1?'s':''} a month.</b> You're losing <span class="c">${bk}.</span>`;
+    else vd.innerHTML=`NeverMiss pays for itself the moment it saves <b>${payoff} table${payoff>1?'s':''} a month.</b>`;
+  }
+  [calls,ticket,events].forEach(el=>el.addEventListener('input',calc));
+  setTimeout(calc,300);
+</script>
+</body>
+</html>
