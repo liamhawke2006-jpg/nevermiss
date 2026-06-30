@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>NeverMiss — New Client Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0E1513;--pine:#0E7A60;--sig:#2BC48E;--paper:#FBF8F1;--muted:#59615C;--line:#E2DCCE}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Public Sans",sans-serif;background:#EDE9DD;color:var(--ink);line-height:1.5;padding:28px 16px 80px}
+  .wrap{max-width:680px;margin:0 auto}
+  .head{background:var(--ink);color:#fff;border-radius:18px 18px 0 0;padding:26px 30px}
+  .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px}.wm b{color:var(--sig)}
+  .head h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:26px;margin:12px 0 5px}
+  .head p{color:#CBD3CE;font-size:14.5px}
+  form{background:var(--paper);border:1px solid var(--line);border-top:none;border-radius:0 0 18px 18px;padding:26px 30px 30px}
+  .sec{margin-bottom:26px}
+  .sec h2{font-family:"Bricolage Grotesque";font-weight:700;font-size:17px;color:var(--pine);margin-bottom:14px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  label{display:block;font-size:14px;font-weight:600;margin:14px 0 5px}
+  label .hint{font-weight:400;color:var(--muted);font-size:12.5px}
+  input[type=text],input[type=tel],input[type=email],textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  textarea{min-height:74px;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--sig);box-shadow:0 0 0 3px rgba(43,196,142,.18)}
+  .radios{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .radios label{display:flex;gap:9px;align-items:flex-start;font-weight:400;margin:0;font-size:14px;cursor:pointer}
+  .radios input{margin-top:3px}
+  .btn{width:100%;background:var(--sig);color:#06140f;font-weight:700;font-size:17px;border:none;border-radius:12px;padding:15px;cursor:pointer;margin-top:8px}
+  .btn:hover{filter:brightness(1.05)}
+  .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);margin-top:10px}
+  #result{display:none;background:#fff;border:1px solid var(--sig);border-radius:14px;padding:20px;margin-top:18px}
+  #result h3{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;color:var(--pine);margin-bottom:10px}
+  #summary{white-space:pre-wrap;font-family:"Space Mono",monospace;font-size:12.5px;background:#F4F1E8;border:1px solid var(--line);border-radius:10px;padding:14px;max-height:280px;overflow:auto;margin-bottom:12px}
+  .foot{text-align:center;font-size:12.5px;color:var(--muted);margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="wm">Never<b>Miss</b></div>
+    <h1>Let's build your AI receptionist</h1>
+    <p>A few quick questions so we set it up exactly right — answer what you can; we'll confirm the rest.</p>
+  </div>
+  <form id="f">
+    <div class="sec">
+      <h2>1 · The basics</h2>
+      <label>Business name</label><input type="text" id="biz" placeholder="e.g. Gondola Getaway" />
+      <label>Owner / main contact</label><input type="text" id="contact" placeholder="Name" />
+      <label>Main phone to forward to NeverMiss</label><input type="tel" id="phone" placeholder="(562) 555-0123" />
+      <label>Address / service area</label><input type="text" id="area" placeholder="City, neighborhood" />
+      <label>Hours</label><input type="text" id="hours" placeholder="e.g. Mon–Fri 9–9, Sat–Sun 10–9" />
+      <label>Best cell for VIP / urgent alerts</label><input type="tel" id="cell" placeholder="(562) 555-0123" />
+    </div>
+
+    <div class="sec">
+      <h2>2 · What it should book</h2>
+      <label>Services / experiences it can book <span class="hint">— one per line</span></label><textarea id="services" placeholder="e.g.&#10;Traditional gondola cruise (up to 6)&#10;Carolina cruise (up to 14)"></textarea>
+      <label>What should it capture for each booking?</label><input type="text" id="capture" placeholder="date, time, # of guests, occasion, name, phone" />
+      <label>Minimum lead time / latest same-day booking?</label><input type="text" id="lead" placeholder="e.g. 2 hours notice" />
+      <label>Busy seasons, blackout dates, or anything it should NOT book?</label><textarea id="blackout" placeholder="When to stop taking bookings, or what to just take a message for"></textarea>
+    </div>
+
+    <div class="sec">
+      <h2>3 · Pricing &amp; perks</h2>
+      <label>Prices / ranges it can mention</label><textarea id="pricing" placeholder="e.g. Traditional ~$120, Carolina higher — or 'team confirms at booking'"></textarea>
+      <label>Deposit / payment policy</label><input type="text" id="deposit" placeholder="Collect a deposit, or just reserve?" />
+      <label>Perks &amp; current specials to mention</label><input type="text" id="perks" placeholder="free photo, BYOB, 50% off first time, etc." />
+    </div>
+
+    <div class="sec">
+      <h2>4 · Booking hand-off</h2>
+      <label>How should it pass a new booking to you?</label>
+      <div class="radios">
+        <label><input type="radio" name="handoff" value="Gathers details + texts/emails them to us to enter" /> Gather details + text/email them to us</label>
+        <label><input type="radio" name="handoff" value="Books a tentative hold; we confirm in our system" /> Book a tentative hold; we confirm</label>
+        <label><input type="radio" name="handoff" value="Direct integration with our booking tool (when available)" /> Direct integration with our booking tool</label>
+      </div>
+      <label>Who receives the new-booking hand-off? <span class="hint">(phone / email)</span></label><input type="text" id="handoffto" placeholder="Where bookings should land" />
+      <label>Calendar / system it should check for availability (if any)</label><input type="text" id="calendar" placeholder="e.g. Google Calendar, or none" />
+    </div>
+
+    <div class="sec">
+      <h2>5 · Occasions &amp; the VIP touch</h2>
+      <label>Special occasions to flag to you <span class="hint">(proposals, anniversaries, big groups)</span></label><input type="text" id="vip" placeholder="What to flag + any special script" />
+      <label>Group / large / corporate inquiries — handle directly or route to you?</label><input type="text" id="groups" placeholder="Your preference" />
+    </div>
+
+    <div class="sec">
+      <h2>6 · Voice &amp; rules</h2>
+      <label>Tone / personality</label><input type="text" id="tone" placeholder="e.g. warm + a little romantic; friendly + professional" />
+      <label>A greeting line you'd love</label><input type="text" id="greeting" placeholder="&quot;Thanks for calling [Business], this is ___…&quot;" />
+      <label>Anything it should NEVER say or promise? Key policies?</label><textarea id="never" placeholder="weather/refunds, age rules, pets, parking, etc."></textarea>
+      <label>An emergency / urgent issue → who does it route to?</label><input type="text" id="emergency" placeholder="Owner cell, or…" />
+    </div>
+
+    <div class="sec">
+      <h2>7 · After the call</h2>
+      <label>OK to send confirmation + reminder texts?</label><input type="text" id="reminders" placeholder="Yes / No / details" />
+      <label>OK to auto-request a Google review? <span class="hint">(paste your review link)</span></label><input type="text" id="review" placeholder="Review link" />
+      <label>OK to reactivate past customers (&quot;ready to come back?&quot;)? From what list?</label><input type="text" id="reactivate" placeholder="Yes / No + where the list lives" />
+    </div>
+
+    <div class="sec">
+      <h2>8 · Logistics</h2>
+      <label>Plan</label>
+      <select id="plan"><option value="">Choose…</option><option>Core — $1,500 setup + $597/mo</option><option>Plus — $997/mo (adds reactivation + reviews)</option><option>Pro — $1,997/mo</option><option>Not sure yet</option></select>
+      <label>Target go-live date</label><input type="text" id="golive" placeholder="e.g. this week" />
+      <label>Anything else we should know?</label><textarea id="notes" placeholder="Anything at all"></textarea>
+    </div>
+
+    <button type="button" class="btn" id="go">Submit &amp; email to Liam →</button>
+    <button type="button" class="btn ghost" id="copy">Copy answers instead</button>
+
+    <div id="result">
+      <h3>✓ Here are your answers</h3>
+      <div id="summary"></div>
+      <a class="btn" id="mail" href="#">📧 Email to Liam</a>
+      <button type="button" class="btn ghost" id="copy2">Copy to clipboard</button>
+    </div>
+  </form>
+  <div class="foot">NeverMiss · Long Beach · nevermissai.net</div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  if(p.get('biz')) document.getElementById('biz').value=p.get('biz');
+  var Q=[
+    ['biz','Business'],['contact','Contact'],['phone','Phone to forward'],['area','Address/area'],['hours','Hours'],['cell','Alert cell'],
+    ['services','Services to book'],['capture','Capture per booking'],['lead','Lead time'],['blackout','Blackout / don’t book'],
+    ['pricing','Pricing'],['deposit','Deposit/payment'],['perks','Perks/specials'],
+    ['__handoff','Booking hand-off'],['handoffto','Hand-off to'],['calendar','Calendar'],
+    ['vip','VIP occasions'],['groups','Groups'],
+    ['tone','Tone'],['greeting','Greeting'],['never','Never say / policies'],['emergency','Emergency routing'],
+    ['reminders','Confirmations/reminders'],['review','Reviews + link'],['reactivate','Reactivation'],
+    ['plan','Plan'],['golive','Go-live'],['notes','Notes']
+  ];
+  function val(id){
+    if(id==='__handoff'){var r=document.querySelector('input[name=handoff]:checked');return r?r.value:'';}
+    var el=document.getElementById(id);return el?el.value.trim():'';
+  }
+  function build(){
+    var biz=val('biz')||'New client';
+    var lines=['NeverMiss onboarding — '+biz,''];
+    Q.forEach(function(q){var v=val(q[0]);if(v)lines.push(q[1]+': '+v);});
+    return lines.join('\n');
+  }
+  function show(){
+    var t=build();
+    document.getElementById('summary').textContent=t;
+    var subj=encodeURIComponent('NeverMiss onboarding — '+(val('biz')||'new client'));
+    document.getElementById('mail').href='mailto:Liamhawke2006@gmail.com?subject='+subj+'&body='+encodeURIComponent(t);
+    document.getElementById('result').style.display='block';
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+  }
+  function copy(){var t=build();navigator.clipboard&&navigator.clipboard.writeText(t);show();}
+  document.getElementById('go').onclick=function(){show();window.location.href=document.getElementById('mail').href;};
+  document.getElementById('copy').onclick=copy;
+  document.getElementById('copy2').onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(build());this.textContent='Copied ✓';};
+})();
+</script>
+</body>
+</html>
