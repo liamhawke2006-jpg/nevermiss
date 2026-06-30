@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Gondola Getaway — Gondolier view</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0E1513;--slate:#16201c;--card:#1b2723;--sig:#2BC48E;--amber:#EF9F27;--brick:#BD4A3D;--muted:#8C9A93;--line:rgba(255,255,255,.1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Public Sans",system-ui,sans-serif;background:#0a0f0d;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:30px 16px 50px}
+  .cap{text-align:center;margin-bottom:20px}
+  .cap .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px}.cap .wm b{color:var(--sig)}
+  .cap p{color:var(--muted);font-size:14px;margin-top:6px}
+  .phone{width:100%;max-width:392px;background:var(--ink);border:9px solid #000;border-radius:42px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
+  .notch{height:30px;display:flex;justify-content:center;align-items:flex-start}
+  .notch span{width:120px;height:22px;background:#000;border-radius:0 0 16px 16px}
+  .scr{padding:8px 16px 24px}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 16px}
+  .top .b{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px}.top .b b{color:var(--sig)}
+  .me{display:flex;align-items:center;gap:8px;font-size:13px}
+  .me .av{width:30px;height:30px;border-radius:50%;background:var(--sig);color:#06140f;display:grid;place-items:center;font-weight:800;font-size:13px}
+  .offer{background:linear-gradient(180deg,rgba(43,196,142,.16),rgba(43,196,142,.05));border:1px solid var(--sig);border-radius:18px;padding:18px;margin-bottom:16px}
+  .offer .tag{font-family:"Space Mono";font-size:11px;letter-spacing:.1em;color:var(--sig);display:flex;align-items:center;gap:7px}
+  .offer .dot{width:8px;height:8px;border-radius:50%;background:var(--sig);animation:bl 1.3s infinite}@keyframes bl{50%{opacity:.3}}
+  .offer h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:21px;margin:9px 0 3px}
+  .offer .d{font-size:14px;color:#CBD3CE}
+  .offer .pay{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;color:#fff;margin-top:8px}
+  .grab{width:100%;background:var(--sig);color:#06140f;font-weight:800;font-size:18px;border:none;border-radius:13px;padding:14px;margin-top:13px;font-family:"Bricolage Grotesque"}
+  .grab .s{display:block;font-family:"Public Sans";font-weight:600;font-size:11px;color:#0a3b30;margin-top:2px}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px;text-align:center}
+  .tile .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:23px}
+  .tile .n.g{color:var(--sig)}.tile .n.a{color:var(--amber)}
+  .tile .l{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-family:"Space Mono";margin-top:3px}
+  .sec{font-family:"Space Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:4px 2px 9px}
+  .lb{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px}
+  .lb .r{display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--line);font-size:14px}
+  .lb .r:last-child{border-bottom:none}
+  .lb .r.you{background:rgba(43,196,142,.08)}
+  .lb .r .rk{font-family:"Bricolage Grotesque";font-weight:800;width:22px;color:var(--muted)}
+  .lb .r.you .rk{color:var(--sig)}
+  .lb .r .nm{flex:1;font-weight:600}.lb .r .nm small{color:var(--muted);font-weight:400}
+  .lb .r .tr{font-family:"Space Mono";font-size:13px;color:#CBD3CE}
+  .bonus{background:rgba(239,159,39,.12);border:1px solid rgba(239,159,39,.4);border-radius:13px;padding:13px 15px;font-size:13.5px;color:#fff;line-height:1.4}
+  .bonus b{color:var(--amber)}
+</style>
+</head>
+<body>
+  <div class="cap">
+    <div class="wm">Never<b>Miss</b> · Gondolier view</div>
+    <p>What every gondolier sees on their phone — sample</p>
+  </div>
+  <div class="phone">
+    <div class="notch"><span></span></div>
+    <div class="scr">
+      <div class="top">
+        <div class="b">Gondola <b>Getaway</b></div>
+        <div class="me"><span>Marco</span><span class="av">M</span></div>
+      </div>
+
+      <div class="offer">
+        <div class="tag"><span class="dot"></span>NEW RIDE · FIRST TO GRAB WINS</div>
+        <h2>Sat · 6:30 PM</h2>
+        <div class="d">Carolina (14 guests) · +Champagne, +Photos</div>
+        <div class="pay">~$240 + tip</div>
+        <button class="grab">GRAB IT<span class="s">2 other gondoliers were notified</span></button>
+      </div>
+
+      <div class="tiles">
+        <div class="tile"><div class="n g">#2</div><div class="l">This week</div></div>
+        <div class="tile"><div class="n">14</div><div class="l">Trips</div></div>
+        <div class="tile"><div class="n a">$1,180</div><div class="l">Earned</div></div>
+      </div>
+
+      <div class="sec">This week's board</div>
+      <div class="lb">
+        <div class="r"><span class="rk">1</span><span class="nm">Sofia</span><span class="tr">17 trips</span></div>
+        <div class="r you"><span class="rk">2</span><span class="nm">Marco <small>(you)</small></span><span class="tr">14 trips</span></div>
+        <div class="r"><span class="rk">3</span><span class="nm">Luca</span><span class="tr">11 trips</span></div>
+      </div>
+
+      <div class="bonus">🏆 <b>2 more trips</b> to catch #1 and win this week's <b>$150 top-gondolier bonus</b> — plus $20 already earned in add-on spiffs.</div>
+    </div>
+  </div>
+</body>
+</html>
