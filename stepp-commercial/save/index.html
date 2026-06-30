@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Stepp Commercial — the 9pm valuation capture</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#101418;--azure:#4D9BE6;--azure2:#86C2F5;--loss:#F0926B;--cream:#E8EDF2;--muted:#8896A4;--cardb:rgba(120,180,240,.18)}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:30px 16px 56px;background:radial-gradient(120% 80% at 50% -5%,#1c2c3e 0%,#131a22 45%,#0c1014 100%);overflow-x:hidden}
+  .cap{text-align:center;margin-bottom:18px}
+  .cap .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:20px}.cap .wm b{color:var(--azure)}
+  .cap p{color:var(--muted);font-size:13px;margin-top:4px}
+  .phone{width:100%;max-width:392px;background:#0b0f13;border:9px solid #05080b;border-radius:46px;overflow:hidden;box-shadow:0 50px 110px -30px rgba(0,0,0,.92),0 0 0 1px rgba(77,155,230,.2)}
+  .notch{height:32px;display:flex;justify-content:center;align-items:flex-start;background:#0b0f13}
+  .notch span{width:120px;height:23px;background:#05080b;border-radius:0 0 17px 17px}
+  .callbar{background:linear-gradient(180deg,rgba(240,146,107,.16),rgba(240,146,107,.04));border-bottom:1px solid rgba(240,146,107,.3);padding:13px 18px;display:flex;align-items:center;gap:12px}
+  .callbar .ic{width:38px;height:38px;border-radius:50%;background:rgba(240,146,107,.2);display:grid;place-items:center;font-size:18px}
+  .callbar .t b{font-size:14px}.callbar .t span{display:block;font-size:11.5px;color:var(--muted)}
+  .callbar .tm{margin-left:auto;font-size:11px;color:var(--muted);text-align:right}
+  .hdr{display:flex;align-items:center;gap:11px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:#101418}
+  .hdr .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--azure2),var(--azure));color:#06121f;display:grid;place-items:center;font-weight:800;font-size:14px;font-family:"Bricolage Grotesque"}
+  .hdr .nm b{font-size:14px;font-weight:700}.hdr .nm span{display:block;font-size:11px;color:var(--azure)}
+  .hdr .lock{margin-left:auto;font-size:10px;color:var(--muted)}
+  .chat{padding:18px 14px 8px;display:flex;flex-direction:column;gap:9px;min-height:470px;background:linear-gradient(180deg,#101418,#0c1116)}
+  .tstamp{text-align:center;font-size:10.5px;color:var(--muted);margin:2px 0 6px}
+  .b{max-width:82%;padding:11px 14px;border-radius:18px;font-size:13.5px;line-height:1.42;opacity:0;transform:translateY(8px) scale(.97);animation:pop .4s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes pop{to{opacity:1;transform:none}}
+  .ai{align-self:flex-start;background:#1a2632;border:1px solid var(--cardb);border-bottom-left-radius:6px}
+  .cust{align-self:flex-end;background:linear-gradient(135deg,var(--azure),#3578bd);color:#04121f;border-bottom-right-radius:6px;font-weight:600}
+  .typing{align-self:flex-start;background:#1a2632;border:1px solid var(--cardb);border-radius:18px;border-bottom-left-radius:6px;padding:13px 16px;display:flex;gap:4px;opacity:0;animation:pop .3s forwards}
+  .typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bo 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes bo{50%{transform:translateY(-4px);opacity:.4}}
+  .booked{align-self:stretch;margin:6px 2px 2px;background:linear-gradient(180deg,rgba(77,155,230,.16),rgba(77,155,230,.04));border:1px solid var(--azure);border-radius:16px;padding:15px 16px;opacity:0;transform:translateY(8px);animation:pop .5s forwards}
+  .booked .bt{display:flex;align-items:center;gap:8px;font-family:"Bricolage Grotesque";font-weight:800;font-size:14.5px;color:var(--azure2)}
+  .booked .br{display:flex;justify-content:space-between;font-size:13px;margin-top:9px;color:var(--cream)}.booked .br span{color:var(--muted)}
+  .booked .note{font-size:11px;color:var(--muted);margin-top:10px;border-top:1px solid var(--cardb);padding-top:9px;line-height:1.5}
+  .cta{text-align:center;margin-top:18px;max-width:392px}
+  .cta b{font-family:"Bricolage Grotesque";font-weight:800;font-size:17px;color:var(--cream)}
+  .cta p{color:var(--muted);font-size:13px;margin-top:5px;line-height:1.55}
+  .replay{margin-top:14px;background:rgba(77,155,230,.12);border:1px solid var(--azure);color:var(--azure2);font-weight:700;font-size:13px;padding:10px 20px;border-radius:11px;cursor:pointer;font-family:"Public Sans"}
+</style>
+</head>
+<body>
+  <div class="cap"><div class="wm">Stepp Commercial <span style="color:var(--muted)">×</span> Never<b>Miss</b></div><p>The call you'd have lost — Wednesday, 8:52 PM</p></div>
+  <div class="phone">
+    <div class="notch"><span></span></div>
+    <div class="callbar">
+      <div class="ic">📞</div>
+      <div class="t"><b>Missed call</b><span>Office closed · an owner is shopping brokers</span></div>
+      <div class="tm">Wed<br>8:52 PM</div>
+    </div>
+    <div class="hdr">
+      <div class="av">SC</div>
+      <div class="nm"><b>Stepp Commercial</b><span>● answering for you</span></div>
+      <div class="lock">🔒 auto</div>
+    </div>
+    <div class="chat" id="chat"><div class="tstamp">Wed · 8:52 PM · 13 seconds after the missed call</div></div>
+  </div>
+  <div class="cta">
+    <b>An owner asking "what's it worth?" at 9pm — booked a valuation instead of voicemail.</b>
+    <p>Office closed. NeverMiss answered as Stepp, qualified the building &amp; intent, and booked a broker valuation — without quoting a single number.</p>
+    <button class="replay" id="replay">↺ Replay</button>
+  </div>
+<script>
+  const chat=document.getElementById('chat');
+  const script=[
+    {t:'ai',m:"Hi, this is Stepp Commercial — sorry we missed your call. Our office is closed, but I can still help. Are you looking to sell, buy, or explore a 1031 on an apartment building?"},
+    {t:'cust',m:"I own a 16-unit in Long Beach, just wondering what it's worth in this market"},
+    {t:'ai',m:"That's right in our wheelhouse — Stepp is the #1 multifamily team in Long Beach/South Bay. I can't put a number on it myself, but I can set up a complimentary, confidential valuation with one of our brokers. Quick detail: 16 units in Long Beach — thinking of selling soon, or just exploring?"},
+    {t:'cust',m:"just exploring, maybe sell in the next year"},
+    {t:'ai',m:"Perfect — no pressure at all. I'll have a broker prepare a market valuation with recent Long Beach comps. Would tomorrow at 11:00 AM or 2:00 PM work better?"},
+    {t:'cust',m:"11am works"},
+    {t:'ai',m:"Done — 11:00 AM tomorrow with one of our brokers for a confidential valuation on your 16-unit. They'll come prepared with comps. Thank you for calling Stepp Commercial."},
+    {t:'booked'}
+  ];
+  function bubble(item){
+    if(item.t==='booked'){const d=document.createElement('div');d.className='booked';
+      d.innerHTML=`<div class="bt">🏢 Valuation booked with a broker</div>
+        <div class="br"><span>Building</span>16-unit · Long Beach</div>
+        <div class="br"><span>Owner</span>Exploring a sale (~12 mo)</div>
+        <div class="br"><span>Consult</span><b style="color:var(--azure2)">Tomorrow · 11:00 AM</b></div>
+        <div class="note">🏢 Captured 8:52 PM after hours · building &amp; intent qualified · no valuation quoted — routed to a licensed broker</div>`;
+      chat.appendChild(d);return;}
+    const d=document.createElement('div');d.className='b '+item.t;d.textContent=item.m;chat.appendChild(d);
+  }
+  function typing(){const d=document.createElement('div');d.className='typing';d.innerHTML='<i></i><i></i><i></i>';chat.appendChild(d);return d;}
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  async function run(){
+    const base=chat.querySelector('.tstamp');chat.innerHTML='';chat.appendChild(base);
+    for(const item of script){
+      if(item.t==='ai'){const tp=typing();await wait(950);tp.remove();}else await wait(560);
+      bubble(item);chat.scrollTop=chat.scrollHeight;
+      await wait(item.t==='cust'?720:item.t==='booked'?400:1050);
+    }
+  }
+  document.getElementById('replay').addEventListener('click',run);
+  setTimeout(run,500);
+</script>
+</body>
+</html>
