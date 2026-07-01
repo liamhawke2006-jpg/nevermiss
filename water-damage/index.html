@@ -142,5 +142,33 @@ footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;t
   <div class="links"><a href="/plumbers/">Plumbers</a><a href="/hvac/">HVAC</a><a href="/roofing/">Roofing</a><a href="/electricians/">Electricians</a><a href="/garage-door/">Garage door</a><a href="/med-spas/">Med spas</a><a href="/roi/">ROI calculator</a><a href="/compare/">Compare options</a></div>
 </div></section>
 <footer><div class="wrap">NeverMiss — the 24/7 AI front desk for water-damage & restoration, serving Long Beach, Lakewood, Signal Hill, Carson, Seal Beach, Bellflower & Cerritos · <a href="/">nevermissai.net</a> · <a href="tel:+15625735967">(562) 573-5967</a></div></footer>
+<!-- Sticky mobile CTA (mobile only; auto-hides over the footer; safe-area aware) -->
+<div class="nm-sticky" id="nmSticky" data-nm-section="sticky" aria-hidden="true">
+  <a class="nm-sticky-btn call" href="tel:+15625735967" data-nm-loc="sticky">📞 Hear it live</a>
+  <a class="nm-sticky-btn book" href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener" data-nm-loc="sticky">Book a call</a>
+</div>
+<style>
+.nm-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(14,21,19,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(43,196,142,.28);transform:translateY(115%);transition:transform .28s cubic-bezier(.2,.7,.2,1)}
+.nm-sticky.show{transform:translateY(0)}
+.nm-sticky-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-family:"Public Sans",system-ui,sans-serif;font-weight:700;font-size:15px;line-height:1;padding:14px 12px;border-radius:11px;text-decoration:none;white-space:nowrap}
+.nm-sticky-btn.call{background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.nm-sticky-btn.book{background:#2BC48E;color:#06140f;box-shadow:0 8px 22px -8px rgba(43,196,142,.6)}
+@media(max-width:760px){.nm-sticky{display:flex}}
+@media(prefers-reduced-motion:reduce){.nm-sticky{transition:none}}
+</style>
+<script>
+(function(){
+  var bar=document.getElementById('nmSticky');if(!bar)return;
+  var footer=document.querySelector('footer');
+  function upd(){
+    var past=window.scrollY>window.innerHeight*0.85, nearFoot=false;
+    if(footer){var r=footer.getBoundingClientRect();nearFoot=r.top<window.innerHeight-40;}
+    var show=past&&!nearFoot;
+    bar.classList.toggle('show',show);bar.setAttribute('aria-hidden',show?'false':'true');
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd,{passive:true});upd();
+})();
+</script>
 </body>
 </html>
