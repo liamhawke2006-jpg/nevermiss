@@ -48,6 +48,32 @@ h2.disp{font-size:clamp(28px,3.6vw,40px);margin-bottom:16px;max-width:16em}
 .final{padding:70px 0;text-align:center}.final h2{margin-inline:auto;margin-bottom:10px}.final p{color:var(--muted);font-size:17px;max-width:34em;margin:0 auto 26px}.final .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;text-align:center}footer a{color:var(--sig);text-decoration:none}
 </style>
+<!-- ── Analytics: Plausible (privacy-friendly, cookieless — no consent banner needed) ──
+     TODO(liam): create a Plausible account and add site "nevermissai.net" so events record.
+     Safe to ship before then; the page works with or without it. -->
+<script defer data-domain="nevermissai.net" src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>
+  // Plausible queue stub so nmTrack() is safe even before the script loads.
+  window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
+  // Single reusable conversion-event helper.
+  window.nmTrack = function (name, props) { try { window.plausible(name, props ? { props: props } : undefined); } catch (e) {} };
+  // Delegated click tracking — one listener covers every current + future link (incl. sticky CTA).
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var sec = a.closest('[data-nm-section]');
+    var loc = a.getAttribute('data-nm-loc') || (sec ? sec.getAttribute('data-nm-section') : 'page');
+    var custom = a.getAttribute('data-nm-event');
+    if (custom) { window.nmTrack(custom, { location: loc }); return; }
+    if (href.indexOf('tel:') === 0) { window.nmTrack('Call', { number: href.replace('tel:', ''), location: loc }); return; }
+    if (href.indexOf('calendar.app.google') !== -1 || href.indexOf('calendar.google.com') !== -1) { window.nmTrack('Book Call', { location: loc }); return; }
+    if (href.indexOf('/onboard') !== -1) { window.nmTrack('Get Started', { location: loc }); return; }
+  }, true);
+</script>
+<!-- Google Search Console verification — TODO(liam): paste your token and uncomment.
+<meta name="google-site-verification" content="PASTE_GSC_TOKEN_HERE" />
+-->
 </head>
 <body>
 <header><div class="wrap nav">
@@ -60,7 +86,6 @@ footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;t
   <p class="lede">When the heat hits, the phones explode — and you're on a rooftop, not at a desk. NeverMiss answers every call 24/7 in your company's name, texts back the ones you miss in seconds, and books the service call before the homeowner moves to the next name on the list.</p>
   <div class="hero-cta">
     <a class="btn primary" href="/onboard/">Get started →</a>
-    <a class="btn ghost" href="/roi/?v=hvac">See what you're losing →</a>
     <a class="btn ghost" href="tel:+15625735967">▶ Hear it live · (562) 573-5967</a>
   </div>
   <div class="reassure">One recovered job pays for the whole month. <b>30-day works-or-we-fix-it · no contract.</b></div>
