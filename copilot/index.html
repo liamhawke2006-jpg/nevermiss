@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>NeverMiss Copilot — the AI your team just talks to</title>
-<meta name="description" content="An AI deskmate that lives on your employee's computer. They just talk — voice or text — and it does the work: drafts the message, fills the forms, navigates the software. Built for the staff who never took to computers." />
+<meta name="description" content="An AI that works alongside your staff. They just talk — and it does their computer work: drafts the message, fills the forms, navigates the software. Built for the people who never took to computers." />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="NeverMiss Copilot — the AI your team just talks to" />
 <meta property="og:description" content="Your team talks; it does their computer work. Drafts, forms, scheduling — hands-free. A new NeverMiss product." />
@@ -13,173 +13,210 @@
 <meta property="og:url" content="https://nevermissai.net/copilot/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="NeverMiss Copilot — the AI your team just talks to" />
-<meta name="twitter:description" content="Your team talks; it does their computer work — hands-free." />
 <meta name="twitter:image" content="https://nevermissai.net/og-image.png" />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0B0A18;--slate:rgba(255,255,255,.05);--iris:#8B7CF6;--iris2:#B3A6FF;--mint:#38E0B0;--coral:#FF8A6B;--cream:#EEEcFb;--muted:#9891B8;--line:rgba(160,140,255,.2)}
+  :root{--bg:#0B0C12;--panel:rgba(255,255,255,.04);--pline:rgba(255,255,255,.09);--iris:#7C7CF2;--iris2:#A9A6FF;--mint:#4FD1B0;--ink:#ECEBF4;--muted:#8E8CA6;--faint:#6E6C86}
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--cream);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  body{font-family:"Public Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,32px)}
   .anim{opacity:0;transform:translateY(16px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}@keyframes rise{to{opacity:1;transform:none}}
-  .wrap{max-width:960px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+  a{color:inherit}
+
+  /* top bar */
+  .top{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(18px,4vw,32px)}
+  .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;letter-spacing:-.01em}.wm b{color:var(--iris2)}
+  .top .home{font-size:13.5px;color:#D5D3E6;text-decoration:none;font-weight:600;opacity:.9}
+  .top .home:hover{opacity:1}
+
   /* hero */
-  .hero{position:relative;text-align:center;padding:64px 16px 40px;overflow:hidden}
-  .hero .glow{position:absolute;width:760px;height:600px;left:50%;top:-160px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(139,124,246,.4),transparent 70%);filter:blur(20px);pointer-events:none}
-  .hero>*{position:relative}
-  .brand{font-family:"Bricolage Grotesque";font-weight:800;font-size:19px;margin-bottom:26px}.brand b{color:var(--iris2)}
-  .badge{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--iris2);border:1px solid var(--line);background:rgba(139,124,246,.1);padding:6px 14px;border-radius:30px;font-weight:700;margin-bottom:20px}
-  h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(34px,7vw,62px);line-height:1.02;letter-spacing:-.02em;max-width:14ch;margin:0 auto}
-  h1 .g{background:linear-gradient(120deg,var(--iris2),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lede{font-size:clamp(15px,2vw,19px);color:#C9C3E4;max-width:56ch;margin:20px auto 26px;line-height:1.6}
-  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:14px 24px;border-radius:13px;text-decoration:none;cursor:pointer;border:none}
-  .btn.p{background:linear-gradient(120deg,var(--iris),#6D5CE0);color:#fff;box-shadow:0 14px 34px -12px rgba(139,124,246,.7)}
-  .btn.g{background:var(--slate);border:1px solid var(--line);color:var(--cream)}
+  .hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;background:url("hero.png") center/cover;transform:scale(1.03)}
+  .hero .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,12,18,.92) 0%,rgba(11,12,18,.62) 42%,rgba(11,12,18,.2) 70%,rgba(11,12,18,.55) 100%)}
+  .hero .ov2{position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 2%,transparent 40%)}
+  .hero .in{position:relative;z-index:2;width:100%;padding:0 0 60px}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--iris2);border:1px solid var(--pline);background:rgba(124,124,242,.1);padding:7px 13px;border-radius:30px;font-weight:700;margin-bottom:22px;backdrop-filter:blur(6px)}
+  .badge .d{width:6px;height:6px;border-radius:50%;background:var(--iris2)}
+  h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(34px,6.2vw,62px);line-height:1.03;letter-spacing:-.025em;max-width:15ch;text-shadow:0 4px 40px rgba(0,0,0,.4)}
+  h1 .a{color:var(--iris2)}
+  .lede{font-size:clamp(16px,1.9vw,20px);color:#D2D0E4;max-width:52ch;margin-top:20px;line-height:1.55}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding:14px 24px;border-radius:12px;text-decoration:none;cursor:pointer;border:none;transition:transform .12s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.p{background:var(--iris);color:#fff;box-shadow:0 16px 40px -14px rgba(124,124,242,.7)}
+  .btn.g{background:rgba(255,255,255,.06);border:1px solid var(--pline);color:var(--ink);backdrop-filter:blur(6px)}
 
-  section{padding:34px 0}
-  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--iris2);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}.eyebrow::before{content:"";width:26px;height:1px;background:var(--iris)}
-  h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(24px,4vw,36px);line-height:1.1;letter-spacing:-.01em;margin-bottom:10px}
-  .sub{color:var(--muted);font-size:15.5px;max-width:60ch;line-height:1.6}
-  .panel{background:var(--slate);border:1px solid rgba(255,255,255,.08);border-radius:18px;backdrop-filter:blur(14px);box-shadow:0 24px 60px -34px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
+  section{padding:56px 0}
+  .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--iris2);font-weight:700;margin-bottom:14px}
+  h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(25px,3.8vw,38px);line-height:1.12;letter-spacing:-.02em;max-width:20ch}
+  .sub{color:var(--muted);font-size:16px;max-width:62ch;margin-top:12px}
+  .panel{background:var(--panel);border:1px solid var(--pline);border-radius:16px;box-shadow:0 30px 70px -40px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.05)}
 
-  .three{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}@media(min-width:720px){.three{grid-template-columns:repeat(3,1fr)}}
-  .step{padding:22px}
-  .step .num{font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;color:#0B0A18;background:linear-gradient(120deg,var(--iris2),var(--iris));width:30px;height:30px;border-radius:9px;display:grid;place-items:center;margin-bottom:14px}
-  .step h3{font-family:"Bricolage Grotesque";font-weight:700;font-size:18px;margin-bottom:6px}
-  .step p{font-size:13.5px;color:var(--muted);line-height:1.55}.step p b{color:var(--cream)}
+  .three{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}@media(min-width:760px){.three{grid-template-columns:repeat(3,1fr)}}
+  .step{padding:26px}
+  .step .ic{width:44px;height:44px;border-radius:12px;background:rgba(124,124,242,.12);border:1px solid var(--pline);display:grid;place-items:center;margin-bottom:18px}
+  .step .ic svg{width:22px;height:22px;stroke:var(--iris2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .step h3{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;margin-bottom:8px}
+  .step p{font-size:14px;color:var(--muted);line-height:1.6}.step p b{color:var(--ink);font-weight:600}
 
-  /* live demo */
-  .demo{padding:8px}
-  .demowin{background:#0f0d20;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .dbar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
-  .dbar .dot{width:10px;height:10px;border-radius:50%}.dbar .r{background:#ff5f57}.dbar .y{background:#febc2e}.dbar .gr{background:#28c840}
-  .dbar .t{margin-left:8px;font-size:12px;color:var(--muted);font-family:"Public Sans"}
-  .chat{padding:18px 16px;min-height:290px;display:flex;flex-direction:column;gap:10px}
-  .b{max-width:82%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.45;opacity:0;transform:translateY(8px);animation:pop .4s cubic-bezier(.2,.7,.2,1) forwards}
+  /* demo */
+  .demowin{border-radius:16px;overflow:hidden;border:1px solid var(--pline);background:#0e0f18;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+  .dbar{display:flex;align-items:center;gap:7px;padding:12px 15px;border-bottom:1px solid var(--pline);background:rgba(255,255,255,.02)}
+  .dbar .dot{width:11px;height:11px;border-radius:50%}.dbar .r{background:#ff5f57}.dbar .y{background:#febc2e}.dbar .gr{background:#28c840}
+  .dbar .t{margin-left:8px;font-size:12.5px;color:var(--muted);font-weight:600}
+  .chat{padding:22px 18px;min-height:300px;display:flex;flex-direction:column;gap:12px}
+  .b{max-width:80%;padding:12px 15px;border-radius:15px;font-size:14.5px;line-height:1.5;opacity:0;transform:translateY(8px);animation:pop .4s cubic-bezier(.2,.7,.2,1) forwards}
   @keyframes pop{to{opacity:1;transform:none}}
-  .emp{align-self:flex-end;background:linear-gradient(135deg,var(--iris),#6D5CE0);color:#fff;border-bottom-right-radius:5px;font-weight:600}
-  .emp .who{font-size:10.5px;opacity:.8;font-weight:700;margin-bottom:3px}
-  .cop{align-self:flex-start;background:#1a1730;border:1px solid var(--line);border-bottom-left-radius:5px}
-  .cop .who{font-size:10.5px;color:var(--iris2);font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:6px}
-  .typing{align-self:flex-start;background:#1a1730;border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;padding:13px 16px;display:flex;gap:4px;opacity:0;animation:pop .3s forwards}
+  .emp{align-self:flex-end;background:var(--iris);color:#fff;border-bottom-right-radius:5px}
+  .who{font-size:11px;font-weight:700;margin-bottom:4px;opacity:.85;letter-spacing:.01em}
+  .cop{align-self:flex-start;background:#191a2a;border:1px solid var(--pline);border-bottom-left-radius:5px}.cop .who{color:var(--iris2);opacity:1}
+  .typing{align-self:flex-start;background:#191a2a;border:1px solid var(--pline);border-radius:15px;border-bottom-left-radius:5px;padding:14px 16px;display:flex;gap:4px;opacity:0;animation:pop .3s forwards}
   .typing i{width:7px;height:7px;border-radius:50%;background:var(--iris2);animation:bo 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
   @keyframes bo{50%{transform:translateY(-4px);opacity:.4}}
-  .task{align-self:stretch;background:linear-gradient(180deg,rgba(56,224,176,.14),rgba(56,224,176,.03));border:1px solid rgba(56,224,176,.4);border-radius:14px;padding:14px 16px;opacity:0;transform:translateY(8px);animation:pop .5s forwards}
-  .task .tt{font-family:"Bricolage Grotesque";font-weight:800;color:var(--mint);font-size:14px;display:flex;align-items:center;gap:7px}
-  .task .li{display:flex;align-items:center;gap:9px;font-size:13px;margin-top:9px;color:var(--cream)}.task .li .c{color:var(--mint)}
-  .task .note{font-size:11.5px;color:var(--muted);margin-top:11px;border-top:1px solid rgba(56,224,176,.2);padding-top:9px}
-  .replay{margin:12px auto 0;display:block;background:rgba(139,124,246,.12);border:1px solid var(--line);color:var(--iris2);font-weight:700;font-size:12.5px;padding:8px 18px;border-radius:10px;cursor:pointer;font-family:"Public Sans"}
-  .proof{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px}.proof b{color:var(--mint)}
+  .task{align-self:stretch;background:rgba(79,209,176,.07);border:1px solid rgba(79,209,176,.35);border-radius:14px;padding:16px 18px;opacity:0;transform:translateY(8px);animation:pop .5s forwards}
+  .task .tt{font-family:"Bricolage Grotesque";font-weight:800;color:var(--mint);font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .task .tt svg{width:17px;height:17px;stroke:var(--mint);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .task .li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;margin-top:11px;color:var(--ink);line-height:1.5}
+  .task .li svg{width:16px;height:16px;stroke:var(--mint);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:2px}
+  .task .note{font-size:12px;color:var(--muted);margin-top:13px;border-top:1px solid rgba(79,209,176,.2);padding-top:11px;line-height:1.55}
+  .demofoot{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:16px}
+  .proof{font-size:13px;color:var(--muted)}.proof b{color:var(--mint)}
+  .replay{background:rgba(124,124,242,.1);border:1px solid var(--pline);color:var(--iris2);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:10px;cursor:pointer;font-family:"Public Sans"}
 
-  .uses{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}@media(min-width:640px){.uses{grid-template-columns:repeat(2,1fr)}}
-  .use{padding:18px 20px;display:flex;gap:13px;align-items:flex-start}
-  .use .ic{font-size:22px;flex:none}
-  .use b{font-weight:700;font-size:14.5px}.use p{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
-  .guard{margin-top:20px;padding:24px}
-  .grow{display:flex;gap:12px;align-items:flex-start;margin-top:14px;font-size:14.5px;color:#D8D3EE}.grow:first-of-type{margin-top:0}
-  .grow .c{color:var(--mint);font-weight:800;flex:none}.grow b{color:#fff}
-  .price{text-align:center;padding:34px 24px;margin-top:8px}
-  .price .amt{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(38px,7vw,54px);line-height:1}.price .amt span{font-size:.4em;color:var(--muted);font-weight:600}
-  .price .d{color:var(--muted);font-size:14px;margin-top:8px}
-  .foot{text-align:center;color:var(--muted);font-size:11.5px;padding:24px 16px 44px;line-height:1.6}.foot b{color:#C9C3E4}
+  .uses{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}@media(min-width:680px){.uses{grid-template-columns:repeat(2,1fr)}}
+  .use{padding:22px}
+  .use .ic{width:40px;height:40px;border-radius:11px;background:rgba(124,124,242,.1);border:1px solid var(--pline);display:grid;place-items:center;margin-bottom:14px}
+  .use .ic svg{width:20px;height:20px;stroke:var(--iris2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .use b{font-weight:700;font-size:15.5px}.use p{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.6}
+  .use p i{color:#C7C4E0;font-style:italic}
+
+  .guard{padding:30px}
+  .grow{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--pline);font-size:15px;color:#D6D3EA}.grow:first-of-type{border-top:none;padding-top:0}
+  .grow svg{width:20px;height:20px;stroke:var(--mint);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:2px}.grow b{color:#fff}
+
+  .price{padding:40px 28px;text-align:center;position:relative;overflow:hidden}
+  .price .glow{position:absolute;width:520px;height:300px;left:50%;top:-120px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(124,124,242,.28),transparent 72%);pointer-events:none}
+  .price>*{position:relative}
+  .price .amt{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(40px,7vw,56px);line-height:1}.price .amt span{font-size:.36em;color:var(--muted);font-weight:600}
+  .price .d{color:var(--muted);font-size:14.5px;margin:12px auto 0;max-width:46ch;line-height:1.6}
+  .foot{border-top:1px solid var(--pline);text-align:center;color:var(--faint);font-size:12px;padding:30px 18px 50px;line-height:1.7}.foot b{color:var(--muted)}
 </style>
 </head>
 <body>
   <header class="hero">
-    <div class="glow"></div>
-    <div class="brand anim">Never<b>Miss</b> Copilot</div>
-    <div class="badge anim" style="animation-delay:.05s">New · AI that works alongside your team</div>
-    <h1 class="anim" style="animation-delay:.1s">The AI your team <span class="g">just talks to.</span></h1>
-    <p class="lede anim" style="animation-delay:.16s">NeverMiss Copilot lives on any employee's computer. They ask — out loud or by text — and it does the work: pulls up records, fills the forms, drafts the message, navigates the software they can't stand. No training. No clicking. Built especially for the people who never took to computers.</p>
-    <div class="btns anim" style="animation-delay:.22s">
-      <a class="btn p" href="#demo">▶ See it work</a>
-      <a class="btn g" href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener">Book a pilot</a>
+    <div class="bg"></div><div class="ov"></div><div class="ov2"></div>
+    <div class="top">
+      <div class="wm">Never<b>Miss</b> Copilot</div>
+      <a class="home" href="https://nevermissai.net">← nevermissai.net</a>
+    </div>
+    <div class="wrap in">
+      <div class="badge anim"><span class="d"></span>A new product from NeverMiss</div>
+      <h1 class="anim" style="animation-delay:.06s">The AI your team <span class="a">just talks to.</span></h1>
+      <p class="lede anim" style="animation-delay:.12s">NeverMiss Copilot works alongside your staff, right on their computer. They ask — out loud or by text — and it does the work: drafts the message, fills the forms, navigates the software they can't stand. No training. No clicking. Built for the people who never took to computers.</p>
+      <div class="btns anim" style="animation-delay:.18s">
+        <a class="btn p" href="#demo">See it work</a>
+        <a class="btn g" href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener">Book a pilot</a>
+      </div>
     </div>
   </header>
 
   <div class="wrap">
     <section class="anim">
-      <div class="eyebrow">The problem</div>
+      <div class="kicker">The problem</div>
       <h2>Your best people are stuck being data-entry clerks.</h2>
-      <p class="sub">Every shop runs on clunky software nobody likes. Your veterans avoid it, your front desk drowns in it, and the person who "isn't good with computers" needs help ten times a day. That's hours of skilled time lost to clicking — every day.</p>
+      <p class="sub">Every shop runs on software nobody enjoys. Your veterans avoid it, your front desk drowns in it, and the person who "isn't good with computers" needs help ten times a day. That's hours of skilled time lost to clicking — every single day.</p>
     </section>
 
     <section>
-      <div class="eyebrow">How it works</div>
+      <div class="kicker">How it works</div>
       <h2>Talk. It does the rest.</h2>
       <div class="three">
-        <div class="panel step anim"><div class="num">1</div><h3>They ask — voice or text</h3><p>"<b>Draft a follow-up to the Johnson install and remind me about the 6-month checkup.</b>" Plain words. No menus, no manuals.</p></div>
-        <div class="panel step anim" style="animation-delay:.08s"><div class="num">2</div><h3>Copilot does it</h3><p>It <b>operates the actual apps</b> — your notes, calendar, booking software, email, spreadsheets — clicking and typing like a person would, in seconds.</p></div>
-        <div class="panel step anim" style="animation-delay:.16s"><div class="num">3</div><h3>It confirms anything risky</h3><p>It <b>never sends money, deletes, or submits without a yes.</b> A human is always in the loop for anything that matters.</p></div>
+        <div class="panel step anim">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+          <h3>They ask — voice or text</h3>
+          <p>"<b>Draft a follow-up to the Johnson install and remind me about the 6-month checkup.</b>" Plain words. No menus, no manuals.</p>
+        </div>
+        <div class="panel step anim" style="animation-delay:.08s">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4l7 16 2.5-6.5L20 11 4 4z"/></svg></div>
+          <h3>Copilot does it</h3>
+          <p>It <b>operates the actual apps</b> — notes, calendar, your booking software, email, spreadsheets — clicking and typing like a person would, in seconds.</p>
+        </div>
+        <div class="panel step anim" style="animation-delay:.16s">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg></div>
+          <h3>It confirms anything risky</h3>
+          <p>It <b>never sends money, deletes, or submits without a yes.</b> A person is always in the loop for anything that matters.</p>
+        </div>
       </div>
     </section>
 
     <section id="demo">
-      <div class="eyebrow">Live — a real task</div>
-      <h2>Watch the deskmate work.</h2>
-      <p class="sub">An employee at a home-services shop, hands full, just talks to Copilot:</p>
-      <div class="panel demo anim" style="margin-top:18px">
-        <div class="demowin">
-          <div class="dbar"><span class="dot r"></span><span class="dot y"></span><span class="dot gr"></span><span class="t">NeverMiss Copilot</span></div>
-          <div class="chat" id="chat"></div>
-        </div>
+      <div class="kicker">Live — a real task</div>
+      <h2>Watch it work.</h2>
+      <p class="sub" style="margin-bottom:22px">A field tech, hands full, just talks to Copilot:</p>
+      <div class="demowin anim">
+        <div class="dbar"><span class="dot r"></span><span class="dot y"></span><span class="dot gr"></span><span class="t">NeverMiss Copilot</span></div>
+        <div class="chat" id="chat"></div>
       </div>
-      <button class="replay" id="replay">↺ Replay</button>
-      <div class="proof">⚡ <b>This exact task ran live on a real Mac</b> — Copilot opened Notes, wrote the customer follow-up, and set the 6-month checkup reminder, hands-free.</div>
+      <div class="demofoot">
+        <div class="proof">This exact task <b>ran live on a real Mac</b> — Copilot opened Notes, wrote the customer follow-up, and set the reminder, hands-free.</div>
+        <button class="replay" id="replay">Replay</button>
+      </div>
     </section>
 
     <section>
-      <div class="eyebrow">What it handles</div>
+      <div class="kicker">What it handles</div>
       <h2>One deskmate, every busywork task.</h2>
       <div class="uses">
-        <div class="panel use anim"><span class="ic">🔧</span><div><b>Home services</b><p>"Pull up the invoice, add the new part, and text the customer an updated total." Enter jobs, schedule crews, draft follow-ups.</p></div></div>
-        <div class="panel use anim" style="animation-delay:.06s"><span class="ic">💧</span><div><b>Med spa / wellness</b><p>"Book Maria for a NAD+ Thursday and add her to the membership list." Chart notes, reschedule, reactivate lapsed clients.</p></div></div>
-        <div class="panel use anim" style="animation-delay:.12s"><span class="ic">🏢</span><div><b>Real estate</b><p>"Draft the listing email and put the showing on my calendar." Pull comps, fill CRM fields, prep documents.</p></div></div>
-        <div class="panel use anim" style="animation-delay:.18s"><span class="ic">🍽️</span><div><b>Restaurants / local</b><p>"Add the party of 12 Saturday and flag the cabana minimum." Update reservations, orders, vendor emails.</p></div></div>
+        <div class="panel use anim"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 6l4 4-9 9-4 1 1-4 8-8z"/><path d="M13 7l4 4"/></svg></div><b>Home services</b><p>"<i>Pull up the invoice, add the new part, and text the customer an updated total.</i>" Enter jobs, schedule crews, draft follow-ups.</p></div>
+        <div class="panel use anim" style="animation-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-8-6.5-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 4.5-3 8-8 11z"/></svg></div><b>Med spa / wellness</b><p>"<i>Book Maria for a NAD+ Thursday and add her to the membership list.</i>" Chart notes, reschedule, reactivate lapsed clients.</p></div>
+        <div class="panel use anim" style="animation-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></div><b>Real estate</b><p>"<i>Draft the listing email and put the showing on my calendar.</i>" Pull comps, fill CRM fields, prep documents.</p></div>
+        <div class="panel use anim" style="animation-delay:.18s"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 3v7a4 4 0 0 0 8 0V3M8 3v18"/><path d="M17 3c-1.5 2-1.5 5 0 7v11"/></svg></div><b>Restaurants / local</b><p>"<i>Add the party of 12 Saturday and flag the cabana minimum.</i>" Update reservations, orders, vendor emails.</p></div>
       </div>
     </section>
 
     <section>
-      <div class="eyebrow">Done right</div>
+      <div class="kicker">Built responsibly</div>
       <h2>Powerful — and safe.</h2>
-      <div class="panel guard anim">
-        <div class="grow"><span class="c">✓</span><span><b>Scoped to your real tasks.</b> We map the handful of jobs your team does daily and nail those first — not "anything," which is how AI breaks.</span></div>
-        <div class="grow"><span class="c">✓</span><span><b>Human in the loop.</b> Copilot confirms before anything irreversible — sending, paying, deleting, submitting. It assists; it never goes rogue.</span></div>
-        <div class="grow"><span class="c">✓</span><span><b>Runs on their machine, securely.</b> Your data stays yours. Permissions are explicit. No black boxes.</span></div>
-        <div class="grow"><span class="c">✓</span><span><b>Piloted before promised.</b> We prove it on your actual software with one team first, then roll out. No guesswork.</span></div>
+      <div class="panel guard anim" style="margin-top:22px">
+        <div class="grow"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Scoped to your real tasks.</b> We map the handful of jobs your team does daily and nail those first — not "anything," which is how AI breaks.</span></div>
+        <div class="grow"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>A person in the loop.</b> Copilot confirms before anything irreversible — sending, paying, deleting, submitting. It assists; it never acts alone on the risky things.</span></div>
+        <div class="grow"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Runs on their machine, securely.</b> Your data stays yours. Every permission is explicit. No black boxes.</span></div>
+        <div class="grow"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Proven before promised.</b> We pilot it on your actual software with one team first, then roll out. No guesswork.</span></div>
       </div>
     </section>
 
     <section>
-      <div class="eyebrow">Pricing</div>
+      <div class="kicker">Pricing</div>
       <div class="panel price anim">
-        <div class="amt">$149<span>/employee / mo</span></div>
-        <div class="d">Add Copilot to any NeverMiss plan · setup + task-mapping included · month-to-month · starts with a paid pilot on one team.</div>
-        <div class="btns" style="margin-top:22px"><a class="btn p" href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener">Book a pilot →</a></div>
+        <div class="glow"></div>
+        <div class="amt">$149<span> / employee / month</span></div>
+        <div class="d">An add-on to any NeverMiss plan. Setup and task-mapping included. Month-to-month. Starts with a paid pilot on one team, so you see it work before you scale.</div>
+        <div class="btns" style="justify-content:center;margin-top:26px"><a class="btn p" href="https://calendar.app.google/dpgVKfzTktA5Un3V7" target="_blank" rel="noopener">Book a pilot</a></div>
       </div>
     </section>
   </div>
 
-  <div class="foot">NeverMiss Copilot gives your team an AI they simply talk to that operates their computer for them. Capabilities scoped and piloted per business; a human confirms any sensitive action. <b>NeverMiss</b> · Long Beach · nevermissai.net</div>
+  <div class="foot">NeverMiss Copilot gives your team an AI they simply talk to that operates their computer for them. Capabilities are scoped and piloted per business; a person confirms any sensitive action. <b>NeverMiss</b> · Long Beach · nevermissai.net</div>
 
 <script>
   const chat=document.getElementById('chat');
   const script=[
-    {t:'emp',who:'Marcus · Field tech',m:"hey draft a follow-up to the customer we did the water heater install for, and remind me about the 6-month checkup"},
-    {t:'cop',m:"On it 👍 I will write a friendly follow-up in Notes and set a 6-month checkup reminder. One sec…"},
+    {t:'emp',who:'Marcus · Field tech',m:"Hey — draft a follow-up to the customer we did the water heater install for, and remind me about the 6-month checkup."},
+    {t:'cop',who:'Copilot',m:"On it. I will write a friendly follow-up in Notes and set a 6-month checkup reminder. One moment…"},
     {t:'task'}
   ];
+  const CHK='<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
   function bubble(it){
     if(it.t==='task'){const d=document.createElement('div');d.className='task';
-      d.innerHTML=`<div class="tt">✓ Done — 8 seconds</div>
-        <div class="li"><span class="c">📝</span>Drafted "Water Heater Install — Customer Follow-Up" in Notes</div>
-        <div class="li"><span class="c">⏰</span>Set reminder: "Schedule 6-month checkup" for this customer</div>
-        <div class="note">Nothing was sent — Marcus reviews and hits send when ready. Copilot only drafts &amp; schedules until told otherwise.</div>`;
+      d.innerHTML=`<div class="tt">${CHK} Done — 8 seconds</div>
+        <div class="li">${CHK}<span>Drafted "Water Heater Install — Customer Follow-Up" in Notes</span></div>
+        <div class="li">${CHK}<span>Set reminder: "Schedule 6-month checkup" for this customer</span></div>
+        <div class="note">Nothing was sent — Marcus reviews and hits send when he is ready. Copilot only drafts and schedules until told otherwise.</div>`;
       chat.appendChild(d);return;}
     const d=document.createElement('div');d.className='b '+it.t;
-    d.innerHTML=(it.who?`<div class="who">${it.t==='cop'?'🤖 ':''}${it.who||'Copilot'}</div>`:`<div class="who">🤖 Copilot</div>`)+it.m;
-    chat.appendChild(d);
+    d.innerHTML=`<div class="who">${it.who}</div>`+it.m;chat.appendChild(d);
   }
   function typing(){const d=document.createElement('div');d.className='typing';d.innerHTML='<i></i><i></i><i></i>';chat.appendChild(d);return d;}
   const wait=ms=>new Promise(r=>setTimeout(r,ms));
