@@ -591,6 +591,16 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
 <main id="top">
 
 <!-- ─── HERO ────────────────────────────────────────────────────────── -->
+<style>
+  .hero-visual{position:relative;max-width:510px;width:100%;margin:0 auto;padding-bottom:34px}
+  .hero-visual::before{content:"";position:absolute;inset:-24px -24px 20px;background:radial-gradient(closest-side,rgba(43,196,142,.3),transparent 70%);filter:blur(18px);z-index:0}
+  .hero-phone{position:relative;z-index:1;width:100%;border-radius:18px;display:block;box-shadow:0 46px 100px -34px rgba(0,0,0,.9),0 0 0 1px rgba(43,196,142,.16)}
+  .call-card{position:absolute;left:-18px;bottom:0;width:54%;min-width:214px;z-index:2;animation:cpFloat 6s ease-in-out infinite}
+  .call-card .call-log{max-height:96px;overflow:hidden}
+  .call-card .phone-mock .foot{padding:9px 14px;font-size:10px}
+  @keyframes cpFloat{50%{transform:translateY(-8px)}}
+  @media(max-width:640px){.call-card{position:relative;left:0;bottom:0;width:100%;margin-top:14px}.call-card .call-log{max-height:none}}
+</style>
 <section class="hero">
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="glow-spot" aria-hidden="true"></div>
@@ -614,15 +624,18 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 15l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
 
-    <!-- Live call activity widget -->
-    <div class="phone-widget" aria-label="Sample NeverMiss call activity">
-      <div class="phone-mock">
-        <div class="hdr">
-          <span class="title">Never<b>Miss</b> · Call Log <span class="tag">live demo</span></span>
-          <span class="live"><span class="dot"></span> Live</span>
+    <!-- Sleek phone + live call activity -->
+    <div class="hero-visual" aria-label="Sample NeverMiss call activity">
+      <img class="hero-phone" src="hero-phone.png" alt="NeverMiss — your line, always answering" />
+      <div class="call-card phone-widget">
+        <div class="phone-mock">
+          <div class="hdr">
+            <span class="title">Never<b>Miss</b> · Call Log <span class="tag">live demo</span></span>
+            <span class="live"><span class="dot"></span> Live</span>
+          </div>
+          <div class="call-log" id="call-log"></div>
+          <div class="foot" id="call-foot">&#10003; Every call answered &mdash; 0 missed today</div>
         </div>
-        <div class="call-log" id="call-log"></div>
-        <div class="foot" id="call-foot">&#10003; Every call answered &mdash; 0 missed today</div>
       </div>
     </div>
   </div>
