@@ -1072,16 +1072,81 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
 </section>
 
 <!-- ─── COPILOT (second product) ───────────────────────────────────── -->
-<section class="block" id="copilot" style="background:radial-gradient(700px 380px at 50% -10%,rgba(139,124,246,.22),transparent),#0B0A18;color:#EEECFB">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:58ch;margin:0 auto">
-      <div class="sec-eyebrow" style="color:#B3A6FF">New · a second product</div>
-      <h2 class="disp" style="color:#EEECFB">There's an AI for your <span style="background:linear-gradient(120deg,#B3A6FF,#38E0B0);-webkit-background-clip:text;background-clip:text;color:transparent">team</span>, too.</h2>
-      <p class="sec-lede" style="color:#C9C3E4;margin:0 auto">Meet <b style="color:#fff">NeverMiss Copilot</b> — an AI your employees just <i>talk</i> to that does their computer work for them: drafts the message, fills the forms, navigates the software they can't stand. Built for the staff who never took to computers. No training, no clicking.</p>
-      <a href="/copilot/" class="btn big" style="margin-top:24px;background:linear-gradient(120deg,#8B7CF6,#6D5CE0);box-shadow:0 14px 34px -12px rgba(139,124,246,.7)">✨ Explore NeverMiss Copilot →</a>
+<style>
+  #copilot{position:relative;overflow:hidden;background:radial-gradient(760px 460px at 12% -8%,rgba(124,124,242,.26),transparent),radial-gradient(680px 420px at 92% 108%,rgba(56,224,176,.14),transparent),#0A0B12;color:#ECEBF4;border-top:1px solid rgba(124,124,242,.16);border-bottom:1px solid rgba(124,124,242,.16)}
+  .cp-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:center;max-width:1080px;margin:0 auto}
+  @media(min-width:880px){.cp-grid{grid-template-columns:1.03fr .97fr;gap:56px}}
+  .cp-eye{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#A9A6FF;font-weight:700;border:1px solid rgba(124,124,242,.3);background:rgba(124,124,242,.1);padding:6px 13px;border-radius:30px;margin-bottom:20px}
+  .cp-eye .d{width:6px;height:6px;border-radius:50%;background:#A9A6FF;box-shadow:0 0 10px #A9A6FF}
+  .cp-h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(28px,4.4vw,44px);line-height:1.05;letter-spacing:-.02em;margin-bottom:14px}
+  .cp-h2 .g{background:linear-gradient(115deg,#A9A6FF,#5FE0C0);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cp-lede{color:#C9C6E0;font-size:16.5px;line-height:1.6;max-width:44ch}.cp-lede b{color:#fff}
+  .cp-btn{display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:linear-gradient(120deg,#8B7CF6,#6C5CE7);color:#fff;font-weight:700;font-size:16px;padding:15px 28px;border-radius:13px;text-decoration:none;box-shadow:0 18px 44px -14px rgba(124,124,242,.75);transition:transform .12s}
+  .cp-btn:hover{transform:translateY(-2px)}
+  .cp-winwrap{position:relative}
+  .cp-winwrap::before{content:"";position:absolute;inset:-30px;background:radial-gradient(closest-side,rgba(124,124,242,.4),transparent 72%);filter:blur(14px);z-index:0}
+  .cp-win{position:relative;z-index:1;border-radius:16px;overflow:hidden;background:#0e0f19;border:1px solid rgba(124,124,242,.3);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.03)}
+  .cp-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+  .cp-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}.cp-bar .r{background:#ff5f57}.cp-bar .y{background:#febc2e}.cp-bar .gr{background:#28c840}
+  .cp-bar .t{margin-left:8px;font-size:12px;color:#8E8CA6;font-weight:600}
+  .cp-chat{padding:18px 16px;min-height:250px;display:flex;flex-direction:column;gap:10px}
+  .cp-b{max-width:82%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.5;opacity:0;transform:translateY(8px);animation:cppop .4s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes cppop{to{opacity:1;transform:none}}
+  .cp-emp{align-self:flex-end;background:#7C7CF2;color:#fff;border-bottom-right-radius:5px}
+  .cp-who{font-size:10.5px;font-weight:700;opacity:.85;margin-bottom:3px}
+  .cp-cop{align-self:flex-start;background:#191a2a;border:1px solid rgba(124,124,242,.22);border-bottom-left-radius:5px}.cp-cop .cp-who{color:#A9A6FF;opacity:1}
+  .cp-typing{align-self:flex-start;background:#191a2a;border:1px solid rgba(124,124,242,.22);border-radius:14px;border-bottom-left-radius:5px;padding:13px 15px;display:flex;gap:4px;opacity:0;animation:cppop .3s forwards}
+  .cp-typing i{width:6px;height:6px;border-radius:50%;background:#A9A6FF;animation:cpbo 1s infinite}.cp-typing i:nth-child(2){animation-delay:.15s}.cp-typing i:nth-child(3){animation-delay:.3s}
+  @keyframes cpbo{50%{transform:translateY(-4px);opacity:.4}}
+  .cp-task{align-self:stretch;background:rgba(79,209,176,.08);border:1px solid rgba(79,209,176,.4);border-radius:13px;padding:13px 15px;opacity:0;transform:translateY(8px);animation:cppop .5s forwards}
+  .cp-task .tt{font-family:"Bricolage Grotesque";font-weight:800;color:#5FE0C0;font-size:13.5px}
+  .cp-task .li{font-size:12.5px;color:#ECEBF4;margin-top:8px;padding-left:16px;position:relative;line-height:1.5}
+  .cp-task .li::before{content:"✓";position:absolute;left:0;color:#5FE0C0;font-weight:800}
+</style>
+<section class="block" id="copilot">
+  <div class="wrap cp-grid">
+    <div class="reveal">
+      <div class="cp-eye"><span class="d"></span>New · a second product</div>
+      <h2 class="cp-h2">There's an AI for your <span class="g">team</span>, too.</h2>
+      <p class="cp-lede">Meet <b>NeverMiss Copilot</b> — an AI your employees just <i>talk</i> to that does their computer work for them: drafts the message, fills the forms, navigates the software they can't stand. Built for the staff who never took to computers.</p>
+      <a href="/copilot/" class="cp-btn">Explore NeverMiss Copilot →</a>
+    </div>
+    <div class="cp-winwrap reveal delay-1">
+      <div class="cp-win">
+        <div class="cp-bar"><i class="r"></i><i class="y"></i><i class="gr"></i><span class="t">NeverMiss Copilot</span></div>
+        <div class="cp-chat" id="cpChat"></div>
+      </div>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var chat=document.getElementById('cpChat');if(!chat)return;
+  var steps=[
+    {t:'emp',w:'Marcus · Field tech',m:"Draft a follow-up to the water-heater customer, and remind me about the 6-month checkup."},
+    {t:'cop',w:'Copilot',m:"On it. Writing the follow-up in Notes and setting a 6-month reminder…"},
+    {t:'task'}
+  ];
+  function bubble(it){
+    if(it.t==='task'){var d=document.createElement('div');d.className='cp-task';
+      d.innerHTML='<div class="tt">Done — 8 seconds</div><div class="li">Drafted "Water Heater Install — Follow-Up" in Notes</div><div class="li">Set reminder: "Schedule 6-month checkup"</div>';
+      chat.appendChild(d);return;}
+    var d=document.createElement('div');d.className='cp-b cp-'+it.t;
+    d.innerHTML='<div class="cp-who">'+it.w+'</div>'+it.m;chat.appendChild(d);
+  }
+  function typing(){var d=document.createElement('div');d.className='cp-typing';d.innerHTML='<i></i><i></i><i></i>';chat.appendChild(d);return d;}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+  async function run(){chat.innerHTML='';for(var i=0;i<steps.length;i++){var it=steps[i];
+    if(it.t==='cop'){var tp=typing();await wait(900);tp.remove();}
+    else if(it.t==='task'){var tp2=typing();await wait(1150);tp2.remove();}
+    else await wait(450);
+    bubble(it);await wait(it.t==='emp'?750:it.t==='task'?400:950);}
+    await wait(4500);run();}
+  var seen=false;
+  var io=new IntersectionObserver(function(e){if(e[0].isIntersecting&&!seen){seen=true;setTimeout(run,400);}},{threshold:.3});
+  io.observe(chat);
+})();
+</script>
 
 <!-- ─── PRICING ────────────────────────────────────────────────────── -->
 <section class="block" id="pricing">
