@@ -1602,6 +1602,80 @@ if(log){
 })();
 </script>
 
+<!-- ══════════════ Premium appeal pass (global polish) ══════════════ -->
+<style>
+/* smooth anchor scrolling */
+html{scroll-behavior:smooth}
+
+/* subtle film grain over the whole page (below the fixed header) */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:30;
+  opacity:.032;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* card micro-interactions — lift + deepen shadow on hover */
+.step,.plan,.faq-item{
+  transition:transform .24s cubic-bezier(.2,.7,.2,1),box-shadow .24s ease,border-color .24s ease;
+  will-change:transform;
+}
+.step:hover{transform:translateY(-5px);box-shadow:0 26px 48px -26px rgba(14,21,19,.30)}
+.plan:hover{transform:translateY(-6px);box-shadow:0 34px 60px -28px rgba(14,21,19,.34)}
+.plan.featured:hover{box-shadow:0 40px 72px -30px rgba(43,196,142,.42)}
+.faq-item:hover{border-color:rgba(43,196,142,.42)}
+
+/* feature cards inside the stack grid */
+.feature-grid > *{
+  transition:transform .24s cubic-bezier(.2,.7,.2,1),box-shadow .24s ease,border-color .24s ease;
+}
+.feature-grid > *:hover{transform:translateY(-4px);border-color:rgba(43,196,142,.40)}
+
+/* button polish — gentle lift + brighten */
+.btn{transition:transform .15s ease,box-shadow .18s ease,background .18s ease,filter .18s ease}
+.btn:hover{filter:brightness(1.04)}
+.btn.big:hover,.btn-primary:hover{transform:translateY(-2px)}
+
+/* richer, layered aurora behind the hero */
+.hero .glow-spot{
+  width:820px;height:820px;right:-240px;top:-260px;
+  background:radial-gradient(circle,rgba(43,196,142,.17) 0%,rgba(43,196,142,.05) 42%,transparent 68%)!important;
+  filter:blur(26px);animation:auroraDrift 17s ease-in-out infinite alternate;
+}
+.hero::before{
+  content:"";position:absolute;left:-200px;bottom:-280px;width:660px;height:660px;border-radius:50%;
+  background:radial-gradient(circle,rgba(14,122,96,.22) 0%,transparent 66%);
+  filter:blur(34px);pointer-events:none;z-index:0;
+  animation:auroraDrift2 22s ease-in-out infinite alternate;
+}
+@keyframes auroraDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-42px,32px) scale(1.09)}}
+@keyframes auroraDrift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(52px,-26px) scale(1.11)}}
+
+/* emerald bloom + crisper glass on the live call-log widget */
+.phone-mock{
+  box-shadow:0 50px 92px -30px rgba(0,0,0,.85),0 0 0 1px rgba(43,196,142,.20),0 0 66px -22px rgba(43,196,142,.28)!important;
+}
+
+/* periodic sheen sweep on the primary CTA */
+.btn.big{position:relative;overflow:hidden}
+.btn.big::after{
+  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.30),transparent);
+  transform:skewX(-18deg);pointer-events:none;
+  animation:ctaSheen 5s ease-in-out 1.4s infinite;
+}
+@keyframes ctaSheen{0%,74%{left:-70%}88%,100%{left:150%}}
+
+/* keep grain off interactive widgets so they stay crisp */
+.phone-widget,.phone-mock,header,nav{isolation:isolate}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .step,.plan,.faq-item,.feature-grid > *,.btn{transition:none}
+  .step:hover,.plan:hover,.feature-grid > *:hover,.btn:hover{transform:none}
+  .hero .glow-spot,.hero::before,.btn.big::after{animation:none}
+}
+</style>
+
 <!-- NeverMiss 24/7 help bot -->
 <script src="https://nevermiss-agent-production.up.railway.app/widget.js" defer></script>
 </body>
