@@ -617,6 +617,12 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
 <!-- Google Search Console verification — TODO(liam): paste your token and uncomment.
 <meta name="google-site-verification" content="PASTE_GSC_TOKEN_HERE" />
 -->
+<style>
+/* ── NM-A11Y: visible keyboard focus, active states, reduced motion ── */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible,.btn:focus-visible{outline:3px solid var(--sig,#2BC48E);outline-offset:2px;border-radius:6px}
+.btn:active,.nm-sticky-btn:active,.dial-btn:active{transform:translateY(0)!important;filter:brightness(.96)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 
@@ -988,7 +994,7 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
     <h2 class="disp" style="margin:0 auto 12px">A missed call, recovered in <span style="color:var(--pine)">seconds.</span></h2>
     <p style="color:var(--muted);max-width:33em;margin:0 auto 34px;font-size:17px;line-height:1.6">You're on a job and the call goes to voicemail. Here's what your customer gets instead — NeverMiss texts back in your name and books the job while you keep working.</p>
     <div class="smsphone" style="max-width:430px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px 16px 20px;box-shadow:0 26px 54px -30px rgba(0,0,0,.3);text-align:left">
-      <div style="text-align:center;font-size:11.5px;color:#8C9A93;font-family:'Space Mono',monospace;padding-bottom:13px;border-bottom:1px solid #EFEDE6;letter-spacing:.03em">📵 Missed call · 8:47 PM&nbsp;&nbsp;→&nbsp;&nbsp;texted back in 12 sec</div>
+      <div style="text-align:center;font-size:11.5px;color:#59615C;font-family:'Space Mono',monospace;padding-bottom:13px;border-bottom:1px solid #EFEDE6;letter-spacing:.03em">📵 Missed call · 8:47 PM&nbsp;&nbsp;→&nbsp;&nbsp;texted back in 12 sec</div>
       <div style="display:flex;flex-direction:column;gap:9px;padding-top:15px">
         <div style="align-self:flex-end;background:var(--sig);color:#06140f;border-radius:16px 16px 4px 16px;padding:9px 13px;max-width:82%;font-size:14.5px;line-height:1.4">Hey, this is Joe's Plumbing — sorry we missed your call! What's going on?</div>
         <div style="align-self:flex-start;background:#EEF1EF;color:#0E1513;border-radius:16px 16px 16px 4px;padding:9px 13px;max-width:82%;font-size:14.5px;line-height:1.4">Water heater's leaking everywhere, need someone today if possible</div>
@@ -998,7 +1004,7 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
       </div>
       <div style="margin-top:15px;padding-top:13px;border-top:1px solid #EFEDE6;font-size:12.5px;color:var(--pine);font-weight:600;text-align:center">✓ Job booked to your calendar · owner texted the address &amp; details</div>
     </div>
-    <p style="font-size:12.5px;color:#8C9A93;margin-top:16px">Illustration of NeverMiss's missed-call text-back. Real conversations vary by business.</p>
+    <p style="font-size:12.5px;color:#59615C;margin-top:16px">Illustration of NeverMiss's missed-call text-back. Real conversations vary by business.</p>
   </div>
 </section>
 

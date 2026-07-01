@@ -28,7 +28,7 @@ body{font-family:"Public Sans",system-ui,sans-serif;background:var(--paper);colo
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}.disp{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.01em}
 .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;text-decoration:none;padding:15px 26px;border-radius:11px;transition:transform .15s}.btn:hover{transform:translateY(-1px)}
 .btn.primary{background:var(--sig);color:#06140f}.btn.ghost{border:1px solid rgba(255,255,255,.25);color:#fff}.btn.dark{background:var(--ink);color:#fff}
-header{background:var(--ink);color:#fff}.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+header{position:sticky;top:0;z-index:50;background:rgba(14,21,19,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.07);color:#fff}.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:20px}.nav-links{display:flex;align-items:center;gap:22px}.nav-links a{color:#CBD3CE;text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}.nav-links a:hover{color:#fff}@media(max-width:720px){.nav-links{display:none}}
 .brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;color:#fff;text-decoration:none}
 .brand .lg{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#13917A,#0A5746);display:grid;place-items:center}.brand .lg svg{width:19px;height:19px}.brand b{color:var(--sig)}
 .nav .cta{font-size:14px;font-weight:700;color:#06140f;background:var(--sig);padding:9px 16px;border-radius:9px;text-decoration:none}
@@ -81,10 +81,17 @@ footer{background:var(--ink);color:var(--mutedD);font-size:13px;padding:26px 0;t
 <!-- Google Search Console verification — TODO(liam): paste your token and uncomment.
 <meta name="google-site-verification" content="PASTE_GSC_TOKEN_HERE" />
 -->
+<style>
+/* ── NM-A11Y: visible keyboard focus, active states, reduced motion ── */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible,.btn:focus-visible{outline:3px solid var(--sig,#2BC48E);outline-offset:2px;border-radius:6px}
+.btn:active,.nm-sticky-btn:active,.dial-btn:active{transform:translateY(0)!important;filter:brightness(.96)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="/"><span class="lg"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3h3l1.5 4.5-2 1.3a13 13 0 0 0 6.2 6.2l1.3-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 7.2 2 2 0 0 1 6.5 3z" fill="#fff"/></svg></span>Never<b>Miss</b></a>
+  <nav class="nav-links" aria-label="Primary"><a href="/#pricing">Pricing</a><a href="#faq">FAQ</a><a href="tel:+15625735967">Hear it live</a></nav>
   <a class="cta" href="/onboard/">Get started</a>
 </div></header>
 <nav class="crumbs" aria-label="Breadcrumb"><div class="wrap"><a href="/">Home</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">HVAC & Air Conditioning</span></div></nav>
