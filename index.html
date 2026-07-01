@@ -898,7 +898,7 @@ table.compare tbody tr:last-child td.nm{border-bottom:1px solid rgba(14,122,96,.
     <div class="sec-eyebrow" style="justify-content:center">See it work</div>
     <h2 class="disp" style="margin:0 auto 12px">A missed call, recovered in <span style="color:var(--pine)">seconds.</span></h2>
     <p style="color:var(--muted);max-width:33em;margin:0 auto 34px;font-size:17px;line-height:1.6">You're on a job and the call goes to voicemail. Here's what your customer gets instead — NeverMiss texts back in your name and books the job while you keep working.</p>
-    <div style="max-width:430px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px 16px 20px;box-shadow:0 26px 54px -30px rgba(0,0,0,.3);text-align:left">
+    <div class="smsphone" style="max-width:430px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px 16px 20px;box-shadow:0 26px 54px -30px rgba(0,0,0,.3);text-align:left">
       <div style="text-align:center;font-size:11.5px;color:#8C9A93;font-family:'Space Mono',monospace;padding-bottom:13px;border-bottom:1px solid #EFEDE6;letter-spacing:.03em">📵 Missed call · 8:47 PM&nbsp;&nbsp;→&nbsp;&nbsp;texted back in 12 sec</div>
       <div style="display:flex;flex-direction:column;gap:9px;padding-top:15px">
         <div style="align-self:flex-end;background:var(--sig);color:#06140f;border-radius:16px 16px 4px 16px;padding:9px 13px;max-width:82%;font-size:14.5px;line-height:1.4">Hey, this is Joe's Plumbing — sorry we missed your call! What's going on?</div>
@@ -1706,6 +1706,84 @@ body::after{
   .step,.plan,.faq-item,.feature-grid > *,.btn{transition:none}
   .step:hover,.plan:hover,.feature-grid > *:hover,.btn:hover{transform:none}
   .hero .glow-spot,.hero::before,.btn.big::after,.hear-section::before,.book-section::before{animation:none}
+}
+</style>
+
+<!-- ══════════════ Site-wide section elevation ══════════════ -->
+<style>
+/* keyframes used below */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* logo micro-interaction */
+.lockup .mk{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.lockup:hover .mk{transform:rotate(-7deg) scale(1.06)}
+
+/* ── TRUST BAR ── */
+.trust-bar{position:relative;background:linear-gradient(180deg,#0c1310,var(--ink))}
+.trust-bar::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(43,196,142,.55),transparent)}
+.trust-item{transition:transform .2s ease}
+.trust-item:hover{transform:translateY(-2px)}
+.trust-item .t-icon{padding:7px;background:rgba(43,196,142,.1);border:1px solid rgba(43,196,142,.16);border-radius:9px;box-sizing:content-box}
+
+/* ── THE LEAK: floating, bleeding phone ── */
+.leak-art{filter:drop-shadow(0 30px 46px rgba(189,74,61,.20));animation:floaty 6s ease-in-out infinite}
+.field{box-shadow:inset 0 1px 0 rgba(43,196,142,.14)}
+
+/* ── FEATURES: elevated cards + gradient icon tiles ── */
+.feat{position:relative;overflow:hidden;box-shadow:0 18px 40px -32px rgba(14,21,19,.5)}
+.feat .ic{background:linear-gradient(135deg,#16201d,#0E7A60);box-shadow:0 10px 22px -12px rgba(14,122,96,.85),inset 0 1px 0 rgba(255,255,255,.12)}
+.feat::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pine),var(--sig));opacity:0;transition:opacity .22s}
+.feat:hover::after{opacity:1}
+
+/* ── SEE IT: device frame + gentle float ── */
+.smsphone{box-shadow:0 44px 84px -30px rgba(0,0,0,.42),0 0 0 9px #0E1513,0 0 0 10px rgba(43,196,142,.28),0 0 60px -26px rgba(43,196,142,.35)!important;border-radius:32px!important;animation:floaty 7s ease-in-out infinite}
+
+/* ── CALCULATOR: aurora depth + glowing ticket ── */
+.calc-section{position:relative;overflow:hidden}
+.calc-section::before{content:"";position:absolute;right:-200px;top:-180px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(43,196,142,.12) 0%,transparent 66%);filter:blur(30px);pointer-events:none;animation:auroraDrift 18s ease-in-out infinite alternate}
+.calc-section .wrap{position:relative;z-index:1}
+.ticket{box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(43,196,142,.12),0 0 72px -26px rgba(43,196,142,.26)!important}
+
+/* ── RESULTS: aurora glow + brighter counter ── */
+.rd-section::before{content:"";position:absolute;left:-200px;bottom:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(43,196,142,.13) 0%,transparent 66%);filter:blur(32px);pointer-events:none;z-index:0;animation:auroraDrift2 22s ease-in-out infinite alternate}
+.rd-grid{position:relative;z-index:1}
+.rd-big{text-shadow:0 0 34px rgba(43,196,142,.35)}
+
+/* ── COMPARE: NeverMiss column reads as the winner ── */
+table.compare thead th.nm{background:linear-gradient(135deg,var(--pine),var(--sig))!important}
+table.compare td.nm{background:rgba(43,196,142,.09)}
+.cmark.yes{background:linear-gradient(135deg,#dbefe5,#c4e7d7);box-shadow:inset 0 0 0 1px rgba(14,122,96,.14)}
+.compare td.nm .cmark.yes{background:linear-gradient(135deg,var(--pine),var(--sig));color:#fff;box-shadow:0 6px 14px -6px rgba(14,122,96,.7)}
+
+/* ── PRICING: featured plan lifts off the row ── */
+.plan.featured{transform:scale(1.03);box-shadow:0 0 0 1px var(--sig),0 40px 80px -30px rgba(43,196,142,.36)}
+.plan.featured:hover{transform:scale(1.03) translateY(-6px)}
+.plan-badge{background:linear-gradient(135deg,var(--pine),var(--sig))!important;box-shadow:0 8px 20px -6px rgba(43,196,142,.6)}
+@media(max-width:900px){.plan.featured,.plan.featured:hover{transform:none}}
+
+/* ── GUARANTEE: medallion seal ── */
+.guarantee-badge{background:radial-gradient(circle at 50% 34%,rgba(43,196,142,.30),rgba(0,0,0,.24))!important;border-color:rgba(43,196,142,.5)!important;box-shadow:0 0 0 6px rgba(43,196,142,.08),inset 0 0 30px -8px rgba(43,196,142,.4),0 20px 44px -18px rgba(0,0,0,.5)}
+.guarantee-badge .days{text-shadow:0 0 22px rgba(43,196,142,.65)}
+
+/* ── FOUNDER: richer aurora + glowing avatar ── */
+.founder .glow-spot{background:radial-gradient(circle,rgba(43,196,142,.16) 0%,transparent 66%)!important;animation:auroraDrift2 22s ease-in-out infinite alternate}
+.founder-avatar img{box-shadow:0 0 0 4px var(--sig),0 0 42px -6px rgba(43,196,142,.6),0 24px 50px -20px rgba(0,0,0,.7)!important}
+.founder-avatar .ping{animation:pulse 1.9s ease-in-out infinite}
+
+/* ── FAQ: clean cards that light up when open ── */
+.faq-wrap{display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--line);border-radius:14px;padding:2px 20px;background:var(--card);transition:border-color .2s,box-shadow .2s}
+.faq-item:hover{box-shadow:0 16px 32px -26px rgba(14,21,19,.5)}
+.faq-item:has(.faq-btn[aria-expanded="true"]){border-color:rgba(43,196,142,.5);box-shadow:0 22px 46px -28px rgba(14,122,96,.45)}
+
+/* ── FOOTER ── */
+footer{position:relative}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(43,196,142,.42),transparent)}
+footer a{transition:color .15s}
+footer a:hover{color:var(--sig)}
+
+@media (prefers-reduced-motion:reduce){
+  .leak-art,.smsphone,.calc-section::before,.rd-section::before,.founder .glow-spot,.founder-avatar .ping{animation:none}
 }
 </style>
 
