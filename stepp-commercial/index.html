@@ -4,109 +4,251 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Stepp Commercial — Projected NeverMiss Results</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Stepp Commercial — NeverMiss Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0E1318;--slate:rgba(255,255,255,.045);--azure:#4D9BE6;--azure2:#9ACDF7;--win:#5FD0A0;--loss:#F0926B;--cream:#EAF1F8;--muted:#90A0B0;--line:rgba(120,180,240,.2)}
+  :root{--bg:#0E1318;--panel:#151c24;--slate:rgba(255,255,255,.045);--azure:#4D9BE6;--azure2:#9ACDF7;--win:#6FD6A6;--loss:#F0926B;--cream:#EAF1F8;--muted:#90A0B0;--line:rgba(120,180,240,.2)}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Public Sans",system-ui,sans-serif;background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.045;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .hero{position:relative;min-height:50vh;display:flex;flex-direction:column;justify-content:space-between;padding:22px clamp(16px,5vw,40px) 30px;overflow:hidden}
-  .hero .bg{position:absolute;inset:0;background:url("hero.png") center/cover;transform:scale(1.04);animation:slowzoom 26s ease-in-out infinite alternate}
-  @keyframes slowzoom{to{transform:scale(1.12)}}
-  .hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,20,.45) 0%,rgba(8,14,20,.25) 32%,rgba(14,19,24,.72) 72%,var(--bg) 100%)}
-  .hero .ov2{position:absolute;inset:0;background:radial-gradient(70% 60% at 12% 14%,rgba(77,155,230,.22),transparent 60%)}
+  body{font-family:"Public Sans",system-ui,sans-serif;background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{display:flex;min-height:100vh}
+  .side{width:212px;flex:none;background:#0a0f14;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;padding:20px 14px;position:sticky;top:0;height:100vh}
+  .side .brand{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;padding:4px 8px 20px}.side .brand b{color:var(--azure2)}
+  .nav{display:flex;flex-direction:column;gap:3px}
+  .nav a{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600}
+  .nav a .i{width:18px;text-align:center;font-size:15px}
+  .nav a.on{background:linear-gradient(90deg,rgba(77,155,230,.18),transparent);color:var(--cream)}
+  .nav a.on .i{filter:drop-shadow(0 0 6px rgba(77,155,230,.6))}.nav a:hover{color:var(--cream)}
+  .side .usr{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px 8px;border-top:1px solid rgba(255,255,255,.06)}
+  .side .usr .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--azure2),var(--azure));color:#0E1318;display:grid;place-items:center;font-weight:800;font-family:"Bricolage Grotesque"}
+  .side .usr .nm b{font-size:13px;display:block}.side .usr .nm span{font-size:11px;color:var(--muted)}
+  @media(max-width:860px){.side{width:60px;padding:16px 8px}.side .lbl,.side .brand span,.side .usr .nm{display:none}.side .brand{font-size:0}.side .brand b{font-size:18px}}
+  .main{flex:1;min-width:0}
+  .topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:12px clamp(16px,3vw,26px);background:rgba(10,15,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .welc b{font-size:14.5px;font-weight:700}.welc span{font-size:11.5px;color:var(--muted);font-family:"Space Mono"}
+  .tbr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .toggle{display:inline-flex;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:30px;padding:3px;font-size:12px;font-weight:700}
+  .toggle button{border:none;background:none;color:var(--muted);padding:6px 13px;border-radius:30px;cursor:pointer;font-family:inherit;font-weight:700;transition:.2s}
+  .toggle button.on{background:var(--azure);color:#0E1318}.toggle button.on.off{background:var(--loss);color:#26120c}
+  .proj{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--azure2);border:1px solid var(--line);padding:5px 11px;border-radius:30px;font-weight:600}
+  .hero{position:relative;min-height:38vh;display:flex;flex-direction:column;justify-content:flex-end;padding:26px clamp(16px,3vw,30px) 28px;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;background:url("hero.png") center/cover;transform:scale(1.04);animation:sz 24s ease-in-out infinite alternate}@keyframes sz{to{transform:scale(1.12)}}
+  .hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,16,.45) 0%,rgba(8,12,16,.3) 40%,rgba(14,19,24,.82) 82%,var(--bg) 100%)}
+  .hero .ov2{position:absolute;inset:0;background:radial-gradient(70% 60% at 12% 14%,rgba(77,155,230,.2),transparent 60%)}
   .hero>*{position:relative;z-index:2}
-  .htop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .wm{font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;text-shadow:0 2px 18px rgba(0,0,0,.5)}.wm b{color:var(--azure2)}
-  .proj{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--azure2);background:rgba(8,14,20,.5);border:1px solid var(--line);backdrop-filter:blur(8px);padding:6px 12px;border-radius:30px;font-weight:600}
-  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--azure2);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-  .eyebrow::before{content:"";width:30px;height:1px;background:var(--azure)}
-  .hero h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(30px,6vw,52px);line-height:1.04;letter-spacing:-.02em;max-width:15ch;text-shadow:0 3px 30px rgba(0,0,0,.45)}
-  .hero .sub{color:#CFDCE8;font-size:clamp(14px,1.8vw,16.5px);margin-top:14px;max-width:60ch;line-height:1.6;text-shadow:0 2px 14px rgba(0,0,0,.5)}
-
-  .content{max-width:980px;margin:-18px auto 0;padding:0 clamp(16px,4vw,28px) 48px;position:relative}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px}
-  @media(min-width:740px){.grid{grid-template-columns:repeat(4,1fr)}}
-  .card{background:var(--slate);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;backdrop-filter:blur(16px);box-shadow:0 24px 60px -34px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
-  .card.feat{border-color:var(--azure);box-shadow:0 0 0 1px var(--azure),0 26px 60px -28px rgba(77,155,230,.5),inset 0 1px 0 rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(77,155,230,.1),rgba(255,255,255,.03))}
-  .card .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
-  .card .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(27px,5.5vw,38px);line-height:1.05;margin-top:10px}
-  .card .n.g{color:var(--azure2)}
-  .card .d{font-size:12px;color:#97A6B4;margin-top:7px}
-  .twocol{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-  @media(min-width:740px){.twocol{grid-template-columns:1.1fr 1fr}}
-  .panel{background:var(--slate);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px;backdrop-filter:blur(16px);box-shadow:0 24px 60px -34px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
-  .panel h2{font-family:"Bricolage Grotesque";font-weight:700;font-size:17px;margin-bottom:18px}
-  .bars{display:flex;align-items:flex-end;gap:11px;height:152px}
-  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;justify-content:flex-end;height:100%}
-  .bar .fill{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--azure2),#2f6ba8);box-shadow:0 0 18px -4px rgba(77,155,230,.5);transition:height 1.1s cubic-bezier(.2,.7,.2,1)}
-  .bar .v{font-size:11px;font-weight:700;color:var(--cream)}.bar .k{font-size:10.5px;color:var(--muted)}
-  .feed{display:flex;flex-direction:column;gap:13px}
-  .ev{display:flex;gap:12px;align-items:flex-start}
-  .ev .dot{flex:none;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:14px;border:1px solid rgba(255,255,255,.08)}
-  .ev .dot.b{background:rgba(77,155,230,.16)}.ev .dot.r{background:rgba(240,146,107,.16)}.ev .dot.a{background:rgba(255,255,255,.05)}
-  .ev .t1{font-size:13.5px;font-weight:600}.ev .t2{font-size:12px;color:var(--muted);margin-top:1px}
-  .ev .tm{margin-left:auto;font-size:11px;color:var(--muted);white-space:nowrap}
-  .cta{margin-top:18px;text-align:center;font-size:14px;line-height:2}.cta a{color:var(--azure2);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(77,155,230,.35);padding-bottom:1px;white-space:nowrap}
-  .foot{margin-top:22px;font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:15px 18px;line-height:1.6}
-  .foot b{color:#CFDCE8}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--azure2);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}.eyebrow::before{content:"";width:28px;height:1px;background:var(--azure)}
+  .hero h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(26px,4.6vw,44px);line-height:1.05;letter-spacing:-.02em;max-width:17ch;text-shadow:0 3px 30px rgba(0,0,0,.45)}
+  .content{padding:18px clamp(16px,3vw,26px) 44px}
+  .statebar{border-radius:13px;padding:12px 16px;margin-bottom:14px;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:10px;border:1px solid}
+  .statebar.good{background:rgba(111,214,166,.1);border-color:rgba(111,214,166,.35);color:#B6E8D0}
+  .statebar.bad{background:rgba(240,146,107,.1);border-color:rgba(240,146,107,.4);color:#F6BBA4}.statebar b{color:#fff}
+  .panel{background:var(--slate);border:1px solid rgba(255,255,255,.08);border-radius:16px;backdrop-filter:blur(16px);box-shadow:0 24px 60px -34px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
+  .ph{font-family:"Bricolage Grotesque";font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:space-between}
+  .mono{font-family:"Space Mono";font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}@media(min-width:820px){.kpis{grid-template-columns:repeat(4,1fr)}}
+  .kpi{padding:16px 17px 13px}
+  .kpi.feat{border-color:var(--azure);box-shadow:0 0 0 1px var(--azure),0 26px 60px -30px rgba(77,155,230,.5),inset 0 1px 0 rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(77,155,230,.1),rgba(255,255,255,.025))}
+  .kpi .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;line-height:1.3;min-height:2.4em}
+  .kpi .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(24px,4.4vw,32px);line-height:1;margin-top:7px}.kpi.feat .n{color:var(--azure2)}
+  .kpi .n s{font-size:.45em;color:var(--muted);font-weight:600;font-style:normal;text-decoration:none}
+  .kpi .meta{display:flex;align-items:center;justify-content:space-between;margin-top:9px}
+  .delta{font-family:"Space Mono";font-size:10.5px;font-weight:700;color:var(--win);display:inline-flex;align-items:center;gap:3px;background:rgba(111,214,166,.12);border:1px solid rgba(111,214,166,.3);border-radius:20px;padding:2px 7px}
+  .delta.dn{color:var(--loss);background:rgba(240,146,107,.12);border-color:rgba(240,146,107,.3)}
+  .kpi svg.sp{width:54px;height:22px;overflow:visible}
+  .row2{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}@media(min-width:820px){.row2{grid-template-columns:1.65fr 1fr}}
+  .row2b{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:820px){.row2b{grid-template-columns:1fr 1.3fr}}
+  .pad{padding:19px 21px}
+  .chart svg{width:100%;height:200px;display:block;margin-top:6px}
+  .gl{stroke:rgba(255,255,255,.06);stroke-width:1}.gtxt{fill:var(--muted);font-family:"Space Mono";font-size:10px}
+  .endlabel{fill:var(--azure2);font-family:"Bricolage Grotesque";font-weight:800;font-size:15px}
+  .xlab{display:flex;justify-content:space-between;margin-top:6px}.xlab span{font-family:"Space Mono";font-size:10px;color:var(--muted)}
+  .gauge{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .gauge svg{width:150px;height:150px}.gnum{font-family:"Bricolage Grotesque";font-weight:800;font-size:36px;fill:var(--azure2)}.gsub{font-size:9px;fill:var(--muted);font-family:"Space Mono";letter-spacing:.05em}
+  .gstats{display:flex;gap:20px;margin-top:4px}.gstats .x{text-align:center}.gstats .x b{font-family:"Bricolage Grotesque";font-weight:800;font-size:19px;color:var(--cream);display:block}.gstats .x span{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .donutwrap{display:flex;align-items:center;gap:18px;margin-top:8px}.donutwrap svg{width:120px;height:120px;flex-shrink:0}
+  .dleg{display:flex;flex-direction:column;gap:10px;font-size:13px}.dleg .li{display:flex;align-items:center;gap:9px}.dleg .sw{width:11px;height:11px;border-radius:3px;flex-shrink:0}.dleg b{font-weight:700}.dleg span{color:var(--muted);font-size:12px}
+  .live{display:inline-flex;align-items:center;gap:6px;font-family:"Space Mono";font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--azure2)}
+  .live i{width:7px;height:7px;border-radius:50%;background:var(--azure2);animation:pulse 1.5s infinite}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(154,205,247,.6)}70%{box-shadow:0 0 0 8px rgba(154,205,247,0)}}
+  .feed{margin-top:12px;display:flex;flex-direction:column;max-height:280px;overflow:hidden}
+  .ev{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-top:1px solid rgba(255,255,255,.06);cursor:pointer;transition:background .15s;border-radius:8px}
+  .ev:first-child{border-top:none}.ev:hover{background:rgba(255,255,255,.03)}
+  .ev.new{animation:flash .7s ease}@keyframes flash{from{background:rgba(77,155,230,.14)}}
+  .ev.miss{cursor:default}.ev.miss:hover{background:none}
+  .ev .dot{flex:none;width:31px;height:31px;border-radius:9px;display:grid;place-items:center;font-size:14px;border:1px solid rgba(255,255,255,.08);background:rgba(77,155,230,.14)}
+  .ev .dot.r{background:rgba(154,205,247,.16)}.ev .dot.a{background:rgba(255,255,255,.05)}.ev .dot.x{background:rgba(240,146,107,.16)}
+  .ev .t1{font-size:13px;font-weight:600;line-height:1.3}.ev.miss .t1{color:#F6BBA4}.ev .t2{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .ev .tm{margin-left:auto;font-family:"Space Mono";font-size:10px;color:var(--muted);white-space:nowrap;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+  .ev .tm .chev{color:var(--azure2);font-size:11px}
+  .cta{margin-top:18px;text-align:center;font-size:14px;line-height:2}.cta a{color:var(--azure2);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(77,155,230,.35);white-space:nowrap}
+  .foot{margin-top:18px;font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 17px;line-height:1.6}.foot b{color:#BCC8D4}
+  .scrim{position:fixed;inset:0;background:rgba(4,6,9,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:150}.scrim.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100vh;width:min(440px,92vw);background:#0d141c;border-left:1px solid var(--line);box-shadow:-30px 0 80px -30px rgba(0,0,0,.8);transform:translateX(100%);transition:transform .32s cubic-bezier(.2,.7,.2,1);z-index:160;display:flex;flex-direction:column}.drawer.open{transform:none}
+  .dh{padding:20px 22px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:relative}
+  .dh .k{font-family:"Space Mono";font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--azure2);display:flex;align-items:center;gap:7px}
+  .dh h3{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;margin:8px 0 2px}.dh .meta{font-size:12px;color:var(--muted)}
+  .dh .x{position:absolute;top:18px;right:18px;width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--cream);cursor:pointer;font-size:16px}
+  .dbody{flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+  .msg{max-width:86%;padding:10px 13px;border-radius:15px;font-size:13px;line-height:1.45}
+  .msg.ai{align-self:flex-start;background:#182634;border:1px solid var(--line);border-bottom-left-radius:5px}
+  .msg.cu{align-self:flex-end;background:linear-gradient(135deg,var(--azure),#3578bd);color:#04121f;border-bottom-right-radius:5px;font-weight:600}
+  .df{padding:15px 20px;border-top:1px solid rgba(255,255,255,.07);background:rgba(111,214,166,.08)}
+  .df .ok{font-family:"Bricolage Grotesque";font-weight:700;color:var(--win);font-size:14px}.df .sm{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.5}
 </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="bg"></div><div class="ov"></div><div class="ov2"></div>
-    <div class="htop">
-      <div class="wm">Never<b>Miss</b> · Stepp Commercial</div>
-      <span class="proj">Projection · illustrative, not live data</span>
+<div class="app">
+  <aside class="side">
+    <div class="brand">Never<b>Miss</b> <span>console</span></div>
+    <nav class="nav">
+      <a class="on"><span class="i">📊</span><span class="lbl">Overview</span></a>
+      <a><span class="i">📞</span><span class="lbl">Inquiries</span></a>
+      <a><span class="i">🗂️</span><span class="lbl">Pipeline</span></a>
+      <a><span class="i">📈</span><span class="lbl">Activity</span></a>
+      <a><span class="i">⚙️</span><span class="lbl">Settings</span></a>
+    </nav>
+    <div class="usr"><div class="av">SC</div><div class="nm"><b>Stepp Commercial</b><span>Long Beach</span></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <div class="welc"><b>Welcome back, team</b><br><span id="clock">—</span></div>
+      <div class="tbr">
+        <div class="toggle"><button id="tOff">Without NeverMiss</button><button id="tOn" class="on">With NeverMiss</button></div>
+        <span class="proj">Projection · illustrative</span>
+      </div>
     </div>
-    <div>
+    <section class="hero">
+      <div class="bg"></div><div class="ov"></div><div class="ov2"></div>
       <div class="eyebrow">#1 multifamily team · Long Beach / South Bay</div>
       <h1>The deals you'd stop losing to voicemail.</h1>
-      <p class="sub">Every owner, buyer, and 1031 inquiry answered, qualified, and routed to a broker — around the clock — so a motivated seller never lists with the other shop.</p>
-    </div>
-  </section>
-
-  <div class="content">
-    <div class="grid">
-      <div class="card feat"><div class="l">Commission pipeline captured</div><div class="n g">$184K<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">est. — inquiries that would've gone unanswered</div></div>
-      <div class="card"><div class="l">Owner / buyer inquiries</div><div class="n">52<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">answered 24/7 in Stepp's name</div></div>
-      <div class="card"><div class="l">Valuation requests captured</div><div class="n">17<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">"what's my building worth" → booked</div></div>
-      <div class="card"><div class="l">1031 buyers flagged</div><div class="n">7<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">on a deadline → priority alert</div></div>
-    </div>
-    <div class="grid" style="grid-template-columns:repeat(2,1fr)">
-      <div class="card"><div class="l">Broker consults booked</div><div class="n">23<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">qualified inquiries → on a broker's calendar</div></div>
-      <div class="card"><div class="l">Captured after-hours</div><div class="n">19<span style="font-size:15px;color:var(--muted)">/mo</span></div><div class="d">evenings · weekends · while showing</div></div>
-    </div>
-
-    <div class="twocol">
-      <div class="panel">
-        <h2>Commission pipeline captured — last 6 months (projected)</h2>
-        <div class="bars" id="bars">
-          <div class="bar"><div class="v">$96K</div><div class="fill" data-h="44%"></div><div class="k">Jan</div></div>
-          <div class="bar"><div class="v">$118K</div><div class="fill" data-h="54%"></div><div class="k">Feb</div></div>
-          <div class="bar"><div class="v">$132K</div><div class="fill" data-h="62%"></div><div class="k">Mar</div></div>
-          <div class="bar"><div class="v">$155K</div><div class="fill" data-h="74%"></div><div class="k">Apr</div></div>
-          <div class="bar"><div class="v">$170K</div><div class="fill" data-h="86%"></div><div class="k">May</div></div>
-          <div class="bar"><div class="v">$184K</div><div class="fill" data-h="96%"></div><div class="k">Jun</div></div>
+    </section>
+    <div class="content">
+      <div class="statebar good" id="statebar"></div>
+      <div class="kpis">
+        <div class="panel kpi feat"><div class="l">Commission pipeline captured</div><div class="n" id="k_cap">$0K</div>
+          <div class="meta"><span class="delta" id="d_cap">▲ 21%</span><svg class="sp" viewBox="0 0 54 22"><defs><linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(154,205,247,.5)"/><stop offset="1" stop-color="rgba(154,205,247,0)"/></linearGradient></defs><path d="M0,18 8,16 15,17 23,11 30,12 38,6 46,7 54,3 54,22 0,22Z" fill="url(#sg1)"/><polyline points="0,18 8,16 15,17 23,11 30,12 38,6 46,7 54,3" fill="none" stroke="#9ACDF7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="panel kpi"><div class="l">Owner / buyer inquiries</div><div class="n" id="k_inq">0</div>
+          <div class="meta"><span class="delta" id="d_inq">▲ 14%</span><svg class="sp" viewBox="0 0 54 22"><polyline points="0,16 8,17 15,13 23,14 30,9 38,10 46,6 54,5" fill="none" stroke="#4D9BE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="panel kpi"><div class="l">Valuation requests</div><div class="n" id="k_flag">0</div>
+          <div class="meta"><span class="delta" id="d_flag">▲ 26%</span><svg class="sp" viewBox="0 0 54 22"><polyline points="0,18 8,15 15,16 23,11 30,12 38,8 46,9 54,4" fill="none" stroke="#4D9BE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="panel kpi"><div class="l">Captured after-hours</div><div class="n" id="k_aft">0</div>
+          <div class="meta"><span class="delta" id="d_aft">▲ 20%</span><svg class="sp" viewBox="0 0 54 22"><polyline points="0,17 8,14 15,15 23,10 30,9 38,10 46,6 54,4" fill="none" stroke="#4D9BE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+      <div class="row2">
+        <div class="panel pad chart">
+          <div class="ph">Commission pipeline captured <span class="mono">trailing 6 mo</span></div>
+          <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+            <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(77,155,230,.42)"/><stop offset="1" stop-color="rgba(77,155,230,0)"/></linearGradient></defs>
+            <line class="gl" x1="0" y1="45" x2="600" y2="45"/><line class="gl" x1="0" y1="95" x2="600" y2="95"/><line class="gl" x1="0" y1="145" x2="600" y2="145"/>
+            <path id="afill" fill="url(#area)" opacity="0"/>
+            <path id="aline" fill="none" stroke="#9ACDF7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+            <circle id="adot" r="5" fill="#9ACDF7" opacity="0"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
+            <text id="alabel" class="endlabel" text-anchor="end" opacity="0"></text>
+          </svg>
+          <div class="xlab"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+        </div>
+        <div class="panel pad gauge">
+          <div class="ph" style="width:100%;justify-content:flex-start">Inquiry capture rate</div>
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="10"/>
+            <circle id="garc" cx="60" cy="60" r="52" fill="none" stroke="#4D9BE6" stroke-width="10" stroke-linecap="round" transform="rotate(-90 60 60)" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="filter:drop-shadow(0 0 6px rgba(77,155,230,.6));transition:stroke-dashoffset 1.3s cubic-bezier(.2,.7,.2,1),stroke .3s"/>
+            <text id="gnum" class="gnum" x="60" y="60" text-anchor="middle" dominant-baseline="central">0%</text>
+            <text class="gsub" x="60" y="84" text-anchor="middle">CAPTURED</text>
+          </svg>
+          <div class="gstats"><div class="x"><b id="g_resp">—</b><span>avg response</span></div><div class="x"><b id="g_cov">24/7</b><span>coverage</span></div></div>
         </div>
       </div>
-      <div class="panel">
-        <h2>Live activity (sample)</h2>
-        <div class="feed">
-          <div class="ev"><div class="dot b">🏢</div><div><div class="t1">Captured — owner, 16-unit Long Beach</div><div class="t2">"What's it worth?" after hours · valuation booked</div></div><div class="tm">8:52 PM</div></div>
-          <div class="ev"><div class="dot r">⏳</div><div><div class="t1">1031 buyer flagged — priority alert sent</div><div class="t2">Day 41 of 45 · routed to a broker immediately</div></div><div class="tm">Sat</div></div>
-          <div class="ev"><div class="dot a">💬</div><div><div class="t1">Buyer inquiry qualified — 5–100 units, LB</div><div class="t2">Criteria captured · broker consult scheduled</div></div><div class="tm">7:20 PM</div></div>
-          <div class="ev"><div class="dot b">🏢</div><div><div class="t1">Captured — owner, 32-unit disposition</div><div class="t2">Exploring a sale · valuation call set for Thu</div></div><div class="tm">6:05 PM</div></div>
+      <div class="row2b">
+        <div class="panel pad">
+          <div class="ph">Pipeline by deal type <span class="mono">this month</span></div>
+          <div class="donutwrap">
+            <svg viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="5.5"/>
+              <circle class="seg" id="seg1" cx="21" cy="21" r="15.915" fill="none" stroke="#4D9BE6" stroke-width="5.5" stroke-dasharray="0 100" transform="rotate(-90 21 21)" style="transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.2,1)"/>
+              <circle class="seg" id="seg2" cx="21" cy="21" r="15.915" fill="none" stroke="#9ACDF7" stroke-width="5.5" stroke-dasharray="0 100" transform="rotate(-90 21 21)" style="transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.2,1)"/>
+              <circle class="seg" id="seg3" cx="21" cy="21" r="15.915" fill="none" stroke="#6FD6A6" stroke-width="5.5" stroke-dasharray="0 100" transform="rotate(-90 21 21)" style="transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.2,1)"/>
+              <text id="dc" x="21" y="20" text-anchor="middle" fill="#EAF1F8" font-family="Bricolage Grotesque" font-weight="800" font-size="6">$0K</text>
+              <text x="21" y="26" text-anchor="middle" fill="#90A0B0" font-size="2.6" font-family="Space Mono">PIPELINE</text>
+            </svg>
+            <div class="dleg">
+              <div class="li"><span class="sw" style="background:#4D9BE6"></span><div><b>Dispositions</b> <span id="l1">·</span></div></div>
+              <div class="li"><span class="sw" style="background:#9ACDF7"></span><div><b>Acquisitions</b> <span id="l2">·</span></div></div>
+              <div class="li"><span class="sw" style="background:#6FD6A6"></span><div><b>1031 exchange</b> <span id="l3">·</span></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel pad">
+          <div class="ph">Live activity <span class="live" id="livetag"><i></i>streaming</span></div>
+          <div class="feed" id="feed"></div>
         </div>
       </div>
+      <div class="cta"><a href="/stepp-commercial/leak/">What you're losing →</a> &nbsp; <a href="/stepp-commercial/save/">The 9pm capture →</a> &nbsp; <a href="/stepp-commercial/desk/">The Deal Desk →</a></div>
+      <div class="foot">🏢 <b>Illustrative projection</b> — not live data. The AI <b>captures and routes inquiries only</b>; it never gives a valuation, price opinion, commission figure, or tax/legal advice. Licensed brokers handle everything substantive. Click any captured inquiry to view the AI conversation. NeverMiss · Long Beach</div>
     </div>
-
-    <div class="cta"><a href="/stepp-commercial/leak/">What you're losing →</a> &nbsp; <a href="/stepp-commercial/save/">The 9pm capture →</a> &nbsp; <a href="/stepp-commercial/desk/">The Deal Desk →</a></div>
-    <div class="foot">🏢 <b>This is an illustrative projection</b>, modeled on a firm of Stepp Commercial's profile — not live data. The AI <b>captures and routes inquiries only</b> — it never gives a valuation, price opinion, commission figure, or tax/legal advice; licensed brokers handle everything substantive. Once live, this reflects <b>your real inquiries, valuation requests, and booked consults</b>. NeverMiss · Long Beach</div>
   </div>
-<script>setTimeout(()=>document.querySelectorAll('#bars .fill').forEach(f=>f.style.height=f.dataset.h),300);</script>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh"><button class="x" id="dx">✕</button><div class="k">🏢 Captured call · AI transcript</div><h3 id="d_title">—</h3><div class="meta" id="d_meta"></div></div>
+  <div class="dbody" id="d_body"></div>
+  <div class="df"><div class="ok" id="d_ok">—</div><div class="sm" id="d_sm"></div></div>
+</aside>
+<script>
+  const ease=p=>1-Math.pow(1-p,3);
+  const DATA={
+    on:{cap:184,inq:52,flag:17,aft:19,gauge:94,resp:"31s",area:[96,118,132,155,170,184],donut:[55,30,15],dc:"$184K",leg:["· $101K","· $55K","· $28K"],
+      sb:'<span>✓</span> NeverMiss is capturing <b>$184K/mo</b> in commission pipeline you would otherwise lose to voicemail.'},
+    off:{cap:58,inq:21,flag:5,aft:0,gauge:41,resp:"—",area:[58,52,60,55,62,58],donut:[70,20,10],dc:"$58K",leg:["· $41K","· $12K","· $5K"],
+      sb:'<span>⚠</span> Without NeverMiss, you are leaving <b>~$126K/mo</b> in commissions on the table — owners who call while you are showing list with the next broker.'}
+  };
+  const FEED_ON=[
+    {i:'🏢',t1:'Captured — owner, 16-unit Long Beach',t2:'"What is it worth?" after hours · valuation booked',tm:'8:52 PM',tx:0},
+    {i:'⏳',t1:'1031 buyer flagged — priority alert sent',t2:'Day 41 of 45 · routed to a broker immediately',tm:'Sat',cls:'r',tx:1},
+    {i:'💬',t1:'Buyer inquiry qualified — 5–100 units, LB',t2:'Criteria captured · broker consult scheduled',tm:'7:20 PM',cls:'a',tx:2},
+    {i:'🏢',t1:'Captured — owner, 32-unit disposition',t2:'Exploring a sale · valuation call set for Thu',tm:'6:05 PM',tx:3}
+  ];
+  const STREAM_ON=[
+    {i:'🏢',t1:'Captured — owner, 24-unit Belmont Shore',t2:'Exploring a sale · valuation booked',tm:'now',tx:3},
+    {i:'⏳',t1:'1031 buyer flagged — Day 9 of 45',t2:'Time-sensitive · broker alerted',tm:'now',cls:'r',tx:1},
+    {i:'💬',t1:'Buyer inquiry — value-add, LB/South Bay',t2:'Criteria captured · consult scheduled',tm:'now',cls:'a',tx:2}
+  ];
+  const FEED_OFF=[
+    {i:'📵',t1:'Missed call — no answer (after hours)',t2:'16-unit owner · listed with another broker · ~$60K',tm:'8:52 PM',cls:'x',miss:1},
+    {i:'📵',t1:'Missed call — voicemail full',t2:'1031 buyer on a deadline · went elsewhere',tm:'Sat',cls:'x',miss:1},
+    {i:'📵',t1:'Missed call — line busy (showing)',t2:'Buyer inquiry · never returned',tm:'7:20 PM',cls:'x',miss:1},
+    {i:'📵',t1:'Missed call — weekend',t2:'32-unit disposition · competitor won the listing',tm:'Sun',cls:'x',miss:1}
+  ];
+  const TX=[
+    {title:'Owner · 16-unit Long Beach',meta:'Wed 8:52 PM · after hours',ok:'✅ Valuation booked — Tue 11:00 AM',sm:'Building & intent qualified · no valuation quoted · routed to a licensed broker.',
+     msgs:[['ai','Hi, this is Stepp Commercial — sorry we missed your call. Our office is closed, but I can still help. Are you looking to sell, buy, or explore a 1031 on an apartment building?'],['cu','I own a 16-unit in Long Beach, just wondering what it is worth in this market'],['ai','That is right in our wheelhouse — Stepp is the #1 multifamily team in Long Beach/South Bay. I can not put a number on it myself, but I can set up a complimentary, confidential valuation with one of our brokers. Quick detail: 16 units in Long Beach — thinking of selling soon, or just exploring?'],['cu','Just exploring, maybe sell in the next year'],['ai','Perfect — no pressure at all. I will have a broker prepare a market valuation with recent Long Beach comps. Would tomorrow at 11:00 AM or 2:00 PM work better?'],['cu','11am works'],['ai','Done — 11:00 AM tomorrow with one of our brokers for a confidential valuation on your 16-unit. Thank you for calling Stepp Commercial.']]},
+    {title:'1031 buyer · Day 41 of 45',meta:'Sat · priority alert',ok:'✅ Routed to a broker immediately',sm:'Time-sensitive exchange · escalated · no advice given.',
+     msgs:[['ai','Stepp Commercial — how can I help?'],['cu','I am in a 1031 and need to identify a replacement property fast, my window closes in a few days'],['ai','That is time-sensitive, so I am escalating this to a broker right now. Can you confirm the exact date your 45-day window closes and your target size and area?'],['cu','Closes Wednesday, looking for 10 to 30 units in the South Bay'],['ai','Thank you — flagged as priority and a broker is being notified now. Expect a call shortly. I can not advise on specific properties myself, but they will walk you through current options.']]},
+    {title:'Buyer inquiry · 5–100 units',meta:'7:20 PM',ok:'✅ Broker consult scheduled',sm:'Buy-box captured · routed to acquisitions.',
+     msgs:[['ai','Stepp Commercial — how can I help?'],['cu','I am a private investor looking to buy value-add apartments in Long Beach'],['ai','Great — that is exactly what our team does. To match you with the right broker, may I capture your buy-box? What unit range and budget are you targeting?'],['cu','5 to 100 units, up to about 8 million'],['ai','Thank you. I have captured your criteria and will schedule a consult with one of our acquisitions brokers. Would this week work for a call?'],['cu','Yes, later this week'],['ai','Set — a broker will reach out to confirm a time. Thank you for calling Stepp Commercial.']]},
+    {title:'Owner · 32-unit disposition',meta:'6:05 PM',ok:'✅ Valuation call set — Thu',sm:'Seller intent & timeline captured · no valuation quoted.',
+     msgs:[['ai','Stepp Commercial — how can I help?'],['cu','Thinking about selling my 32-unit but want to understand the market first'],['ai','Happy to help. I can not give you a figure myself, but a broker can prepare a confidential valuation with recent comps. Is the building in Long Beach, and are you looking to move this year?'],['cu','Yes Long Beach, probably within 6 months'],['ai','Perfect — I will set up a valuation call. Would Thursday afternoon work?'],['cu','Thursday is good'],['ai','Done — a broker will call Thursday with a market valuation on your 32-unit. Thank you for calling Stepp Commercial.']]}
+  ];
+  function fmtCap(v){return '$'+Math.round(v)+'<s>K</s>';}
+  function animNum(el,to,fmt){const from=+(el.dataset.cur||0),t0=performance.now(),dur=1100;(function s(t){const p=Math.min(1,(t-t0)/dur),v=from+(to-from)*ease(p);el.innerHTML=fmt(v);if(p<1)requestAnimationFrame(s);})(t0);el.dataset.cur=to;}
+  const XS=[40,144,248,352,456,560],mapY=v=>180-(v/210)*150;
+  function pathLine(a){return 'M'+a.map((v,i)=>XS[i]+','+mapY(v).toFixed(1)).join(' L');}
+  function pathFill(a){return pathLine(a)+' L560,185 L40,185 Z';}
+  function drawArea(a){const ln=document.getElementById('aline'),fl=document.getElementById('afill');ln.setAttribute('d',pathLine(a));fl.setAttribute('d',pathFill(a));ln.style.transition='none';ln.style.strokeDashoffset='100';void ln.getBBox();requestAnimationFrame(()=>{ln.style.transition='stroke-dashoffset 1.5s cubic-bezier(.2,.7,.2,1)';ln.style.strokeDashoffset='0';});fl.style.transition='opacity 1s ease .4s';fl.style.opacity='1';const last=a[a.length-1],dot=document.getElementById('adot'),lab=document.getElementById('alabel');dot.setAttribute('cx',560);dot.setAttribute('cy',mapY(last));dot.style.opacity='1';lab.setAttribute('x',556);lab.setAttribute('y',mapY(last)-13);lab.textContent='$'+Math.round(last)+'K';lab.style.transition='opacity .5s';lab.style.opacity='1';}
+  function setGauge(pct){const arc=document.getElementById('garc'),circ=326.7;arc.style.strokeDashoffset=circ*(1-pct/100);arc.style.stroke=pct<50?'#F0926B':'#4D9BE6';const g=document.getElementById('gnum'),from=+(g.dataset.cur||0),t0=performance.now();g.style.fill=pct<50?'#F6BBA4':'#9ACDF7';(function s(t){const p=Math.min(1,(t-t0)/1200);g.textContent=Math.round(from+(pct-from)*ease(p))+'%';if(p<1)requestAnimationFrame(s);})(t0);g.dataset.cur=pct;}
+  function setDonut(d,center,leg){let off=0;[1,2,3].forEach((n,i)=>{const s=document.getElementById('seg'+n);s.style.strokeDasharray=d[i]+' '+(100-d[i]);s.style.strokeDashoffset=(100-off);off+=d[i];});document.getElementById('dc').textContent=center;leg.forEach((v,i)=>document.getElementById('l'+(i+1)).textContent=v);}
+  function openDrawer(i){const t=TX[i];if(!t)return;document.getElementById('d_title').textContent=t.title;document.getElementById('d_meta').textContent=t.meta;document.getElementById('d_ok').textContent=t.ok;document.getElementById('d_sm').textContent=t.sm;const b=document.getElementById('d_body');b.innerHTML='';document.getElementById('scrim').classList.add('open');document.getElementById('drawer').classList.add('open');let k=0;(function next(){if(k>=t.msgs.length)return;const m=t.msgs[k++];const d=document.createElement('div');d.className='msg '+(m[0]==='ai'?'ai':'cu');d.textContent=m[1];d.style.opacity=0;b.appendChild(d);requestAnimationFrame(()=>{d.style.transition='opacity .3s';d.style.opacity=1;});b.scrollTop=b.scrollHeight;setTimeout(next,360);})();}
+  function closeDrawer(){document.getElementById('scrim').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
+  document.getElementById('dx').onclick=closeDrawer;document.getElementById('scrim').onclick=closeDrawer;
+  function evEl(it){const d=document.createElement('div');d.className='ev'+(it.miss?' miss':'')+(it.tm==='now'?' new':'');const chev=(!it.miss&&it.tx!=null)?'<span class="chev">view ›</span>':'';d.innerHTML=`<div class="dot ${it.cls||''}">${it.i}</div><div><div class="t1">${it.t1}</div><div class="t2">${it.t2}</div></div><div class="tm">${it.tm==='now'?'just now':it.tm}${chev}</div>`;if(!it.miss&&it.tx!=null)d.onclick=()=>openDrawer(it.tx);return d;}
+  const feed=document.getElementById('feed');
+  function renderFeed(st){feed.innerHTML='';(st==='on'?FEED_ON:FEED_OFF).forEach(it=>feed.appendChild(evEl(it)));document.getElementById('livetag').style.opacity=st==='on'?1:.3;}
+  let STATE='on';
+  function render(st){STATE=st;const d=DATA[st];document.getElementById('statebar').className='statebar '+(st==='on'?'good':'bad');document.getElementById('statebar').innerHTML=d.sb;animNum(document.getElementById('k_cap'),d.cap,fmtCap);animNum(document.getElementById('k_inq'),d.inq,v=>Math.round(v));animNum(document.getElementById('k_flag'),d.flag,v=>Math.round(v));animNum(document.getElementById('k_aft'),d.aft,v=>Math.round(v));['d_cap','d_inq','d_flag','d_aft'].forEach(id=>document.getElementById(id).classList.toggle('dn',st==='off'));document.getElementById('g_resp').textContent=d.resp;setGauge(d.gauge);drawArea(d.area);setDonut(d.donut,d.dc,d.leg);renderFeed(st);}
+  document.getElementById('tOn').onclick=function(){this.classList.add('on');document.getElementById('tOff').classList.remove('on','off');render('on');};
+  document.getElementById('tOff').onclick=function(){this.classList.add('on','off');document.getElementById('tOn').classList.remove('on');render('off');};
+  function tick(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})+' · '+n.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});}
+  tick();setInterval(tick,1000);
+  let si=0;setInterval(()=>{if(STATE!=='on')return;const it=Object.assign({},STREAM_ON[si%STREAM_ON.length]);si++;feed.prepend(evEl(it));while(feed.children.length>5)feed.lastChild.remove();},3800);
+  render('on');
+</script>
 </body>
 </html>
