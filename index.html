@@ -623,6 +623,9 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
 .btn:active,.nm-sticky-btn:active,.dial-btn:active{transform:translateY(0)!important;filter:brightness(.96)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
+<link rel="manifest" href="/site.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body>
 
@@ -1394,7 +1397,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
   <div class="glow-spot" aria-hidden="true"></div>
   <div class="wrap founder-grid">
     <div class="founder-avatar reveal-l">
-      <img src="founder.jpg" alt="Liam Hawke, founder of NeverMiss" />
+      <img src="founder.jpg" alt="Liam Hawke, founder of NeverMiss, at his desk in Long Beach" width="160" height="160" loading="lazy" decoding="async" />
       <span class="ping"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0A3B30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </div>
     <div class="reveal-r">
@@ -1915,7 +1918,19 @@ footer a:hover{color:var(--sig)}
 }
 </style>
 
-<!-- NeverMiss 24/7 help bot -->
-<script src="https://nevermiss-agent-production.up.railway.app/widget.js" defer></script>
+<!-- NeverMiss 24/7 help bot — loaded lazily (first interaction or idle) to protect LCP/INP -->
+<script>
+(function(){
+  var loaded=false, evs=['scroll','pointerdown','keydown','touchstart'];
+  function load(){ if(loaded)return; loaded=true;
+    var s=document.createElement('script');
+    s.src='https://nevermiss-agent-production.up.railway.app/widget.js'; s.defer=true;
+    document.body.appendChild(s);
+    evs.forEach(function(e){window.removeEventListener(e,load);});
+  }
+  evs.forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
+  if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:6000});}else{setTimeout(load,5000);}
+})();
+</script>
 </body>
 </html>
